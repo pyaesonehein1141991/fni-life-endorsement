@@ -1,0 +1,310 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="#{label['LIFE_SURRENDER_PAYMENT_TITLE']}"/>
+	<ui:param name="headerRendered" value="true"/>
+	<ui:define name="content">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+		<h:form id="lifeSurrenderPaymentForm">
+		<p:growl escape="false" globalOnly="true" id="messages" life="8000" showDetail="true"/>
+			<p:panel>
+				<table>
+					<tr>
+						<td style="width: 150px;">
+							<h:outputText styleClass="input-label" value="#{label['LIFE_SURRENDER_PAYMENT_PROPOSALNO_LABEL']}"/>
+						</td>
+						<td>
+							<h:panelGrid columns="2">
+								<p:inputText id="proposalNo" readonly="true" style="width:250px;margin-left:-4px;" value="#{LifeSurrenderPaymentActionBean.lifeSurrenderProposal.proposalNo}"/>
+								<p:commandLink id="detailsProposal" immediate="true" oncomplete=" PF('proposalDetailsDialog').show();">
+									<h:graphicImage styleClass="#{ApplicationSetting.detailStyleClass}" url="#{ApplicationSetting.detailIcon}"/>
+								</p:commandLink>
+							</h:panelGrid>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="#{label['LIFE_SURRENDER_SURRENDER_AMOUNT_LABEL']}"/>
+						</td>
+						<td>
+							<p:inputText id="surrenderAmt" readonly="true" style="width:250px;text-align:right;" value="#{LifeSurrenderPaymentActionBean.surrenderAmounts}">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<tr height="1"/>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="#{label['LIFE_SURRENDER_LIFE_PREMIUM_LABEL']}"/>
+						</td>
+						<td>
+							<p:inputText id="lifePremium" readonly="true" style="width:250px;text-align:right;" value="#{LifeSurrenderPaymentActionBean.lifeSurrenderProposal.lifePremium}">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<tr height="1"/>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="#{label['LIFE_SURRENDER_LOAN_LABEL']}"/>
+						</td>
+						<td>
+							<p:inputText id="loan" readonly="true" style="width:250px;text-align:right;" value="0.0">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<tr height="1"/>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="#{label['LIFE_SURRENDER_LOANINTEREST_LABEL']}"/>
+						</td>
+						<td>
+							<p:inputText id="loanInterest" readonly="true" style="width:250px;text-align:right;" value="0.0">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<tr height="1"/>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="Upkeep Premium"/>
+						</td>
+						<td>
+							<p:inputText id="upkeepPremium" readonly="true" style="width:250px;text-align:right;" value="0.0">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<tr height="1"/>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="Upkeep Interest"/>
+						</td>
+						<td>
+							<p:inputText id="upkeepInterest" readonly="true" style="width:250px;text-align:right;" value="0.0">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<tr height="1"/>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="#{label['LIFE_SURRENDER_SERVICE_CHARGES_LABEL']}"/>
+						</td>
+						<td>
+							<p:inputText id="serviceCharges" readonly="true" style="width:250px;text-align:right;" value="#{LifeSurrenderPaymentActionBean.paymentDTO.servicesCharges}">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<tr height="1"/>
+					
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="Total Premium Amount"/>
+						</td>
+						<td>
+							<p:inputText id="totalPreAmount" style="width:250px;text-align:right;" value="#{LifeSurrenderPaymentActionBean.totalPremiumAmount}" disabled="true">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<!-- Payee -->
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="Payee"/>
+						</td>
+						<td>
+							<p:inputText id="payee" style="width:250px;text-align:left;" value="#{LifeSurrenderPaymentActionBean.lifeSurrenderProposal.payee}"/>
+						</td>
+					</tr>
+					
+					<tr>
+							<td>
+								<p:message for="proAmount"/>
+							</td>
+					</tr>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label mandatory" value="Provision Amount"/>
+						</td>
+						<td>
+							<p:inputText id="proAmount" style="width:250px;text-align:right;" value="#{LifeSurrenderPaymentActionBean.paymentDTO.provisionAmount}">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					<tr>
+							<td>
+								<p:message for="preIncomeAmount"/>
+							</td>
+					</tr>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label mandatory" value="Premium Income Amount"/>
+						</td>
+						<td>
+							<p:inputText id="preIncomeAmount" style="width:250px;text-align:right;" value="#{LifeSurrenderPaymentActionBean.paymentDTO.preIncomeAmount}">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					
+					<tr>
+						<td>
+							<p:message for="netSurrenderAmt"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label" value="#{label['LIFE_SURRENDER_NETSURRENDER_AMOUNT_LABEL']}"/>
+						</td>
+						<td>
+							<p:inputText id="netSurrenderAmt" readonly="true" style="width:250px;text-align:right;" value="#{LifeSurrenderPaymentActionBean.lifeSurrenderProposal.surrenderAmount}">
+								<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}"/>
+							</p:inputText>
+						</td>
+					</tr>
+					
+					<!-- 					
+					<tr height="1"/>
+					<tr>
+						<td>
+							<h:outputText rendered="#{!LifeSurrenderPaymentActionBean.cashPayment}" styleClass="input-label" value="Account Bank"/>
+						</td>
+						<td>
+							<p:inputText id="accountBank" rendered="#{!LifeSurrenderPaymentActionBean.cashPayment}" style="width:250px;" value="#{LifeSurrenderPaymentActionBean.paymentDTO.accountBank.name}"/>
+						</td>
+					</tr>
+					<p:column rendered="#{!LifeSurrenderPaymentActionBean.cashPayment}">
+						<tr>
+							<td>
+								<h:outputText styleClass="input-label" value="Bank"/>
+							</td>
+							<td>
+								<p:inputText id="bank" style="width:250px;" value="#{LifeSurrenderPaymentActionBean.paymentDTO.bank.name}"/>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<h:outputText styleClass="input-label" value="Cheque No" rendered="#{LifeSurrenderPaymentActionBean.paymentDTO.paymentChannel != 'TRANSFER'}" />
+								<h:outputText styleClass="input-label" value="Transfer No" rendered="#{LifeSurrenderPaymentActionBean.paymentDTO.paymentChannel == 'TRANSFER'}"/>
+							</td>
+							<td>
+								<p:inputText id="chequeNo" style="width:250px;" value="#{LifeSurrenderPaymentActionBean.paymentDTO.chequeNo}" rendered="#{LifeSurrenderPaymentActionBean.paymentDTO.paymentChannel != 'TRANSFER'}"/>
+								<p:inputText id="poNo" style="width:250px;" value="#{LifeSurrenderPaymentActionBean.paymentDTO.poNo}" rendered="#{LifeSurrenderPaymentActionBean.paymentDTO.paymentChannel == 'TRANSFER' }"/>
+							
+							</td>
+							
+						</tr>
+					</p:column>
+					 -->
+
+					<tr>
+						<td valign="top">
+							<h:outputText styleClass="input-label" value="#{label['LIFE_SURRENDER_REMARK_LABEL']}"/>
+						</td>
+						<td>
+							<p:inputTextarea autoResize="true" id="remark" rows="7" style="width:350px;" value="#{LifeSurrenderPaymentActionBean.remark}">
+								<f:validateLength maximum="800"/>
+							</p:inputTextarea>
+						</td>
+					</tr>
+
+					<!-- Payment Channel -->
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label mandatory" value="Payment Channel"/>
+						</td>
+						<td>
+						<h:panelGrid id="paymentChannelList">
+						<p:selectOneRadio converter="omnifaces.SelectItemsIndexConverter" id="paymentChannel" required="true" value="#{LifeSurrenderPaymentActionBean.channelValue}">
+							<f:selectItems itemLabel="#{c.label}" itemValue="#{c}" value="#{LifeSurrenderPaymentActionBean.channelValues}" var="c" />
+							<p:ajax event="valueChange" listener="#{LifeSurrenderPaymentActionBean.changePaymentChannel}" update="paymentChannelList" />
+						</p:selectOneRadio>
+						<p:outputLabel />
+						<p:message for="accountBankName" display="text" id="accountBankMessage" rendered="#{LifeSurrenderPaymentActionBean.accountBank}" />
+						<h:outputText rendered="#{LifeSurrenderPaymentActionBean.cheque}" styleClass="input-label mandatory" value="Account Bank" />
+						<h:outputText rendered="#{LifeSurrenderPaymentActionBean.transfer}" styleClass="input-label mandatory" value="Account Clearing Bank" />
+						<p:panelGrid styleClass="ui-panelgrid-blank" rendered="#{LifeSurrenderPaymentActionBean.accountBank}">
+							<div style="margin:-6px -6px;" class="ui-g ui-fluid" id="accountBankPanelGroup">
+								<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+									<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{LifeSurrenderPaymentActionBean.selectAccountBank()}" id="selectAccountBankDialogLink"
+										process="@this">
+										<p:ajax event="dialogReturn" listener="#{LifeSurrenderPaymentActionBean.returnAccountBank}" update="accountBankName" />
+									</p:commandButton>
+									<p:inputText id="accountBankName" readonly="true" style="width:250px;margin-left:-4px;"
+										value="#{LifeSurrenderPaymentActionBean.paymentDTO.accountBank == null ? '' : LifeSurrenderPaymentActionBean.paymentDTO.accountBank.name}" />
+									<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{LifeSurrenderPaymentActionBean.paymentDTO.setAccountBank(null)}" process="@this" update="accountBankName" />
+								</div>
+							</div>
+						</p:panelGrid>
+						<p:outputLabel />
+						<p:message for="bankName" display="text" id="bankMessage" rendered="#{LifeSurrenderPaymentActionBean.bank}" />
+						<h:outputText rendered="#{LifeSurrenderPaymentActionBean.cheque}" styleClass="input-label mandatory" value="Bank" />
+						<h:outputText rendered="#{LifeSurrenderPaymentActionBean.transfer}" styleClass="input-label mandatory" value="Cheque Received Bank" />
+						<p:panelGrid styleClass="ui-panelgrid-blank" rendered="#{LifeSurrenderPaymentActionBean.bank}">
+							<div style="margin:-6px -6px;" class="ui-g ui-fluid" id="bankPanelGroup">
+								<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+									<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{LifeSurrenderPaymentActionBean.selectBank()}" id="selectBankDialogLink" process="@this">
+										<p:ajax event="dialogReturn" listener="#{LifeSurrenderPaymentActionBean.returnBank}" update="bankName" />
+									</p:commandButton>
+									<p:inputText id="bankName" readonly="true" style="width:250px;margin-left:-4px;" value="#{LifeSurrenderPaymentActionBean.paymentDTO.bank == null ? '' : LifeSurrenderPaymentActionBean.paymentDTO.bank.name}" />
+									<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{LifeSurrenderPaymentActionBean.paymentDTO.setBank(null)}" process="@this" update="bankName" />
+								</div>
+							</div>
+						</p:panelGrid>
+						<p:outputLabel />
+						<p:message for="chequeNo" display="text" id="chequeNoMessage" rendered="#{LifeSurrenderPaymentActionBean.cheque}" />
+						<h:outputText rendered="#{LifeSurrenderPaymentActionBean.cheque}" styleClass="input-label mandatory" value="PO / Account No." />
+						<p:inputText id="chequeNo" rendered="#{LifeSurrenderPaymentActionBean.cheque}" value="#{LifeSurrenderPaymentActionBean.paymentDTO.chequeNo}" />
+						<p:message for="poNo" display="text" id="poNoMessage" rendered="#{LifeSurrenderPaymentActionBean.transfer}" />
+						<h:outputText rendered="#{LifeSurrenderPaymentActionBean.transfer}" styleClass="input-label mandatory" value="Transfer No." />
+						<p:inputText id="poNo" rendered="#{LifeSurrenderPaymentActionBean.transfer}" value="#{LifeSurrenderPaymentActionBean.paymentDTO.poNo}" />
+						</h:panelGrid>
+						</td>
+					</tr>
+					
+
+					<tr>
+						<td/>
+						<td>
+							<p:message for="responsiblePerson"/>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<h:outputText styleClass="input-label mandatory" value="#{label['LIFE_SURRENDER_RESPONSIBLE_PERSON_LABEL']}"/>
+						</td>
+						<td>
+							<h:panelGrid columns="3" id="responsiblePersonPanel">
+								<p:inputText id="responsiblePerson" readonly="#{LifeSurrenderPaymentActionBean.responsiblePerson == null ? facesContext.currentPhaseId.ordinal eq 6 : true}" required="true" requiredMessage="Responsible person must be selected." style="width:250px;margin-left:-4px;" value="#{LifeSurrenderPaymentActionBean.responsiblePerson == null ? '' : LifeSurrenderPaymentActionBean.responsiblePerson.name}"/>
+								<p:commandLink actionListener="#{LifeSurrenderPaymentActionBean.selectUser()}" id="selectUserDialogLink" immediate="true">
+									<h:graphicImage styleClass="#{ApplicationSetting.searchStyleClass}" url="#{ApplicationSetting.searchIcon}"/>
+									<p:ajax event="dialogReturn" listener="#{LifeSurrenderPaymentActionBean.returnUser}" update="responsiblePersonPanel"/>
+								</p:commandLink>
+							</h:panelGrid>
+						</td>
+					</tr>
+				</table>
+			</p:panel>
+			<p:commandButton action="#{LifeSurrenderPaymentActionBean.paymentLifeSurrenderProposal}" id="addBtn" style="width: 80px;" disabled="#{LifeSurrenderPaymentActionBean.actualPayment}" update=":lifeSurrenderPaymentForm" value="#{label['LIFE_SURRENDER_CONFIRM_BUTTON']}"/>
+			<p:spacer width="5"/>
+			<p:commandButton action="#{LifeSurrenderPaymentActionBean.generateReport()}" disabled="#{!LifeSurrenderPaymentActionBean.actualPayment}" icon="ui-icon-print" oncomplete="PF('cashReceiptPDFDialog').show();" update=":pdfPrintForm" value="Print Preview"/>
+			<p:commandButton action="dashboard" id="cancelBtn" immediate="true" style="width: 80px;" value="#{label['LIFE_SURRENDER_CANCEL_BUTTON']}"/>
+		</h:form>
+		<h:form enctype="multipart/form-data" id="pdfPrintForm">
+			<p:dialog appendTo="@(body)" dynamic="true" height="505" id="cashReceipt" modal="true" resizable="false" widgetVar="cashReceiptPDFDialog" width="1070">
+				<p:ajax event="close" listener="#{ApplicationSetting.handleDialogClose(LifeSurrenderPaymentActionBean.reportStream)}" update="@form"/>
+				<p:media cache="false" height="500" id="pdfPlayer" player="pdf" value="#{LifeSurrenderPaymentActionBean.reportStream}" width="1050"/>
+			</p:dialog>
+		</h:form>
+		<p:dialog appendTo="@(body)" dynamic="true" header="Proposal Details Of #{LifeSurrenderPaymentActionBean.lifeSurrenderProposal.proposalNo}" height="500" hideEffect="explode" id="proposalDetailsDialog" modal="true" resizable="false" showEffect="explode" widgetVar="proposalDetailsDialog" width="1300">
+			<ui:include src="/manage/life/surrender/lifeSurrenderProposalInfoTemplate.xhtml">
+				<ui:param name="proposal" value="#{LifeSurrenderPaymentActionBean.lifeSurrenderProposal}"/>
+				<ui:param name="workFlowList" value="#{LifeSurrenderPaymentActionBean.workFlowList}"/>
+				<ui:param name="paymentList" value="#{LifeSurrenderPaymentActionBean.paymentTrackList}"/>
+			</ui:include>
+		</p:dialog>
+		<!--  Responsible Person Dialog -->
+	</ui:define>
+</ui:composition>

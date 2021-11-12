@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="STL_TERM-AND_CON" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="97" bottomMargin="0" resourceBundle="TERM_CONDITION_myn" uuid="100fbbc1-e827-4a2f-a8f9-cec62f13850d">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.5000000000000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="284"/>
+	<detail>
+		<band height="745" splitType="Stretch">
+			<image>
+				<reportElement x="-39" y="-97" width="593" height="842" uuid="4a697a4a-25f4-45b9-adf7-e578d8395084"/>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream(org.apache.commons.codec.binary.Base64.decodeBase64($R{POLICY4FLY}.getBytes()))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="76" width="515" height="20" uuid="19091dee-b754-4e77-b22a-7fb143414d13"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+					<paragraph tabStopWidth="30"/>
+				</textElement>
+				<text><![CDATA[(၁)    ပညာသင်ထောက်ပံ့ကြေး အကျိုးခံစားခွင့် (Cash Payout Benefit)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="310" width="466" height="52" uuid="f82d8690-518d-4dab-b1b2-6617023c40f1"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph tabStopWidth="50"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူသေဆုံးပြီး အလောင်းရှာမတွေ့ပါက  (၂)နှစ် စောင့်ဆိုင်းရမည်ဖြစ်ပြီး ကျေးရွာ/ရပ်ကွက် အုပ်ချုပ်ရေး မှူး၏ ထောက်ခံချက်ရရှိလျှင် ကုမ္ပဏီမှ ရရန်ရှိငွေများကိုနုတ်၍ ကျန်အကျိုးခံစားခွင့် ငွေကို အာမခံဝယ်သူ (Policy Holder) အား တစ်လုံးတည်း ထုတ်ပေးပါမည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="595" width="515" height="20" uuid="29cb2b1e-e2b6-4319-a8ba-5c8c581630fc"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(၇)    စာသင်သားအသက်အာမခံပေါ်လစီမှ ငွေချေးယူနိုင်ခြင်း(Policy Loan)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="274" width="466" height="36" uuid="623de423-e851-4c1b-9ac1-ce54c1da8d53"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph tabStopWidth="50"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံသက်တမ်း ပြီးဆုံးသည့်နောက်ပိုင်း အာမခံထားသူ(ကလေး) သေဆုံးခြင်းဖြစ်လျှင် အာမခံထားငွေမှယခင် ပေးပြီး အကျိုးခံစားခွင့်ကို နုတ်၍ ကျန်အာမခံထားငွေကိုသာ ပေးမည်ဖြစ်ပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="164" width="466" height="36" uuid="90836201-61b6-4e7c-a2a7-f94728fc28a6"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph tabStopWidth="20"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူ(ရင်သွေးငယ်)သည် အသက် (၁၈)နှစ်အောက်ဖြစ်လျှင် အာမခံဝယ်ယူသူ (Policy Holder) သို့ အချိုးကျအ ကျိုးခံစားခွင့်ငွေ ထုတ်ပေးပါမည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="222" width="466" height="52" uuid="f2f5bc40-c742-4d2c-b5bc-72cdf174583b"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph tabStopWidth="50"/>
+				</textElement>
+				<text><![CDATA[ပေါ်လစီ တည်မြဲနေစဉ်ကာလအတွင်း အာမခံထားသူရင်သွေးငယ် သေဆုံးခဲ့လျှင် ရင်သွေးငယ်သည် အသက် (၁)နှစ် မှ (၃)နှစ်အတွင်း ဖြစ်ပါက အာမခံထားငွေ၏ (၂၅%)၊ ရင်သွေးငယ်အသက် (၃)နှစ် ပြည့်ပြီးသည့် နေ့မှ နောက်ပိုင်း သေဆုံးခဲ့လျှင် အာမခံထားငွေကို ထုတ်ပေးမည်ဖြစ်ပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="379" width="19" height="20" uuid="61568a69-33de-409e-ab29-63fd9a57b12c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[၁။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="356" width="514" height="20" uuid="65313450-2e45-4057-b404-47caf4e45f99"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+					<paragraph tabStopWidth="30"/>
+				</textElement>
+				<text><![CDATA[(၃)    ထာဝစဉ်မသန်စွမ်းအကျိုးခံစားခွင့် (Permanent Total Disability Benefit)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="202" width="514" height="20" uuid="20b6297e-8265-4613-bd6c-85f0296956fe"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+					<paragraph tabStopWidth="30"/>
+				</textElement>
+				<text><![CDATA[(၂)    သေဆုံးမှုအကျိုးခံစားခွင့် (Death Benefit)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="271" width="19" height="20" uuid="5e63d049-793e-4242-b539-5dbe3e8ae606"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[၂။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="27" width="517" height="29" uuid="388c4db0-586f-484e-9a3a-05895187d59b"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[စာသင်သားအသက်အာမခံစည်းကမ်းချက်များ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="380" width="466" height="91" uuid="3a5b69b4-4802-406a-959a-5e91eb37cd00"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph tabStopWidth="50"/>
+				</textElement>
+				<text><![CDATA[ပေါ်လစီ တည်မြဲနေစဉ် ကာလ အတွင်း အာမခံထားသူ ရင်သွေးငယ် ရောဂါကြောင့်သော်လည်းကောင်း၊ မတော်တဆထိခိုက် မှုကြောင့် သော်လည်းကောင်း ထာဝစဉ်မသန်စွမ်းဖြစ်လျှင် အာမခံထားသည့် ရင်သွေးငယ်သည်အသက် (၁)နှစ် မှ (၃)နှစ်အ တွင်းဖြစ်ပါက အာမခံထားငွေ၏ (၂၅%) သာထုတ်ပေးမည်ဖြစ်ပြီး ရင်သွေးငယ်အသက် (၃)နှစ်ပြည့်ပြီးသည့်နေ့မှ နောက်ပိုင်း ထာဝစဉ် မသန်မစွမ်းဖြစ်လျှင် အာမခံထားငွေကို ထုတ်ပေးမည် ဖြစ်ပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="220" width="19" height="20" uuid="8ab3bae1-7076-4e88-b433-eb49bd57c965"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[၁။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="575" width="515" height="20" uuid="95a64875-fafd-40ab-ab0d-30c0a97fe78e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(၆)    အာမခံဝယ်ယူသူမှ အမ်းငွေထုတ်ယူနိုင်ခြင်း (Surrender Value)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="471" width="466" height="61" uuid="97dce87d-e719-4185-92e8-b232adf91d2f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph lineSpacing="AtLeast" tabStopWidth="40"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံ သက်တမ်း ပြီးဆုံးသည့်  နောက်ပိုင်း အာမခံထားသူ (ကလေး) ထာဝစဉ် မသန်စွမ်းဖြစ်လျှင် အာမခံထား ငွေမှယခင် ပေးပြီးအကျိုးခံစားခွင့်ကို နုတ်၍ ကျန်အာမခံထားငွေကိုသာပေးမည်ဖြစ်ပါသည်။ စုစုပေါင်းအာမခံထား ငွေအထိသာ ပေးချေ သွားမည်ဖြစ်ပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="555" width="515" height="20" uuid="89962cf3-a9f1-4ad3-a39b-a346960e98df"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(၅)    အာမခံဝယ်ယူသူမှ ပေါ်လစီကို စာရင်းပိတ်နိုင်ခြင်း (Paid-up Policy)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="162" width="19" height="20" uuid="245bdda8-ba0e-4e57-adab-6982822732cf"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[၂။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="307" width="19" height="20" uuid="ea5662b4-a97b-4bfe-8c0f-c58a17f217f9"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[၃။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="51" y="96" width="466" height="66" uuid="7f207497-277f-48e0-b2ec-ef606b88a7d1"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[ပရီမီယံများကိုသက်တမ်းဆုံးသည် အထိပေးသွင်းပြီးနောက် စာသင်သားအသက်အာမခံအကျိုးခံစားခွင့်ငွေကို တက္ကသိုလ် ပညာရေးအတွက် ပညာသင်ထောက်ပံ့ကြေးအဖြစ်  အာမခံထားသူ(ရင်သွေးငယ်) အသက်(၁၇)နှစ်မှစ၍ အသက်(၁၈)နှစ်၊ အသက်(၁၉)နှစ်၊ အသက်(၂၀)နှစ်တို့တွင် အာမခံထားငွေ၏ (၂၅) ရာခိုင်နှုန်းကျစီ (၄) ရစ် အညီအမျှခွဲ၍ နှစ်စဉ်ပေးပါမည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="56" width="517" height="20" uuid="aead1f4b-5a9e-400b-b2e1-d0eaa1b1b02c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[စာသင်သားအသက်အာမခံအကျိုးခံစားခွင့်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="32" y="94" width="19" height="20" uuid="fe73ce5e-f16d-416b-a4f8-c50ce162626c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[၁။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="535" width="515" height="20" uuid="232f8c54-9908-4b25-a27a-0a1e89d54694"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[(၄)    ပရီမီယံပေးသွင်းခြင်းမှကင်းလွတ်ခွင့်ရရှိနိုင်ခြင်း (Premium Waiver Benefit)]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

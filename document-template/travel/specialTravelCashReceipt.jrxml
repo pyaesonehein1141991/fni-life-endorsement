@@ -1,0 +1,641 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="specialTravelReceipt" pageWidth="595" pageHeight="842" columnWidth="579" leftMargin="8" rightMargin="8" topMargin="0" bottomMargin="0" resourceBundle="LANGUAGE_en" uuid="474813db-69f0-4377-8b25-c0cb582cc70d">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.5000000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="receiptNo" class="java.lang.String"/>
+	<parameter name="agent" class="java.lang.String"/>
+	<parameter name="proposalType" class="java.lang.String"/>
+	<parameter name="totalSi" class="java.lang.String"/>
+	<parameter name="proposalNo" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="policyPeriod" class="java.lang.String"/>
+	<parameter name="startDate" class="java.lang.String"/>
+	<parameter name="endDate" class="java.lang.String"/>
+	<parameter name="receiptDate" class="java.util.Date"/>
+	<parameter name="premium" class="java.lang.String"/>
+	<parameter name="stampFee" class="java.lang.String"/>
+	<parameter name="totalPremium" class="java.lang.String"/>
+	<parameter name="customerName" class="java.lang.String"/>
+	<parameter name="premiumInWord" class="java.lang.String"/>
+	<parameter name="needPremium" class="java.lang.String"/>
+	<parameter name="adjustAmount" class="java.lang.String"/>
+	<parameter name="unit" class="java.lang.String"/>
+	<parameter name="travelPath" class="java.lang.String"/>
+	<parameter name="departureDate" class="java.lang.String"/>
+	<parameter name="arrivalDate" class="java.lang.String"/>
+	<parameter name="discount" class="java.lang.String"/>
+	<parameter name="totalamount" class="java.lang.String"/>
+	<parameter name="isCopy" class="java.lang.Boolean"/>
+	<parameter name="branchEmail" class="java.lang.String"/>
+	<parameter name="branchAddress" class="java.lang.String"/>
+	<parameter name="branchTel" class="java.lang.String"/>
+	<parameter name="siteUrl" class="java.lang.String"/>
+	<parameter name="receipt4Fly" class="java.lang.String"/>
+	<parameter name="serviceCharges" class="java.lang.String"/>
+	<parameter name="noOfUnit" class="java.lang.Integer"/>
+	<detail>
+		<band height="842" splitType="Stretch">
+			<image>
+				<reportElement x="-7" y="0" width="595" height="842" uuid="f8ca4bf8-29dd-434b-a0e2-f4156c9c536a"/>
+				<imageExpression><![CDATA[$P{receipt4Fly}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="97" width="579" height="27" uuid="704c4d3b-601f-4265-a6e8-9f76f2d2f692"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ငွေရပြေစာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="125" width="100" height="20" uuid="88838835-3adc-40e1-870d-463db3cfcef0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ပြေစာအမှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="244" width="120" height="20" uuid="60038586-fd5b-45f0-b55f-518bb5636f07"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[အထူးခရီးသွားအာမခံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="288" width="120" height="20" uuid="efd1fe36-d29e-4c40-a83e-6861cc24d61e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားငွေ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="266" width="120" height="20" uuid="a0b6bafd-4d49-4ade-a0d5-5e56c4675844"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ထွက်ခွာမည့်နေ့]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="311" width="120" height="20" uuid="2776a904-4135-4817-be79-aa167a4fc0ec"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ခရီးစဉ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="125" width="50" height="20" uuid="e3592fde-cfec-43c7-9aa4-88c7f58ccbe8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ရက်စွဲ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="175" width="579" height="20" uuid="d913c0fa-d7bc-4e88-8485-40142cf2a37e"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="198" width="579" height="20" uuid="564d904e-3a3e-4794-a3d1-f1377c3a2f01"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ထံမှ ပေါ်လီစီ စာချုပ်/အဆိုလွှာအမှတ်  " + $P{proposalNo} + " အတွက် အောက်ပါပေးသွင်းငွေကို လက်ခံရရှိပါသည်။"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="1" y="221" width="489" height="20" uuid="9eda6cae-25df-4bfd-8e1e-347089afc3fd"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineStyle="Dotted"/>
+					<leftPen lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+					<rightPen lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ကိုယ်စားလှယ်အမည်      "+ $P{agent}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="101" y="125" width="253" height="20" uuid="bc9265dd-03e6-4dc4-a61a-37127a2e910a"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiptNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="427" y="125" width="152" height="20" uuid="d7be3ecd-0cd4-400f-b96c-35469fed9607"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiptDate}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{TIMESTAMP_FORMAT}]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="400" y="247" width="87" height="20" isRemoveLineWhenBlank="true" uuid="d1d3b043-9f07-4f1f-b766-17b046dff78e"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကျသင့်ပရီမီယံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="400" y="333" width="87" height="20" isRemoveLineWhenBlank="true" uuid="595444ff-d14f-4c53-b8fb-f0a2c4e14bf0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[စုစုပေါင်း]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="490" y="248" width="90" height="20" isRemoveLineWhenBlank="true" uuid="ed56ffc2-7d36-4154-ab0b-d1f53414b0f9"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premium}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="489" y="334" width="90" height="20" isRemoveLineWhenBlank="true" uuid="c7f08e5c-841c-48c2-9fa0-3f0e4240ddf9"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalamount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="153" width="579" height="20" uuid="bf8311db-98d5-446b-a3a3-95de1e718e27"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineStyle="Dotted"/>
+					<leftPen lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+					<rightPen lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="458" y="398" width="100" height="20" uuid="d50e170f-b0fc-4933-b0ad-b3d2009166a1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ငွေစာရင်းဌာန]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="377" width="100" height="20" uuid="f29a20c3-46b7-4f77-aca7-5d73cec13394"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ငွေကိုင်]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="357" width="579" height="1" uuid="5ef56c85-10d9-4f8b-9a4b-3d861f44ac00"/>
+			</line>
+			<line>
+				<reportElement x="0" y="243" width="579" height="1" uuid="a4617c30-aae5-4485-809b-2c69a4b4e8a7"/>
+			</line>
+			<line>
+				<reportElement x="487" y="243" width="2" height="110" uuid="befb8de9-607b-4c6e-9e19-0e7047f633e1"/>
+			</line>
+			<staticText>
+				<reportElement x="550" y="221" width="30" height="20" uuid="1d79b4fc-bee9-44c7-b900-797064ff7bfb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ပြား]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="506" y="221" width="30" height="20" uuid="053f3afc-6ed3-49d1-a04c-cfb0c30c82f7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကျပ်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="360" width="579" height="20" uuid="8511db55-3f90-425d-a322-53da85529af9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premiumInWord}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="400" y="269" width="87" height="20" isRemoveLineWhenBlank="true" uuid="bcb07eb2-605c-4660-a4fd-7cfe7eeb4ed0"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ညှိနှိုင်းငွေ (+/-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="400" y="292" width="87" height="20" isRemoveLineWhenBlank="true" uuid="51daa4ce-ceae-4ed9-97f9-c24eb283fcbc"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="490" y="270" width="90" height="20" isRemoveLineWhenBlank="true" uuid="c7ffe076-dcf9-4cb8-95d1-af40425d0fcb"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adjustAmount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="488" y="292" width="90" height="20" isRemoveLineWhenBlank="true" uuid="9ae7c3dd-2b3b-4d0e-9f21-dfd4bca28fe4"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{discount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="288" width="269" height="20" uuid="30edd022-8fd2-479e-9df3-e80e2d167050"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalSi}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="311" width="269" height="20" uuid="b1a854c2-76e6-4d06-a3e7-1631122cb87a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{travelPath}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="266" width="269" height="20" uuid="6a70acdb-44bb-43f8-ac9c-0e01c58cee79"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{departureDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="507" width="579" height="22" uuid="bf0c819e-c14c-43a8-810c-9a5cb337b908"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ငွေရပြေစာ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="427" y="534" width="152" height="20" uuid="9eadc9a2-4fe8-4986-88ca-4149e95f86b4"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiptDate}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{TIMESTAMP_FORMAT}]]></patternExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="101" y="534" width="253" height="20" uuid="37402ce4-1acf-48ab-9c3f-e4d39e2946a8"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{receiptNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="534" width="100" height="20" uuid="24e53abf-8098-4d7f-ae09-a44743aa50ba"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ပြေစာအမှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="376" y="534" width="50" height="20" uuid="05717b4f-d516-4ce1-a373-a92b217749c8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ရက်စွဲ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="581" width="579" height="20" uuid="5ae17e4c-e7fc-4b6c-a6f0-280dd7473946"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="559" width="579" height="20" uuid="b0f2ea1e-a039-416e-ac09-7e28c95571e8"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineStyle="Dotted"/>
+					<leftPen lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+					<rightPen lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="551" y="627" width="30" height="20" uuid="597aa7bb-afdc-41b9-8a32-a8dbc39a847c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ပြား]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="604" width="579" height="20" uuid="ccdf00ca-69a9-45b2-8c6e-4cf8827008f6"/>
+				<box>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+				</box>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ထံမှ ပေါ်လီစီ စာချုပ်/အဆိုလွှာအမှတ်  " + $P{proposalNo} + " အတွက် အောက်ပါပေးသွင်းငွေကို လက်ခံရရှိပါသည်။"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="507" y="627" width="30" height="20" uuid="bd9b38e9-419c-4225-972b-c122cd2bebe4"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကျပ်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="627" width="489" height="20" uuid="d6a19127-c1ef-4755-acb7-f3d591d2b849"/>
+				<box>
+					<pen lineStyle="Dotted"/>
+					<topPen lineStyle="Dotted"/>
+					<leftPen lineStyle="Dotted"/>
+					<bottomPen lineWidth="0.25" lineStyle="Dotted"/>
+					<rightPen lineStyle="Dotted"/>
+				</box>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ကိုယ်စားလှယ်အမည်      "+ $P{agent}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="649" width="579" height="1" uuid="935dfb53-df64-4d64-99f0-0fcc2b904c5e"/>
+			</line>
+			<staticText>
+				<reportElement x="0" y="676" width="120" height="20" uuid="2007ad40-ed0d-4917-b649-c6c54148f504"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားငွေ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="721" width="120" height="20" uuid="f0686623-ecc8-406b-ba92-20ef5dc81712"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ခရီးစဉ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="654" width="120" height="20" uuid="c04a2d16-eae3-43d6-853e-8ebda6e54eb0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[အထူးခရီးသွားအာမခံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="698" width="120" height="20" uuid="cf2f2c2b-f9c8-46d2-b0f0-f6bd47679a46"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[ထွက်ခွာမည့်နေ့]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="721" width="269" height="20" uuid="db20e4bc-f358-4588-b302-6769b7d0c80a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{travelPath}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="676" width="269" height="20" uuid="365190f9-37d9-4851-a803-4e757b285455"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalSi}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="128" y="698" width="269" height="20" uuid="e4551855-8f92-41a1-af6d-90c29c745d92"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{departureDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="397" y="702" width="87" height="20" isRemoveLineWhenBlank="true" uuid="19e1a3d8-ec02-4f0a-bf59-428e9a04d6a2"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[Discount]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="397" y="679" width="87" height="20" isRemoveLineWhenBlank="true" uuid="59ccc040-687e-4fde-889c-f1b0dd85d39a"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ညှိနှိုင်းငွေ (+/-)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="397" y="657" width="87" height="20" isRemoveLineWhenBlank="true" uuid="babc9665-c451-45d3-951c-682a8ed91319"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကျသင့်ပရီမီယံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="397" y="740" width="87" height="20" isRemoveLineWhenBlank="true" uuid="2ac59dcf-bd1f-46c3-903f-f08f0fd99110"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[စုစုပေါင်း]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="488" y="658" width="90" height="20" isRemoveLineWhenBlank="true" uuid="c7cf8c5b-cbb8-4bf8-a658-6e314c355850"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premium}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="488" y="701" width="90" height="20" isRemoveLineWhenBlank="true" uuid="2a5ffc64-0c0a-44bd-8a33-bc00a26891ee"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{discount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="488" y="680" width="90" height="20" isRemoveLineWhenBlank="true" uuid="077b68ad-89b8-45c5-8778-b03c5824e207"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{adjustAmount}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="FixRelativeToBottom" stretchType="RelativeToBandHeight" x="487" y="741" width="90" height="20" isRemoveLineWhenBlank="true" uuid="af12fb0f-15d2-47af-9d70-a45d648c9516"/>
+				<box>
+					<topPen lineWidth="0.25"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="5"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{totalamount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="488" y="649" width="2" height="111" uuid="1bce8ca5-cc23-426d-8116-db1858d26a7b"/>
+			</line>
+			<line>
+				<reportElement x="0" y="763" width="579" height="1" uuid="0a45c5b9-7863-4c8c-8526-c337c6c32dc0"/>
+			</line>
+			<staticText>
+				<reportElement x="458" y="790" width="100" height="20" uuid="5c87daa8-6f55-4402-8ffd-08983e7fadce"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ငွေကိုင်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="458" y="811" width="100" height="20" uuid="45e647ce-d8da-4a8a-880c-9b3258b34582"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ငွေစာရင်းဌာန]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="1" y="770" width="579" height="20" uuid="72b6a978-4a09-41e5-a2b7-308d115d249f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premiumInWord}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="469" y="98" width="110" height="27" uuid="5245eb05-ca81-4bd0-851f-917935242cf3">
+					<printWhenExpression><![CDATA[$P{isCopy}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[(Copy)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="469" y="507" width="110" height="22" uuid="8b037e67-dee3-4632-b2ab-433073f6a462">
+					<printWhenExpression><![CDATA[$P{isCopy}]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="5" rightIndent="5"/>
+				</textElement>
+				<text><![CDATA[(Copy)]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="489" y="314" width="90" height="20" isRemoveLineWhenBlank="true" uuid="d940c1c0-4bdb-49d2-b49e-4809be3bac85"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{serviceCharges}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="403" y="314" width="83" height="20" uuid="982e0a98-fc09-45cd-a942-b0acdf9e6897"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[Service Charges]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="486" y="721" width="90" height="20" isRemoveLineWhenBlank="true" uuid="bcfbc304-7300-4660-aa58-3d1aaf528de7"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+					<paragraph rightIndent="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{serviceCharges}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="400" y="721" width="83" height="20" uuid="e0c54464-c7e9-4b22-a943-1e5fa4090e32"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[Service Charges]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="333" width="120" height="20" uuid="b44ba419-156d-49ab-9c5d-b674152ab14f">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[No. Of Units]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="131" y="333" width="269" height="20" uuid="fe14c927-e98b-4ad4-9d6b-0b6d19199ece"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{noOfUnit}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="741" width="120" height="20" uuid="dc5391f8-70a9-42fb-b160-6199d1970eaf">
+					<property name="com.jaspersoft.studio.unit.x" value="px"/>
+				</reportElement>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+					<paragraph leftIndent="5"/>
+				</textElement>
+				<text><![CDATA[No .Of Units]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="130" y="741" width="269" height="20" uuid="a4e533d6-1361-4b78-b117-e648ec39009d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{noOfUnit}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

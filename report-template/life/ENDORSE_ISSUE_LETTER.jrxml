@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="SHORTTERM_ENDORSE_ISSUE_LETTER" pageWidth="595" pageHeight="842" columnWidth="525" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="0" uuid="8bbb3595-ca49-4182-886e-7d3abea92368">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="232"/>
+	<parameter name="issueDate" class="java.lang.String"/>
+	<parameter name="endorseNo" class="java.lang.String"/>
+	<parameter name="policyNo" class="java.lang.String"/>
+	<parameter name="customerName" class="java.lang.String"/>
+	<parameter name="fromDate" class="java.lang.String"/>
+	<parameter name="toDate" class="java.lang.String"/>
+	<parameter name="inFormDate" class="java.lang.String"/>
+	<parameter name="titleName" class="java.lang.String"/>
+	<parameter name="description" class="java.lang.String"/>
+	<parameter name="lifeEndorseInfo" class="java.lang.String"/>
+	<detail>
+		<band height="786" splitType="Stretch">
+			<textField>
+				<reportElement x="357" y="130" width="197" height="20" uuid="6068ac8f-d90e-42ba-8311-980f405aa16a"/>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font fontName="Pyidaungsu" size="11"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{issueDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="250" y="177" width="80" height="20" uuid="9347ffd8-74ad-45e8-91fb-1aa3356d8c98"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ပြင်ဆင်ချက်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="208" width="159" height="20" uuid="f4c450e3-5485-4b4b-9ce8-e3e7c0ce58fe"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ဖြည့်စွက်စည်းကမ်းချက်အမှတ် ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="244" y="208" width="287" height="20" uuid="2445a881-2283-43a0-bf36-b4bc691e9591"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{endorseNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="231" width="159" height="20" uuid="017d6675-7aaf-4123-bc81-8f970eaae7b7"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ပေါ်လစီအမှတ်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="244" y="231" width="287" height="20" uuid="320b88e7-528d-4963-8faf-2c84176baeec"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{policyNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="254" width="159" height="20" uuid="759b056f-f06a-4e06-b721-7bf4e87098f0"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူအမည်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="244" y="254" width="287" height="20" uuid="f3a4939a-02e2-4051-813d-7d80f29e2c73"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="154" y="328" width="377" height="20" uuid="ce32a1d1-f7de-4244-9a7d-455a5620804c"/>
+				<textElement verticalAlignment="Middle" rotation="None">
+					<font fontName="Pyidaungsu" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerName}+" ၏ "+$P{inFormDate}+" ရက်စွဲပါ အကြောင်းကြားစာ။"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="514" width="500" height="20" uuid="92aec623-d43d-4cdb-84be-9b6cc4129076"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[မှတ်ချက်။		။စည်းကမ်းချက် တစ်ရပ်အနေဖြင့် မူလပေါ်လစီတွင် ပူးတွဲထားရန်ဖြစ်ပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="559" width="90" height="20" uuid="25a0ddef-bd1a-4d7f-8ca0-3824fe241d27"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[မိတ္တူကို]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="30" y="595" width="160" height="20" uuid="a8ff0b5f-ce53-431a-b083-1accd9738a7c"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[	-သက်ဆိုင်ရာအမှုတွဲ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="31" y="615" width="159" height="20" uuid="63c27629-d4ae-4d88-afc5-794cc1b14562"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[	-ရုံးလက်ခံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="357" y="109" width="168" height="20" uuid="5d2a1c54-72a1-48ed-9d44-3388104c504e"/>
+				<textElement>
+					<font fontName="Pyidaungsu" size="11"/>
+				</textElement>
+				<text><![CDATA[စာအမှတ်၊ FNIL-OPT]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="151" y="154" width="279" height="20" uuid="6a996823-43ad-443e-ad2c-2c714b9c78da"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true" isItalic="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{titleName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="300" width="89" height="20" uuid="c8d9cdbd-444c-4965-a0c7-a2556a01feca"/>
+				<textElement>
+					<font fontName="Pyidaungsu" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အကြောင်းအရာ။]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="151" y="300" width="381" height="20" uuid="9056f7c1-cac9-4e6c-9bab-75c0bb47a79b"/>
+				<textElement>
+					<font fontName="Pyidaungsu" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{lifeEndorseInfo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="31" y="328" width="89" height="20" uuid="131007c0-7190-4dd6-a68b-e14d54d72f12"/>
+				<textElement>
+					<font fontName="Pyidaungsu" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ရည်ညွန်းချက်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="31" y="352" width="500" height="158" uuid="3923d767-8b2c-4b89-aa9d-0b283037c638"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{description}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

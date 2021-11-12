@@ -1,0 +1,148 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:cyc="http://www.cycdemo.com/java" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="#{label['CEO_REPORT']} - REP021" />
+	<ui:param name="headerRendered" value="true" />
+	<ui:define name="content">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type"/>
+		<link href="#{request.contextPath}/css/print.css" rel="stylesheet" type="text/css"/>
+		<style>
+			.ui-selectlistbox-listcontainer {
+				height:70px !important;
+			}
+		</style>
+		<h:form id="incomeList">
+			<div style="z-index: 100; position: fixed; margin-top: -30px; width: 700px;">
+				<p:messages globalOnly="true" id="messages" showDetail="true"/>
+			</div>
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-8,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6," layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<!-- <h:outputLabel value="Month"/>
+					<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter" value="#{CeoReportActionBean.criteria.month}">
+							<f:selectItems itemLabel="#{month}" itemValue="#{month.value}" value="#{CeoReportActionBean.monthSet}" var="month"/>
+					</p:selectOneMenu>
+					
+								<h:outputLabel value="Year"/>
+					<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter"  value="#{CeoReportActionBean.criteria.year}">
+							<f:selectItems value="#{CeoReportActionBean.years}"/>
+					</p:selectOneMenu> -->
+						
+							
+							<p:outputLabel />
+					<p:message for="salesPoints" display="text"/>
+			        <h:outputText styleClass="input-label" value="Sales Points"  />
+					<p:panelGrid styleClass="ui-panelgrid-blank" >
+						<div style="margin:-6px -7px;" class="ui-g ui-fluid" id="salesPointsPanelGroup">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{CeoReportActionBean.selectSalesPoints()}" id="selectSalesPointsDialogLink"
+									process="@this">
+									<p:ajax event="dialogReturn" listener="#{CeoReportActionBean.returnSalesPoints}" update="salesPoints" />
+								</p:commandButton>
+								<p:inputText id="salesPoints" readonly="true" 
+									value="#{(CeoReportActionBean.criteria.salePointId == null ? '' : CeoReportActionBean.criteria.salePointName)}" />
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{CeoReportActionBean.criteria.setSalePointName(null)}" process="@this" update="salesPoints" />
+							</div>
+						</div>
+					</p:panelGrid>
+					
+								<h:outputText styleClass="input-label" value="Sale Channel" />
+								<p:selectOneMenu  styleClass="input-label" id="saleUserType" value="#{CeoReportActionBean.criteria.saleChannelType}">
+									<f:selectItem itemLabel="Selected Sale Channel" />
+									<f:selectItems value="#{CeoReportActionBean.saleChannel}" />
+								</p:selectOneMenu>
+								
+								<h:outputText id="periodInsure" value="Period of Insurance (Years)"/>
+							<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter" id="periodYear"   value="#{CeoReportActionBean.criteria.periodYear}">
+										<f:selectItem itemLabel="-- Select Period --" noSelectionOption="true" />
+										<f:selectItems value="#{CeoReportActionBean.sePeriodYears}" var="year" />
+									</p:selectOneMenu>
+						
+					</p:panelGrid>
+					
+					
+							
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-9" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<h:outputLabel/>
+								<p:message for="advanced" display="text" />
+								<p:outputLabel styleClass="input-label" value="Product" />
+								<p:selectManyMenu converter="omnifaces.SelectItemsConverter" id="advanced" 
+									value="#{CeoReportActionBean.selectedProductList}" var="t" filter="true" filterMatchMode="contains" showCheckbox="true">
+									<f:selectItems value="#{CeoReportActionBean.productList}" var="product" itemLabel="#{product.name}" itemValue="#{product}" style="height:90px;"/>
+									<p:column>
+										<p:outputLabel value="#{t.name}" />
+									</p:column>
+								</p:selectManyMenu>
+							</p:panelGrid>
+							
+						</p:panelGrid>
+					</p:panelGrid>
+<!-- 					<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank ui-fluid"> -->
+<!-- 						<p:commandButton value="Config Report" action="#{CeoReportActionBean.submit}" update="@form"/> -->
+<!-- 					</p:panelGrid> -->
+			</p:panelGrid>
+			<p:panelGrid columns="1" columnClasses="ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">	
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">	
+				</p:panelGrid>
+			</p:panelGrid>
+			<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+				<p:commandButton action="#{CeoReportActionBean.filter}" update=":incomeList" value="Search" style="margin-left:10px;width:130%;"/>
+				<p:commandButton action="#{CeoReportActionBean.resetCriteria}" update=":incomeList" value="Reset" style="margin-left:26px;width:100%;"/>
+			</p:panelGrid>
+			<p:separator style="height:1px"/>
+			<p:dataTable id="incomeTable" lazy="true" paginator="true" paginatorPosition="bottom" paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowIndexVar="rowIndex" rows="10" rowsPerPageTemplate="10,20, 30" value="#{CeoReportActionBean.ceoList}" var="ceo">
+				 <f:facet name="header" >
+					<h:commandLink action="#{CeoReportActionBean.exportExcel}" immediate="true">
+						<p:graphicImage styleClass="#{ApplicationSetting.printStyleClass}" value="/images/excel.png"/> 
+					</h:commandLink> 
+				</f:facet>
+				<p:column headerText="No." style="width:3%;">
+					<h:outputText style="float: right;" value="#{rowIndex + 1}"/>
+				</p:column>
+				<p:column headerText="Policy No." style="width:13%;">
+					<h:outputText value="#{ceo.policyNo}"/>
+				</p:column>
+				<p:column headerText="Payment Year" style="width:7%;">
+					<h:outputText value="#{ceo.paymentYear}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="InsuredPersonName" style="width:7%;">
+					<h:outputText value="#{ceo.insuredpersonName}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Product Name" style="width: 7%;">
+					<h:outputText value="#{ceo.productName}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="SumInsured" style="width: 13%;">
+					<h:outputText value="#{ceo.sumInsured}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="SaleChannel" style="width: 13%;">
+					<h:outputText value="#{ceo.saleChannelType}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="SalePoint" style="width: 13%;">
+					<h:outputText value="#{ceo.salePointName}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Term" style="width: 13%;">
+					<h:outputText value="#{ceo.term}">
+					</h:outputText>
+					
+				</p:column>
+				<p:column headerText="Payment Type" style="width:6%;">
+					<h:outputText value="#{ceo.paymentType}">
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+		<!-- PDF Preview Form -->
+		<h:form enctype="multipart/form-data" id="pdfPreviewForm">
+			<p:dialog appendToBody="true" dynamic="true" header="Print Preview (PDF)" height="505" hideEffect="fade" id="pdfPreviewDialog" modal="true" resizable="false" showEffect="fade" widgetVar="pdfPreviewDialog" width="1070">
+				<p:media height="500" player="pdf" value="#{CeoReportActionBean.stream}" width="1050"/>
+			</p:dialog>
+		</h:form>
+		<!-- Select Branch Form -->
+	</ui:define>
+</ui:composition>

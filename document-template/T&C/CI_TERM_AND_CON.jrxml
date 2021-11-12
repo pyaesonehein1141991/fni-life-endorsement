@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="CI_TERM_AND_CON" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="120" bottomMargin="0" resourceBundle="TERM_CONDITION_myn" uuid="918bb8cd-d870-4451-9a75-050e338eaf99">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.3310000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<detail>
+		<band height="722" splitType="Stretch">
+			<image>
+				<reportElement x="-40" y="-120" width="595" height="842" uuid="670f3f96-a5f2-463d-99ee-bcaa93c86609"/>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream(org.apache.commons.codec.binary.Base64.decodeBase64($R{POLICY4FLY}.getBytes()))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="315" width="44" height="20" uuid="36c8a6dc-5a0b-446d-9fd5-e8100d108a5e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၆)]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="0" y="176" width="515" height="37" uuid="53a73efc-b502-442b-ba1f-bc60f43c5c6f"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CI_TEXT_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="46" y="560" width="469" height="37" uuid="32e6e5b4-27e0-4114-9140-a3df90f509a3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CI_TEXT_8}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="355" width="469" height="20" uuid="071e570f-0697-4fc1-9e35-d2a0abbf10e1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[မူးယစ်ဆေးဝါးသုံးစွဲခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="3" width="515" height="32" uuid="19466f05-df73-44d7-bd4e-42c8fb11bc67"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ပြင်းထန်သောရောဂါကုသမှုအာမခံ စည်းကမ်းချက်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="255" width="44" height="20" uuid="fb16a548-da67-419e-b23d-7403f9ebf584"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၃)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="215" width="30" height="20" uuid="fd5d0fcf-bdda-4089-a12d-895e284c501f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၁)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="295" width="44" height="20" uuid="f53f190c-3d4a-4363-9f78-a6f0b3c56522"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၅)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="375" width="469" height="20" uuid="0a559c03-74ee-40e0-92d9-0c3d1c42b1bc"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကိုယ်တိုင်ရာဇဝတ်မှုကျူးလွန်ခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="275" width="469" height="20" uuid="dfce92b8-c1de-48e4-9ba8-4d8ab2f3d785"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[သားသမီးရလိုမှုဖြင့် ဆေးရုံတက်ခြင်းနှင့် ခွဲစိတ်ကုသခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="335" width="44" height="20" uuid="5b4d3b31-d6b6-4ce5-ab7e-d4c3f9bd03f4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၇)]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="28" y="62" width="486" height="56" uuid="181e334b-6263-4b8c-92d5-5ec35a8a21fe"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CI_TEXT_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="46" y="603" width="469" height="49" uuid="c5cf0f98-de3f-4659-8ed2-4a989d029edc"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CI_TEXT_9}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="395" width="469" height="20" uuid="849eed5d-7dbb-4800-9dfd-02977188d80b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[AIDS/HIV ဖြစ်ခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="62" width="30" height="20" uuid="30f094b6-5d9b-4ef1-8b01-dc5867086d09"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၁။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="235" width="44" height="20" uuid="5e82aa89-632a-43d5-b821-57bb0d6e444b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၂)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="355" width="44" height="20" uuid="efd5c99c-5a35-4a7c-84d5-bf298d733671"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၈)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="295" width="469" height="20" uuid="18f3a7cd-cd8b-44e3-9f2e-2448ddd3ed8c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အလှအပအတွက်ဖြစ်ခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="335" width="469" height="20" uuid="4771d0fc-c62f-4109-923d-f21825b5ffa0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကိုယ်ခန္ဓာချို့ယွင်းခြင်း (သို့မဟုတ်) မသန်စွမ်းခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="118" width="46" height="20" uuid="64c5dc4c-34bb-4b07-b98e-b1546d2d1360"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၂။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="255" width="469" height="20" uuid="561333f9-fe2f-440a-9903-5ec613bff67c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကျန်းမာရေးဆေးစစ်ရန်နှင့် အနားယူအားမွေးရန် ဆေးရုံတက်ခြင်း၊]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="46" y="215" width="469" height="20" uuid="b943a425-82e4-40b6-8dfe-0419e4f3eae2"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CI_TEXT_4}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="601" width="44" height="20" uuid="83782041-7354-44c2-a96e-7bf15a16107c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၁၅)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="415" width="469" height="20" uuid="5b0db7c5-eb4c-4859-be78-6799cb047260"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[လိမ်လည်တောင်းခံသည့် ဖြစ်ရပ်များ၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="375" width="44" height="20" uuid="4b53d606-0cdf-400b-8b4a-0e17728e1247"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၉)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="436" width="44" height="20" uuid="e17e0c42-6aed-4301-a0f0-59e71ffcc075"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၁၂)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="35" width="123" height="20" uuid="aa0b839f-98d0-475c-b1f8-9c2b103037fa"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အကျိုးခံစားခွင့်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="395" width="44" height="20" uuid="5f15648d-5202-4a72-aa31-f87ccbfc58ac"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၁၀)]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="29" y="118" width="486" height="20" uuid="d3829ab1-8971-451b-ab36-52833d2bb7d0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CI_TEXT_2}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="151" width="259" height="20" uuid="702cd57a-7104-4590-8011-073944106f9b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[လျော်ကြေးအကျုံးမဝင်သည့် အချက်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="315" width="469" height="20" uuid="b37b5fa3-b435-4406-a563-28f10fed2206"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[နားကြားကိရိယာ တပ်ဆင်ရန်အတွက်ဖြစ်ခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="535" width="44" height="20" uuid="1b2f88e9-40c1-47d7-8470-4efea913879e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၁၃)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="275" width="44" height="20" uuid="6a5ac7b8-abb4-498b-a2ee-dc2d21bb42f0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၄)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="558" width="44" height="20" uuid="aa4e3417-ee02-4c4b-b718-32777fa3b10b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၁၄)]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="46" y="535" width="469" height="20" uuid="89896c13-beb4-406a-aba4-277171329e29"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CI_TEXT_7}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="46" y="235" width="469" height="20" uuid="79fb5195-3e7f-4cd7-9d4e-b5084019ad7d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[စိတ်ပေါ့သွပ်ခြင်း၊ စိတ်ရောဂါဝေဒနာများကြောင့်ဖြစ်ခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="17" y="415" width="44" height="20" uuid="41a8b4a8-e1da-4113-8d70-9d925a45210d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[(၁၁)]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="46" y="438" width="469" height="97" uuid="a3f422e4-af65-437b-82d0-0b87899b5aaa"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{CI_TEXT_5}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

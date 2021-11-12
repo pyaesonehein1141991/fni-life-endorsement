@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PUBLIC_TERM_AND_CON" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="120" bottomMargin="0" resourceBundle="TERM_CONDITION_myn" uuid="fbc5298b-c71d-440c-a297-1d55506d5a46">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="1"/>
+	<detail>
+		<band height="722" splitType="Stretch">
+			<image>
+				<reportElement x="-40" y="-120" width="595" height="842" uuid="2ae1b757-2e01-45ee-9709-ffa1453c278e"/>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream(org.apache.commons.codec.binary.Base64.decodeBase64($R{POLICY4FLY}.getBytes()))]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement positionType="Float" x="30" y="259" width="486" height="42" uuid="771ca885-1cda-4c32-9bbe-66250bb16d79"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_3}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="582" width="516" height="26" uuid="cf6ac43b-4185-4363-9393-8d781bbf6bb4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_24}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="495" width="514" height="26" uuid="458bd09c-28de-4b73-99ec-6988e4ffd149"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_23}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="29" y="58" width="486" height="99" uuid="95f3c59d-ecc4-4d95-965a-c4b45c222893"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_1}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="29" width="513" height="26" uuid="bd56fc1d-556c-4c46-9127-2204ad5af33e"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_20}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="58" width="29" height="25" uuid="f9ed00a5-1c09-4ce2-9961-4995a7fdff16"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[၁။]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="30" y="305" width="485" height="43" uuid="748e1065-e38f-4013-9a16-a150ff6bac71"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_4}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="0" y="-2" width="514" height="28" uuid="349af1bd-1037-4ea1-98ee-d3216ba9ad33"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_19}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="612" width="30" height="58" uuid="308f034c-173d-4d55-9d16-3053462572d1"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[၅။]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="29" y="381" width="486" height="114" uuid="1ad629ac-0bf2-43d1-a30b-1f1446cd5243"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_5}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="29" y="612" width="486" height="60" uuid="df89ea2c-c1ac-4c74-9104-95859f1d9ea0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_7}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="29" y="525" width="486" height="53" uuid="d95b1ac6-3443-4526-b0ef-39386f096c7a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_6}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="525" width="30" height="34" uuid="a9f2aaab-5cb0-4d74-bcb8-d8447a4a8081"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[၄။]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="0" y="353" width="516" height="24" uuid="4d8963b0-b5a9-496f-93db-9bf7ebf5d965"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_22}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="381" width="29" height="26" uuid="fbab9061-4ab4-4e9b-ac04-786eea2fd330"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[၃။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="186" width="30" height="48" uuid="6351acfc-5590-48cd-8a0d-6dbcc29f49c9"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<text><![CDATA[၂။]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="0" y="161" width="515" height="21" uuid="3b4ae2cc-e0c5-43e2-8ac4-20345804ec57"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_21}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement positionType="Float" x="29" y="186" width="486" height="69" uuid="3c811d30-b78b-4825-94d7-d9d57b90d36a"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PL_TEXT_2}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

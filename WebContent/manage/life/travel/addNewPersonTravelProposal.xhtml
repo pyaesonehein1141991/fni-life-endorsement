@@ -1,0 +1,683 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" xmlns:jsf="http://xmlns.jcp.org/jsf" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="#{AddNewPersonTravelProposalActionBean.isConfirmEdit or AddNewPersonTravelProposalActionBean.isEnquiryEdit or AddNewPersonTravelProposalActionBean.isInsurancePersonEdit ? 'Edit Travel Proposal' : 'Add New Travel Proposal'}" />
+	<ui:param name="headerRendered" value="true" />
+	<ui:param name="uploadRootPath" value="/image" />
+	<ui:define name="content">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<h:form enctype="multipart/form-data" id="personTravelProposalEntryForm">
+			<style type="text/css">
+			.ui-selectcheckboxmenu-panel .ui-selectcheckboxmenu-header .ui-chkbox-box
+				{
+				display: none;
+			}
+			</style>
+			<p:messages globalOnly="true" id="messages" showDetail="true" />
+			<p:wizard flowListener="#{AddNewPersonTravelProposalActionBean.onFlowProcess}" style="margin-bottom: 10px;" widgetVar="wiz">
+				<p:tab id="policyInfo" title="Proposal Info" titleStyle="font-size:14px">
+					<p:panel header="Proposal Info" id="proposalInfoWizardPanel" style="min-height:270px;">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:panelGrid id="proposalLeftPanel" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel />
+								<p:message for="selectedContractorType" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_CUSTOMER_LABEL']}" />
+								<p:selectOneRadio id="selectedContractorType" required="true" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+									value="#{AddNewPersonTravelProposalActionBean.contractorType}">
+									<f:selectItem itemLabel="Person" itemValue="CUSTOMER" />
+									<f:selectItem itemLabel="Organization" itemValue="ORGANIZATION" />
+									<p:ajax event="valueChange" listener="#{AddNewPersonTravelProposalActionBean.changeOrgEvent}" update="customerPanelGroup" />
+								</p:selectOneRadio>
+								<p:outputLabel />
+								<p:message for="customer" display="text" />
+								<p:outputLabel />
+								<p:panelGrid styleClass="ui-panelgrid-blank">
+									<div style="margin: -6px;" class="ui-g ui-fluid" jsf:id="customerPanelGroup">
+										<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+											<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewPersonTravelProposalActionBean.selectCustomer()}" id="selectCustomerDialogLink"
+												process="@this" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" rendered="#{AddNewPersonTravelProposalActionBean.contractorType eq 'CUSTOMER'}">
+												<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelProposalActionBean.returnCustomer}" update="customer" />
+											</p:commandButton>
+											<p:commandButton styleClass="green-button" icon="fa fa-search" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												actionListener="#{AddNewPersonTravelProposalActionBean.selectOrganization()}" id="selectOrganizationDialogLink" process="@this"
+												rendered="#{AddNewPersonTravelProposalActionBean.contractorType eq 'ORGANIZATION'}">
+												<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelProposalActionBean.returnOrganization}" update="customer" />
+											</p:commandButton>
+											<p:watermark for="customer" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												value="#{AddNewPersonTravelProposalActionBean.contractorType eq 'ORGANIZATION' ? 'Select Organization' : 'Select Customer'}" />
+											<p:inputText id="customer" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												readonly="#{AddNewPersonTravelProposalActionBean.travelProposal.customerName == null ? facesContext.currentPhaseId.ordinal eq 6 : true}" required="true"
+												value="#{AddNewPersonTravelProposalActionBean.travelProposal.customerName}" />
+											<p:commandButton styleClass="red-button" icon="fa fa-times" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												rendered="#{AddNewPersonTravelProposalActionBean.contractorType eq 'CUSTOMER'}" action="#{AddNewPersonTravelProposalActionBean.travelProposal.setCustomer(null)}"
+												process="@this" update="customer" />
+											<p:commandButton styleClass="red-button" icon="fa fa-times" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												rendered="#{AddNewPersonTravelProposalActionBean.contractorType eq 'ORGANIZATION'}"
+												action="#{AddNewPersonTravelProposalActionBean.travelProposal.setOrganization(null)}" process="@this" update="customer" />
+										</div>
+									</div>
+								</p:panelGrid>
+								<p:outputLabel />
+								<p:message for="saleUserType" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="Sale Channel" />
+								<p:selectOneMenu id="saleUserType" required="true" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+									value="#{AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType}">
+									<f:selectItem itemLabel="Select Sale Channel" />
+									<f:selectItems value="#{AddNewPersonTravelProposalActionBean.saleChannel}" var="item" itemLabel="#{item.label}" />
+									<p:ajax event="valueChange" listener="#{AddNewPersonTravelProposalActionBean.changeSaleEvent}" update="@form:proposalLeftPanel" />
+								</p:selectOneMenu>
+								<p:outputLabel />
+								<p:message for="agent" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="Agent" rendered="#{AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType eq 'AGENT'}" />
+								<h:outputText styleClass="input-label" value="Agent"
+									rendered="#{AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType eq 'BANK' or AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType eq 'DIRECTMARKETING'}" />
+								<p:panelGrid styleClass="ui-panelgrid-blank" id="agentPanelGroup"
+									rendered="#{AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType eq 'AGENT' or AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType eq 'BANK' or AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType eq 'DIRECTMARKETING'}">
+									<div style="margin: -6px" class="ui-g ui-fluid" id="agentPanelGroup">
+										<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+											<p:commandButton styleClass="green-button" icon="fa fa-search" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												actionListener="#{AddNewPersonTravelProposalActionBean.selectAgent()}" id="selectAgentDialogLink" process="@this">
+												<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelProposalActionBean.returnAgent}" update="agent" />
+											</p:commandButton>
+											<p:inputText id="agent" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												readonly="#{AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType eq 'AGENT' and AddNewPersonTravelProposalActionBean.travelProposal.agent == null ? facesContext.currentPhaseId.ordinal eq 6 : true}"
+												required="#{AddNewPersonTravelProposalActionBean.travelProposal.saleChannelType eq 'AGENT'}"
+												value="#{AddNewPersonTravelProposalActionBean.travelProposal.agent == null ? '' : AddNewPersonTravelProposalActionBean.travelProposal.agent.fullName}" />
+											<p:commandButton styleClass="red-button" icon="fa fa-times" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												action="#{AddNewPersonTravelProposalActionBean.travelProposal.setAgent(null)}" process="@this" update="agent" />
+										</div>
+									</div>
+								</p:panelGrid>
+								<p:outputLabel />
+								<p:message for="productName" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="Product Name" />
+								<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter" id="productName" required="true" 
+									disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" value="#{AddNewPersonTravelProposalActionBean.travelProposal.product}">
+									<f:selectItem itemLabel="Select Product" />
+									<f:selectItems itemLabel="#{product.name}" itemValue="#{product}" value="#{AddNewPersonTravelProposalActionBean.productsList}" var="product" />
+									<p:ajax event="change" listener="#{AddNewPersonTravelProposalActionBean.productChange}" process="@this" update="paymentType"/>
+								</p:selectOneMenu>
+							</p:panelGrid>
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel />
+								<p:message for="submittedDate" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_SUBMITTEDDATE_LABEL']}" />
+								<p:calendar id="submittedDate" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" pattern="#{ApplicationSetting.dateFormat}" required="true"
+									showOn="button" timeZone="#{ApplicationSetting.timeZone}" value="#{AddNewPersonTravelProposalActionBean.travelProposal.submittedDate}" />
+								<p:outputLabel />
+								<p:message for="branch" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_BRANCH_LABEL']}" />
+								<p:selectOneMenu id="branch" required="true" converter="omnifaces.SelectItemsIndexConverter" disabled="true"
+									filter="true" filterMatchMode="startsWith" value="#{AddNewPersonTravelProposalActionBean.travelProposal.branch}">
+									<f:selectItems itemLabel="#{branch.name}" itemValue="#{branch}" value="#{sessionScope.LoginUser.accessBranchList}" var="branch" />
+								</p:selectOneMenu>
+								<p:outputLabel />
+								<p:message for="paymentType" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_PAYMENTTYPE_LABEL']}" />
+								<p:panelGrid styleClass="ui-panelgrid-blank" id="paymentTypePanelGroup">
+									<div style="margin: -6px;" class="ui-g ui-fluid" id="paymentTypePanelGroup">
+										<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+											<p:commandButton styleClass="green-button" icon="fa fa-search" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												actionListener="#{AddNewPersonTravelProposalActionBean.selectPaymentType()}" id="selectPaymentTypeDialogLink" process="@this">
+												<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelProposalActionBean.returnPaymentType}" update="paymentType" />
+											</p:commandButton>
+											<p:inputText id="paymentType" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												readonly="#{AddNewPersonTravelProposalActionBean.travelProposal.paymentType == null ? facesContext.currentPhaseId.ordinal eq 6 : true}" required="true"
+												value="#{(AddNewPersonTravelProposalActionBean.travelProposal.paymentType == null ? '' : AddNewPersonTravelProposalActionBean.travelProposal.paymentType.description)}" />
+											<p:commandButton styleClass="red-button" icon="fa fa-times" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												action="#{AddNewPersonTravelProposalActionBean.travelProposal.setPaymentType(null)}" process="@this" update="paymentType" />
+										</div>
+									</div>
+								</p:panelGrid>
+								<p:outputLabel />
+								<p:message for="currency" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_CURRENCY_LABEL']}" />
+								<p:selectOneMenu required="true" converter="omnifaces.SelectItemsIndexConverter" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" id="currency"
+										value="#{AddNewPersonTravelProposalActionBean.travelProposal.currency}">
+										<f:selectItem itemLabel="Selected Currency" />
+										<f:selectItems itemLabel="#{currency.description}" itemValue="#{currency}" value="#{AddNewPersonTravelProposalActionBean.currencyList}" var="currency" />
+								</p:selectOneMenu>
+							</p:panelGrid>
+						</p:panelGrid>
+					</p:panel>
+				</p:tab>
+				<p:tab id="TravelInfo" title="Travel Info" titleStyle="font-size:14px">
+					<p:panel header="Travel Information" id="travelInfoWizardPanel" style="min-height:270px;">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:panelGrid id="TravelInfopanel" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel />
+								<p:message for="usageOfVeh" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_USAGEOFVEHICLE_LABEL']}" />
+								<p:selectCheckboxMenu converter="omnifaces.SelectItemsIndexConverter" filter="false" id="usageOfVeh" label="Select Vehicles" panelStyle="width:250px" required="true"
+									disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" value="#{AddNewPersonTravelProposalActionBean.selectedUsages}">
+									<f:selectItems itemLabel="#{usage.label}" itemValue="#{usage}" value="#{AddNewPersonTravelProposalActionBean.usageOfVehicleList}" var="usage" />
+									<p:ajax event="change" listener="#{AddNewPersonTravelProposalActionBean.changeUsageOfVehicle}" update="@form" />
+								</p:selectCheckboxMenu>
+								<p:outputLabel rendered="#{AddNewPersonTravelProposalActionBean.flight}" />
+								<p:message for="flightNo" display="text" rendered="#{AddNewPersonTravelProposalActionBean.flight}" />
+								<h:outputText rendered="#{AddNewPersonTravelProposalActionBean.flight}" styleClass="input-label" value="Flight No" />
+								<p:inputText id="flightNo" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" rendered="#{AddNewPersonTravelProposalActionBean.flight}"
+									value="#{AddNewPersonTravelProposalActionBean.flightNo}" />
+								<p:outputLabel rendered="#{AddNewPersonTravelProposalActionBean.voyage}" />
+								<p:message for="voyageNo" display="text" rendered="#{AddNewPersonTravelProposalActionBean.voyage}" />
+								<h:outputText rendered="#{AddNewPersonTravelProposalActionBean.voyage}" styleClass="input-label" value="VOYAGE" />
+								<p:inputText id="voyageNo" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" rendered="#{AddNewPersonTravelProposalActionBean.voyage}"
+									value="#{AddNewPersonTravelProposalActionBean.voyageNo}" />
+								<p:outputLabel rendered="#{AddNewPersonTravelProposalActionBean.train}" />
+								<p:message for="trainNo" display="text" rendered="#{AddNewPersonTravelProposalActionBean.train}" />
+								<h:outputText rendered="#{AddNewPersonTravelProposalActionBean.train}" styleClass="input-label" value="Train No" />
+								<p:inputText id="trainNo" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" rendered="#{AddNewPersonTravelProposalActionBean.train}"
+									value="#{AddNewPersonTravelProposalActionBean.trainNo}" />
+								<p:outputLabel rendered="#{AddNewPersonTravelProposalActionBean.vehicle}" />
+								<p:message for="regNo" display="text" rendered="#{AddNewPersonTravelProposalActionBean.vehicle}" />
+								<h:outputText rendered="#{AddNewPersonTravelProposalActionBean.vehicle}" styleClass="input-label" value="Registration No" />
+								<p:inputText id="regNo" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" rendered="#{AddNewPersonTravelProposalActionBean.vehicle}" 
+									value="#{AddNewPersonTravelProposalActionBean.registrationNo}" />
+								<p:outputLabel />
+								<p:message for="express" display="text" />
+								<h:outputText styleClass="ui-panelgrid-blank" rendered="#{AddNewPersonTravelProposalActionBean.vehicle}" value="Express" />
+								<p:panelGrid styleClass="ui-panelgrid-blank" id="expressPanelGroup" rendered="#{AddNewPersonTravelProposalActionBean.vehicle}">
+									<div style="margin: -6px;" class="ui-g ui-fluid" id="expressPanelGroup">
+										<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+											<p:commandButton styleClass="green-button" icon="fa fa-search" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												actionListener="#{AddNewPersonTravelProposalActionBean.selectExpress()}" id="selectExpressDialogLink" process="@this">
+												<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelProposalActionBean.returnExpress}" update="express" />
+											</p:commandButton>
+											<p:inputText id="express" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" readonly="true"
+												rendered="#{AddNewPersonTravelProposalActionBean.vehicle}"
+												value="#{AddNewPersonTravelProposalActionBean.travelInfo.express == null ? '' : AddNewPersonTravelProposalActionBean.travelInfo.express.name}" />
+											<p:commandButton styleClass="red-button" icon="fa fa-times" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												action="#{AddNewPersonTravelProposalActionBean.travelInfo.setExpress(null)}" process="@this" update="express" />
+										</div>
+									</div>
+								</p:panelGrid>
+								<p:outputLabel />
+								<p:message for="departureDate" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_STARTDATE_LABEL']}" />
+								<p:calendar id="departureDate" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" pattern="#{ApplicationSetting.dateFormat}" required="true"
+									showOn="button"  timeZone="#{ApplicationSetting.timeZone}" value="#{AddNewPersonTravelProposalActionBean.travelInfo.departureDate}" />
+								<p:outputLabel />
+								<p:message for="arrivalDate" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_ENDDATE_LABEL']}" />
+								<p:calendar id="arrivalDate" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" pattern="#{ApplicationSetting.dateFormat}" required="true"
+									showOn="button"  timeZone="#{ApplicationSetting.timeZone}" value="#{AddNewPersonTravelProposalActionBean.travelInfo.arrivalDate}" />
+							</p:panelGrid>
+							<p:panelGrid id="TravelInfopanel1" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel />
+								<p:message for="travelPath" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_TRAVELPATH_LABEL']}" />
+								<p:inputTextarea id="travelPath" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" required="true" 
+									value="#{AddNewPersonTravelProposalActionBean.travelInfo.travelPath}" />
+								<p:outputLabel />
+								<p:message for="roundTrip" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_ROUNDTRIP_LABEL']}" />
+								<p:selectBooleanCheckbox id="roundTrip" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+									value="#{AddNewPersonTravelProposalActionBean.travelInfo.roundTrip}" />
+								<p:outputLabel />
+								<p:message for="noOfUnit" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_NOOFUNIT_LABEL']}" />
+								<p:inputText disabled="#{AddNewPersonTravelProposalActionBean.isUnder100Travel or AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}" id="noOfUnit" required="true"
+									value="#{AddNewPersonTravelProposalActionBean.travelInfo.totalUnit}">
+									<f:validateLongRange minimum="1" />
+									<f:convertNumber pattern="#{ApplicationSetting.numberFormat}" />
+								</p:inputText>
+								<p:outputLabel />
+								<p:message for="noOfPassenger" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_NOOFPASSENGER_LABEL']}" />
+								<p:inputText id="noOfPassenger" required="true" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+									value="#{AddNewPersonTravelProposalActionBean.travelInfo.noOfPassenger}">
+									<f:validateLongRange minimum="1" />
+									<f:convertNumber pattern="#{ApplicationSetting.numberFormat}" />
+								</p:inputText>
+								<p:outputLabel />
+							</p:panelGrid>
+						</p:panelGrid>
+						<p:separator style="height:2px" />
+						<!-- Start Proposal Attachment File Upload -->
+						<p:outputPanel style="margin:10px;">
+							<p:fieldset legend="Proposal Attachment">
+								<p:panelGrid columns="1" styleClass="ui-panelgrid-blank ui-fluid">
+									<p:fileUpload allowTypes="/(\.|\/)(gif|jpe?g|png)$/" disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+										fileUploadListener="#{AddNewPersonTravelProposalActionBean.handleProposalAttachment}" id="proposalAttachment" mode="advanced" multiple="true" sizeLimit="300000000"
+										update="proposalImageGrid" />
+									<p:dataGrid columns="8" id="proposalImageGrid" paginator="true"
+										paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="16"
+										value="#{AddNewPersonTravelProposalActionBean.proposalUploadedFileList}" var="image">
+										<p:panel>
+											<p:graphicImage style="width:120px;height:120px;" value="#{uploadRootPath}#{image}" />
+											<br />
+											<p:commandLink disabled="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit}"
+												action="#{AddNewPersonTravelProposalActionBean.removeProposalUploadedFile(image)}" id="deleteGroupLink" immediate="true" update="proposalImageGrid">
+												<p:graphicImage styleClass="#{ApplicationSetting.deleteStyleClass}" value="#{ApplicationSetting.deleteIcon}" />
+											</p:commandLink>
+										</p:panel>
+									</p:dataGrid>
+								</p:panelGrid>
+							</p:fieldset>
+						</p:outputPanel>
+					</p:panel>
+				</p:tab>
+				<p:tab id="insuredPersonInfo" title="Insured Person info" titleStyle="font-size:14px">
+					<p:panel header="Insured Preson Information" id="insuredPersonInfoWizardPanel" style="min-height:270px;">
+						<p:panelGrid columns="3" columnClasses="ui-grid-col-6,ui-grid-col-1,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+									<p:outputLabel />
+									<p:message for="name" display="text" />
+									<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_NAME_LABEL']}" />
+									<p:inputText id="name" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.name}" />
+									<p:outputLabel />
+									<p:message for="fatherName" display="text" />
+									<h:outputText styleClass="input-label" value="#{label['ADDNEWTRAVELPROPOSAL_FATHERNAME_LABEL']}" />
+									<p:inputText id="fatherName" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.fatherName}" />
+									<p:outputLabel />
+									<p:message for="address" display="text" />
+									<h:outputText styleClass="input-label" value="#{label['ADDNEWTRAVELPROPOSAL_ADDRESS_LABEL']}" />
+									<p:inputTextarea id="address" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.address}" />
+									<p:outputLabel />
+									<p:message for="idType1" display="text" />
+									<h:outputText styleClass="input-label mandatory" value="IdType" />
+									<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter" id="idType1" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType}" required="true">
+										<f:selectItems value="#{AddNewPersonTravelProposalActionBean.idTypes}" />
+										<p:ajax resetValues="true" update="idTypeInfoPanel idType1" />
+									</p:selectOneMenu>
+								</p:panelGrid>
+								<p:panelGrid id="idTypeInfoPanel" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+									<p:outputLabel />
+									<p:message for="NrcNo" display="text" />
+									<h:outputText styleClass="input-label mandatory" rendered="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType ne 'STILL_APPLYING'}"
+										value="#{label['ADDNEWMOTORPROPOSAL_DRIVER_IDNO_LABEL']}" />
+									<p:panelGrid id="insuranceIdNoGroup" columns="4" columnClasses="ui-grid-col-3,ui-grid-col-5,ui-grid-col-3,ui-grid-col-3" layout="grid"
+										styleClass="ui-panelgrid-blank ui-fluid"
+										rendered="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq null}">
+										<p:selectOneMenu id="stateCode" style="margin-left:-10px;width:60px"
+											rendered="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq null}"
+											value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.stateCode}">
+											<f:selectItem itemLabel="" />
+											<f:selectItems itemLabel="#{stateCode}" itemValue="#{stateCode}" value="#{AddNewPersonTravelProposalActionBean.stateCodeList}" var="stateCode" />
+											<p:ajax event="valueChange" listener="#{AddNewPersonTravelProposalActionBean.changeStateCode}" update="townshipCode" />
+										</p:selectOneMenu>
+										<p:selectOneMenu id="townshipCode" style="margin-left:-10px;width:100px;" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.townshipCode}"
+											rendered="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq null}"
+											filter="true" filterMatchMode="startsWith">
+											<f:selectItem itemLabel="" />
+											<f:selectItems itemLabel="#{townshipCode}" itemValue="#{townshipCode}" value="#{AddNewPersonTravelProposalActionBean.townshipCodeList}" var="townshipCode" />
+										</p:selectOneMenu>
+										<p:selectOneMenu id="idConditionType" style="margin-left:-10px;width:60px" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idConditionType}"
+											rendered="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq null}">
+											<f:selectItem itemLabel="" />
+											<f:selectItems itemLabel="#{type.label}" itemValue="#{type}" value="#{AddNewPersonTravelProposalActionBean.idConditionTypeSelectItemList}" var="type" />
+										</p:selectOneMenu>
+										<p:inputText id="NrcNo" style="margin-left:-10px;width:84px;" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idNo}"
+											rendered="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq null}" />
+									</p:panelGrid>
+									<p:panelGrid id="IdNoGroup1" columns="1" columnClasses="ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank ui-fluid"
+										rendered="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'FRCNO' or AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'PASSPORTNO'}">
+										<p:inputText id="FPNo" style="margin-left:-10px;min-width:340px;" required="true" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idNo}"
+											rendered="#{AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'FRCNO' or AddNewPersonTravelProposalActionBean.proposalTraveller.idType eq 'PASSPORTNO'}" />
+									</p:panelGrid>
+								</p:panelGrid>
+								<p:outputLabel />
+							</p:panelGrid>
+							<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							</p:panelGrid>
+							<p:panelGrid id="insuredPersonInfopanel1" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel />
+								<p:message for="township" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_TOWNSHIP_LABEL']}" />
+								<p:panelGrid styleClass="ui-panelgrid-blank" id="townshipPanelGroup">
+									<div style="margin: -6px;" class="ui-g ui-fluid" id="townshipPanelGroup">
+										<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+											<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewPersonTravelProposalActionBean.selectTownship()}" id="selectTownshipDialogLink"
+												process="@this">
+												<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelProposalActionBean.returnTownship}" update="township" />
+											</p:commandButton>
+											<p:inputText id="township" readonly="true"
+												value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.township == null ? '' : AddNewPersonTravelProposalActionBean.proposalTraveller.township.name}" />
+											<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelProposalActionBean.proposalTraveller.setTownship(null)}" process="@this"
+												update="township" />
+										</div>
+									</div>
+								</p:panelGrid>
+								<p:outputLabel />
+								<p:message for="email" display="text" />
+								<h:outputText styleClass="input-label" value="#{label['ADDNEWTRAVELPROPOSAL_EMAIL_LABEL']}" />
+								<p:inputText id="email" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.email}" />
+								<p:outputLabel />
+								<p:message for="phoneNo" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_PHONENO_LABEL']}" />
+								<p:inputText id="phoneNo" onkeypress="if(event.which &lt; 48 || event.which &gt; 57 ) if(event.which != 8) return false;"
+									value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.phone}" />
+								<p:outputLabel />
+								<p:message for="unit" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="#{label['ADDNEWTRAVELPROPOSAL_NOOFUNIT_LABEL']}" />
+								<p:inputText disabled="#{AddNewPersonTravelProposalActionBean.isUnder100Travel}" id="unit" value="#{AddNewPersonTravelProposalActionBean.proposalTraveller.unit}" />
+							</p:panelGrid>
+						</p:panelGrid>
+						<p:message for="beneficiariesInfoTablePanel" display="text" />
+						<h:panelGroup id="beneficiariesInfoTablePanel" style="width: 100%">
+							<fieldset>
+								<legend>
+									<table>
+										<tr>
+											<td>
+												<h:outputText styleClass="input-label" value="#{label['ADDNEWTRAVELPROPOSAL_BENEFICIARIES_LABEL']}" />
+											</td>
+											<td>
+												<p:commandLink action="#{AddNewPersonTravelProposalActionBean.prepareAddNewBeneficiariesInfo()}" id="beneficiarieid" immediate="true"
+													oncomplete="PF('beneficiariesInfoEntryDialog').show();" update=":beneficiaryInfoEntryForm">
+													<h:graphicImage styleClass="#{ApplicationSetting.addStyleClass}" value="#{ApplicationSetting.addIcon}" />
+												</p:commandLink>
+											</td>
+										</tr>
+									</table>
+								</legend>
+								<p:dataTable id="beneficiaryPersonTable" style="width:100%" value="#{AddNewPersonTravelProposalActionBean.beneficiaryList}" var="beneficiary">
+									<p:column headerText="Beneficiary">
+										<h:outputText value="#{beneficiary.fullName}" />
+									</p:column>
+									<p:column headerText="Age">
+										<h:outputText value="#{beneficiary.age}" />
+									</p:column>
+									<p:column headerText="ID NO.">
+										<h:outputText value="#{beneficiary.fullIdNo}" />
+									</p:column>
+									<p:column headerText="Resident TownShip">
+										<h:outputText value="#{beneficiary.residentAddress.township.name}" />
+									</p:column>
+									<p:column headerText="Beneficiary Percentage">
+										<h:outputText value="#{beneficiary.percentage}%" />
+									</p:column>
+									<p:column headerText="Relationship">
+										<h:outputText value="#{beneficiary.relationship.name}" />
+									</p:column>
+									<p:column headerText="#{label['EDIT_BTN']}">
+										<p:commandButton styleClass="green-button" icon="fa fa-paint-brush" action="#{AddNewPersonTravelProposalActionBean.prepareEditBeneficiary(beneficiary)}"
+											id="editBeneficiaryLink" immediate="true" oncomplete="PF('beneficiariesInfoEntryDialog').show();" update=":beneficiaryInfoEntryForm" />
+									</p:column>
+									<p:column headerText="#{label['COMMON_DELETE_LABEL']}">
+										<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelProposalActionBean.removeBeneficiary(beneficiary.tempId)}"
+											id="removeBeneficiaryLink" update=":personTravelProposalEntryForm:beneficiariesInfoTablePanel beneficiaryPersonTable">
+											<p:confirm header="Confirmation" message="#{label['COMMON_MSG_DELETE_CONFIRM_LABEL']}" icon="fa fa-exclamation-triangle" />
+										</p:commandButton>
+									</p:column>
+								</p:dataTable>
+							</fieldset>
+						</h:panelGroup>
+						<br />
+						<p:commandButton action="#{AddNewPersonTravelProposalActionBean.addNewProposalTraveller}" id="addInsuredPersonInfoBtn"
+							rendered="#{AddNewPersonTravelProposalActionBean.createNewInsuredPersonInfo}" style="width: 80px;" update=":personTravelProposalEntryForm:insuredPersonInfoWizardPanel"
+							value="#{label['COMMON_ADDNEW_BTN']}" />
+						<p:commandButton action="#{AddNewPersonTravelProposalActionBean.updateProposalTraveller}" id="editInsuredPersonInfoBtn"
+							rendered="#{!AddNewPersonTravelProposalActionBean.createNewInsuredPersonInfo}" update=":personTravelProposalEntryForm:insuredPersonInfoWizardPanel"
+							value="#{label['COMMON_UPDATE_BTN']}" />
+						<br />
+						<p:separator style="height:3px" />
+						<h:panelGrid columns="4">
+							<h:commandLink action="#{AddNewPersonTravelProposalActionBean.prepareAddNewProposalTraveller}" immediate="true"
+								update=":personTravelProposalEntryForm:insuredPersonInfoWizardPanel">
+								<f:ajax render=":personTravelProposalEntryForm:insuredPersonInfoWizardPanel" />
+								<h:panelGrid columns="2">
+									<h:graphicImage styleClass="#{ApplicationSetting.addStyleClass}" value="#{ApplicationSetting.addIcon}" />
+									<h:outputText styleClass="command-link" value="#{label['COMMON_ADDNEW_LINK']}" />
+								</h:panelGrid>
+							</h:commandLink>
+						</h:panelGrid>
+						<p:message for="insuredPersonInfoTable" display="text" />
+						<p:dataTable id="insuredPersonInfoTable" style="width:100%" rowIndexVar="indexVar" value="#{AddNewPersonTravelProposalActionBean.proposalTravellerList}" var="proposalTraveller">
+							<p:column headerText="No." style="width:3%;">
+								<h:outputText value="#{indexVar + 1}" />
+							</p:column>
+							<p:column headerText="Insured Person Name">
+								<h:outputText value="#{proposalTraveller.name}" />
+							</p:column>
+							<p:column headerText="Address">
+								<h:outputText value="#{proposalTraveller.address}" />
+							</p:column>
+							<p:column headerText="NRC No." style="text-align: center">
+								<h:outputText value="#{proposalTraveller.fullIdNo}" />
+							</p:column>
+							<p:column headerText="No of Units">
+								<h:outputText style="float: right;" value="#{proposalTraveller.unit}" />
+							</p:column>
+							<p:column headerText="#{label['EDIT_BTN']}" style="width:6%;">
+								<p:commandButton styleClass="green-button" icon="fa fa-paint-brush" action="#{AddNewPersonTravelProposalActionBean.prepareEditProposalTraveller(proposalTraveller)}"
+									id="editInsuredPersonInfoLink" update=":personTravelProposalEntryForm:insuredPersonInfoWizardPanel" />
+							</p:column>
+							<p:column headerText="#{label['COMMON_DELETE_LABEL']}" style="width:6%;">
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelProposalActionBean.removeProposalTraveller(proposalTraveller.tempId)}"
+									id="removeEditInsuredPersonInfoLink" immediate="true" update=":personTravelProposalEntryForm:insuredPersonInfoWizardPanel">
+									<p:confirm header="Confirmation" message="#{label['COMMON_MSG_DELETE_CONFIRM_LABEL']}" icon="fa fa-exclamation-triangle" />
+								</p:commandButton>
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+				</p:tab>
+				<p:tab id="premiumCalculation" title="Premium Info" titleStyle="font-size:14px">
+					<p:panel id="premiumPanel" header="Add New Travel Proposal">
+						<div id="showPersonTravelPremium">
+							<p:growl escape="false" globalOnly="true" life="8000" showDetail="true" />
+							<p:dataTable id="showPersonTravelPremium" rowIndexVar="index" editable="true" editMode="cell" value="#{AddNewPersonTravelProposalActionBean.travelInfo}" var="traveller"
+								style="width:100%; margin-top:10px;">
+								<p:columnGroup type="header">
+									<p:row>
+										<p:column style="width: 6%;text-align:center" />
+										<p:column headerText="#{label['NAME_LABEL']}" style="width: 25%;text-align:center" />
+										<p:column headerText="#{label['NRC_LABEL']}" style="width: 21%;text-align:center" />
+										<p:column headerText="#{label['UNIT_LABEL']}" style="width:21%;text-align:center" />
+										<p:column headerText="No.Of Passenger" style="width:21%;text-align:center" />
+										<p:column headerText="Premium Rate" style="width: 23%;text-align:center" />
+										<p:column headerText="#{label['PREMIUM_LABEL']}" style="width: 23%;text-align:center" />
+									</p:row>
+								</p:columnGroup>
+								<p:column style="text-align:left">
+									<h:outputText value="#{index + 1}" />
+								</p:column>
+								<p:column style="text-align:left">
+									<h:outputText value="#{AddNewPersonTravelProposalActionBean.travelProposal.customerName}" style="text-align:center" />
+								</p:column>
+								<p:column style="text-align:right">
+									<h:outputText value="#{AddNewPersonTravelProposalActionBean.travelProposal.customer.fullIdNo}" />
+								</p:column>
+								<p:column style="text-align:right">
+									<h:outputText value="#{traveller.totalUnit}" />
+								</p:column>
+								<p:column style="text-align:right">
+									<h:outputText value="#{traveller.noOfPassenger}" />
+								</p:column>
+								<p:column style="text-align:right">
+									<h:outputText value="#{traveller.premiumRate}" />
+								</p:column>
+								<p:column style="text-align:right">
+									<h:outputText value="#{traveller.premium}">
+										<f:convertNumber type="number" pattern="#,##0.00" />
+									</h:outputText>
+								</p:column>
+							</p:dataTable>
+						</div>
+					</p:panel>
+					<p:commandButton action="#{AddNewPersonTravelProposalActionBean.addNewPersonTravelProposal()}" rendered="#{AddNewPersonTravelProposalActionBean.isInsurancePersonEdit || AddNewPersonTravelProposalActionBean.isEnquiryEdit}"
+						update=":personTravelProposalEntryForm" value="Update Proposal" />
+				</p:tab>
+				<p:tab id="workflow" title="Workflow Info" rendered="#{!AddNewPersonTravelProposalActionBean.isInsurancePersonEdit and !AddNewPersonTravelProposalActionBean.isEnquiryEdit}" titleStyle="font-size:14px">
+					<p:panel header="Workflow" id="workflowWizardPanel">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-3" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:outputLabel />
+							<p:message for="remark" display="text" />
+							<h:outputText value="#{label['REMARK_LABLE']}" />
+							<p:inputTextarea autoResize="true" id="remark" rows="6" value="#{AddNewPersonTravelProposalActionBean.remark}">
+								<p:ajax update=":personTravelProposalEntryForm:remark" />
+							</p:inputTextarea>
+							<p:outputLabel />
+							<p:message for="responsiblePerson" id="MsgResponsiblePerson" display="text" />
+							<h:outputText styleClass="input-label mandatory" value="#{label['RESPONSIBLE_PERSON_LABLE']}" />
+							<p:panelGrid styleClass="ui-panelgrid-blank" id="responsiblePanelGroup">
+								<div style="margin: -6px;" class="ui-g ui-fluid" id="responsiblePanelGroup">
+									<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+										<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewPersonTravelProposalActionBean.selectUser()}" id="selectUserDialogLink"
+											process="@this">
+											<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelProposalActionBean.returnUser}" update="responsiblePerson" />
+										</p:commandButton>
+										<p:inputText id="responsiblePerson" readonly="#{AddNewPersonTravelProposalActionBean.responsiblePerson == null ? facesContext.currentPhaseId.ordinal eq 6 : true}" required="true"
+											value="#{AddNewPersonTravelProposalActionBean.responsiblePerson == null ? '' : AddNewPersonTravelProposalActionBean.responsiblePerson.name}" />
+										<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelProposalActionBean.setResponsiblePerson(null)}" process="@this"
+											update="responsiblePerson" />
+									</div>
+								</div>
+							</p:panelGrid>
+						</p:panelGrid>
+						<br />
+						<p:commandButton action="#{AddNewPersonTravelProposalActionBean.addNewPersonTravelProposal()}" rendered="#{!AddNewPersonTravelProposalActionBean.isConfirmEdit}"
+							update=":personTravelProposalEntryForm" value="Submit Proposal" />
+						<p:commandButton action="#{AddNewPersonTravelProposalActionBean.addNewPersonTravelProposal()}" rendered="#{AddNewPersonTravelProposalActionBean.isConfirmEdit}"
+							update=":personTravelProposalEntryForm" value="Update Proposal" />
+					</p:panel>
+				</p:tab>
+			</p:wizard>
+			<br />
+			<p:commandButton action="dashboard" immediate="true" value="#{label['COMMON_CANCEL_BTN']}" />
+			<br />
+			<h:outputText style="color:red;" value="#{label['COMMON_MSG_MANDATORY_LABEL']}" />
+			<br />
+		</h:form>
+		<p:dialog appendTo="@(body)" header="#{label['MANAGE_INSUREDPERSON_BENEFICIARIESINFO_LABLE']}" dynamic="true" closable="false" height="450" hideEffect="explode" id="beneficiariesInfoEntryDialog"
+			modal="true" resizable="false" showEffect="explode" width="950" visible="#{facesContext.validationFailed}" widgetVar="beneficiariesInfoEntryDialog">
+			<h:form id="beneficiaryInfoEntryForm">
+				<h:panelGroup id="beneficiariesInfoPanel">
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:panelGrid columns="1" columnClasses="ui-grid-col-12" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-9" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel />
+								<p:message for="initialId" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="Initial ID" />
+								<p:inputText id="initialId" value="#{AddNewPersonTravelProposalActionBean.beneficiary.initialId}" required="true">
+									<f:validateLength maximum="50" />
+								</p:inputText>
+								<p:outputLabel />
+								<p:message for="firstName" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="First Name" />
+								<p:inputText id="firstName" value="#{AddNewPersonTravelProposalActionBean.beneficiary.name.firstName}" required="true">
+									<f:validateLength maximum="50" />
+								</p:inputText>
+								<p:outputLabel />
+								<p:message for="middleName" display="text" />
+								<h:outputText styleClass="input-label" value="Middle Name" />
+								<p:inputText id="middleName" value="#{AddNewPersonTravelProposalActionBean.beneficiary.name.middleName}">
+									<f:validateLength maximum="50" />
+								</p:inputText>
+								<p:outputLabel />
+								<p:message for="lastName" display="text" />
+								<h:outputText styleClass="input-label" value="Last Name" />
+								<p:inputText id="lastName" value="#{AddNewPersonTravelProposalActionBean.beneficiary.name.lastName}">
+									<f:validateLength maximum="50" />
+								</p:inputText>
+								<p:outputLabel />
+								<p:message for="gender" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="Gender" />
+								<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter" id="gender" value="#{AddNewPersonTravelProposalActionBean.beneficiary.gender}" required="true">
+									<f:selectItems itemLabel="#{type.label}" itemValue="#{type}" value="#{AddNewPersonTravelProposalActionBean.gender}" var="type" />
+								</p:selectOneMenu>
+								<p:outputLabel />
+								<p:message for="idType" display="text" />
+								<h:outputText styleClass="input-label mandatory" value="IdType" />
+								<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter" id="idType" value="#{AddNewPersonTravelProposalActionBean.beneficiary.idType}" required="true">
+									<f:selectItems value="#{AddNewPersonTravelProposalActionBean.idTypes}" />
+									<p:ajax resetValues="true" update="beneficiaryInfoPanel2 idType" />
+								</p:selectOneMenu>
+							</p:panelGrid>
+							<p:panelGrid id="beneficiaryInfoPanel2" columns="2" columnClasses="ui-grid-col-3,ui-grid-col-9" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<p:outputLabel />
+								<p:message for="beneficiaryNrcNo" display="text" />
+								<h:outputText styleClass="input-label mandatory" rendered="#{AddNewPersonTravelProposalActionBean.beneficiary.idType ne 'STILL_APPLYING'}"
+									value="#{label['ADDNEWMOTORPROPOSAL_DRIVER_IDNO_LABEL']}" />
+								<p:panelGrid id="beneficiaryIdNoGroup" columns="4" columnClasses="ui-grid-col-3,ui-grid-col-5,ui-grid-col-3,ui-grid-col-3" layout="grid"
+									styleClass="ui-panelgrid-blank ui-fluid"
+									rendered="#{AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.beneficiary.idType eq null}">
+									<p:selectOneMenu style="margin-left:-10px; width: 45px;" id="beneficiaryStateCode"
+										rendered="#{AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.beneficiary.idType eq null}" required="true"
+										value="#{AddNewPersonTravelProposalActionBean.beneficiary.stateCode}">
+										<f:selectItem itemLabel="" />
+										<f:selectItems itemLabel="#{stateCode}" itemValue="#{stateCode}" value="#{AddNewPersonTravelProposalActionBean.stateCodeList}" var="stateCode" />
+										<p:ajax event="valueChange" listener="#{AddNewPersonTravelProposalActionBean.changeBeneficiaryStateCode}" update="beneficiaryTownshipCode" />
+									</p:selectOneMenu>
+									<p:selectOneMenu style="margin-left:-23px;width: 90px" id="beneficiaryTownshipCode" required="true"
+										value="#{AddNewPersonTravelProposalActionBean.beneficiary.townshipCode}"
+										rendered="#{AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.beneficiary.idType eq null}" filter="true"
+										filterMatchMode="startsWith">
+										<f:selectItem itemLabel="" />
+										<f:selectItems itemLabel="#{townshipCode}" itemValue="#{townshipCode}" value="#{AddNewPersonTravelProposalActionBean.beneficiaryTownshipCodeList}" var="townshipCode" />
+									</p:selectOneMenu>
+									<p:selectOneMenu style="margin-left:-30px; width: 50px;" id="beneficiaryIdConditionType" required="true" value="#{AddNewPersonTravelProposalActionBean.beneficiary.idConditionType}"
+										rendered="#{AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.beneficiary.idType eq null}">
+										<f:selectItem itemLabel="" />
+										<f:selectItems itemLabel="#{type.label}" itemValue="#{type}" value="#{AddNewPersonTravelProposalActionBean.idConditionTypeSelectItemList}" var="type" />
+									</p:selectOneMenu>
+									<p:inputText style="margin-left:-39px;min-width:100px;" id="beneficiaryNrcNo" value="#{AddNewPersonTravelProposalActionBean.beneficiary.idNo}" required="true"
+										rendered="#{AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'NRCNO' or AddNewPersonTravelProposalActionBean.beneficiary.idType eq null}" />
+								</p:panelGrid>
+								<p:panelGrid id="beneficiaryIdNoGroup1" columns="1" columnClasses="ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank ui-fluid"
+									rendered="#{AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'FRCNO' or AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'PASSPORTNO'}">
+									<p:inputText id="beneficiaryFPNo" style="margin-left:-10px;min-width:295px;" required="true" value="#{AddNewPersonTravelProposalActionBean.beneficiary.idNo}"
+										rendered="#{AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'FRCNO' or AddNewPersonTravelProposalActionBean.beneficiary.idType eq 'PASSPORTNO'}" />
+								</p:panelGrid>
+							</p:panelGrid>
+						</p:panelGrid>
+						<p:panelGrid id="beneficiaryInfoPanel3" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:outputLabel />
+							<p:message for="beneficiaryRelationShip" display="text" />
+							<h:outputText styleClass="input-label mandatory" value="#{label['MANAGE_INSUREDPERSON_BENEFICIARIES_RELATIONSHIP_LABEL']}" />
+							<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter" id="beneficiaryRelationShip" value="#{AddNewPersonTravelProposalActionBean.beneficiary.relationship}" required="true">
+								<f:selectItem itemLabel="Select" />
+								<f:selectItems itemLabel="#{relationship.name}" itemValue="#{relationship}" value="#{AddNewPersonTravelProposalActionBean.relationshipList}" var="relationship" />
+							</p:selectOneMenu>
+							<p:outputLabel />
+							<p:message for="percentage" display="text" />
+							<h:outputText styleClass="input-label mandatory" value="Percentage" />
+							<p:inputText id="percentage" required="true" value="#{AddNewPersonTravelProposalActionBean.beneficiary.percentage}">
+								<f:validateDoubleRange maximum="100" minimum="0.1" />
+								<f:convertNumber pattern="#{ApplicationSetting.numberFormat}" />
+							</p:inputText>
+							<p:outputLabel />
+							<p:message for="benificiaryAge" display="text" />
+							<h:outputText styleClass="input-label" value="#{label['MANAGE_INSUREDPERSON_BENEFICIARIES_AGE_LABEL']}" />
+							<p:inputText id="benificiaryAge" value="#{AddNewPersonTravelProposalActionBean.beneficiary.age}" />
+							<p:outputLabel />
+							<p:message for="townShip" display="text" />
+							<h:outputText styleClass="input-label mandatory" value="Resident TownShip" />
+							<p:panelGrid styleClass="ui-panelgrid-blank" id="townShipPanelGroup2">
+								<div style="margin: -5px;" class="ui-g ui-fluid" id="townShipPanelGroup2">
+									<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+										<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewPersonTravelProposalActionBean.selectBeneficiariesTownship()}"
+											id="selectTownShipDialogLink" process="@this">
+											<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelProposalActionBean.returnBeneficiariesTownShip}" update="townShip" />
+										</p:commandButton>
+										<p:inputText id="townShip" required="true"
+											readonly="#{AddNewPersonTravelProposalActionBean.beneficiary.residentAddress.township == null ? facesContext.currentPhaseId.ordinal eq 6 : true}"
+											value="#{AddNewPersonTravelProposalActionBean.beneficiary.residentAddress.township == null ? '' : AddNewPersonTravelProposalActionBean.beneficiary.residentAddress.township.name}" />
+										<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelProposalActionBean.beneficiary.residentAddress.setTownship(null)}" process="@this"
+											update="townShip" />
+									</div>
+								</div>
+							</p:panelGrid>
+							<p:outputLabel />
+							<p:message for="address" display="text" />
+							<h:outputText styleClass="input-label mandatory" value="Resident Address" />
+							<p:inputTextarea id="address" value="#{AddNewPersonTravelProposalActionBean.beneficiary.residentAddress.residentAddress}" required="true">
+								<f:validateLength maximum="500" />
+							</p:inputTextarea>
+						</p:panelGrid>
+						<p:panelGrid id="proposalBeneficiarySavePanel" columns="2" columnClasses="ui-grid-col-1.5,ui-grid-col-1.5" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:commandButton action="#{AddNewPersonTravelProposalActionBean.saveBeneficiary()}" id="saveBtn"
+								update=":personTravelProposalEntryForm:beneficiariesInfoTablePanel beneficiariesInfoPanel townShipPanelGroup2" value="Save" />
+							<p:commandButton immediate="true" oncomplete="PF('beneficiariesInfoEntryDialog').hide();" value="Cancel" />
+						</p:panelGrid>
+					</p:panelGrid>
+				</h:panelGroup>
+			</h:form>
+		</p:dialog>
+		<!-- Confirmation Dialog -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+			<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+		</p:confirmDialog>
+	</ui:define>
+</ui:composition>

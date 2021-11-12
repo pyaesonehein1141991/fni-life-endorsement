@@ -1,0 +1,110 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:cyc="http://www.cycdemo.com/java"
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="Special Travel Porposal Confirmation" />
+	<ui:param name="headerRendered" value="true" />
+	<ui:define name="content">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<h:form id="travelProposalConfirmForm">
+			<p:growl escape="false" globalOnly="true" life="8000" showDetail="true"/>
+			<p:panel>
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass=" ui-panelgrid-blank ui-fluid">
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<h:outputText styleClass="input-label" value="Proposal No" />
+						<p:panelGrid styleClass="ui-panelgrid-blank">
+							<div style="margin-top: -5px; margin-left: -5px;" class="ui-g ui-fluid" id="detailProposal">
+								<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+									<p:inputText id="proposalNo" readonly="true" value="#{AddNewTravelConfirmationActionBean.travelProposal.proposalNo}" />
+									<p:commandButton actionListener="#{AddNewTravelConfirmationActionBean.openTemplate()}" immediate="true" styleClass="green-button" icon="fa fa-laptop" />
+								</div>
+							</div>
+						</p:panelGrid>
+						<h:outputText styleClass="input-label" value="Total Premium" />
+						<p:inputText id="totalPremium" readonly="true" style="text-align: right;" value="#{AddNewTravelConfirmationActionBean.travelProposal.totalNetPremium}">
+							<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+						</p:inputText>
+						<h:outputText styleClass="input-label" value="Special Discount Percent" />
+						<p:panelGrid styleClass="ui-panelgrid-blank" id="discountPanelGroup">
+							<div style="margin-top: -5px; margin-left: -5px;" class="ui-g ui-fluid" id="discountPanelGroup">
+								<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+									<p:inputNumber id="specialDiscountAmt" inputStyle="text-align: right;" readonly="true" style="text-align: right;"
+										value="#{AddNewTravelConfirmationActionBean.payment.discountAmount}" />
+									<p:spacer />
+									<p:spinner id="specialDiscountPer" value="#{AddNewTravelConfirmationActionBean.payment.discountPercent}" stepFactor="5" suffix="%" min="0" max="100">
+										<p:ajax update="specialDiscountAmt netPremium" process="@this" />
+									</p:spinner>
+								</div>
+							</div>
+						</p:panelGrid>
+						<p:outputLabel />
+						<p:message for="additionalCharges" display="text"/>
+						<h:outputText styleClass="input-label" value="Service Charges" />
+						<p:inputText id="additionalCharges" style="text-align: right;" value="#{AddNewTravelConfirmationActionBean.payment.servicesCharges}">
+							<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+							<p:ajax update="netPremium" />
+						</p:inputText>
+						<p:outputLabel />
+						<p:message for="stampFees" display="text"/>
+						<h:outputText styleClass="input-label" value="Policy Stamp Fees" />
+						<p:inputText id="stampFees" style="text-align: right;" readonly="true" value="#{AddNewTravelConfirmationActionBean.payment.stampFees}">
+							<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+						</p:inputText>
+						<h:outputText styleClass="input-label" value="Net Premium" />
+						<p:inputText readonly="true" id="netPremium" style="text-align: right;" value="#{AddNewTravelConfirmationActionBean.payment.totalAmount}">
+							<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+						</p:inputText>
+					</p:panelGrid>
+					<p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-6" layout="grid" styleClass="ui-fluid">
+						<p:outputLabel />
+						<p:message for="remark" display="text"/>
+						<h:outputText styleClass="input-label" value="Remark" />
+						<p:inputTextarea autoResize="true" id="remark" rows="7" style="width:400px;" value="#{AddNewTravelConfirmationActionBean.remark}">
+							<f:validateLength maximum="8000" />
+						</p:inputTextarea>
+						<p:outputLabel />
+						<p:message for="responsiblePerson" display="text"/>
+						<h:outputText styleClass="input-label mandatory" id="responsiblePerson" value="Responsible Person" />
+						<p:panelGrid styleClass="ui-panelgrid-blank" id="responsiblePersonPanel">
+							<div style="margin-top: -5px; margin-left: -5px;" class="ui-g ui-fluid" id="responsiblePersonPanel">
+								<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+									<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewTravelConfirmationActionBean.selectUser()}" id="selectUserDialogLink"
+										process="@this">
+										<p:ajax event="dialogReturn" listener="#{AddNewTravelConfirmationActionBean.returnUser}" update="responPerson" />
+									</p:commandButton>
+									<p:inputText id="responPerson" readonly="true" 
+										value="#{AddNewTravelConfirmationActionBean.responsiblePerson == null ? '' : AddNewTravelConfirmationActionBean.responsiblePerson.name}" />
+									<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewTravelConfirmationActionBean.setResponsiblePerson(null)}" process="@this" update="responPerson" />
+								</div>
+							</div>
+						</p:panelGrid>
+					</p:panelGrid>
+				</p:panelGrid>
+			</p:panel>
+			<p:commandButton action="#{AddNewTravelConfirmationActionBean.confirmTravelProposal()}" disabled="#{AddNewTravelConfirmationActionBean.isShowPrintPreview}" id="confirmBtn" style="width: 80px;" update=":travelProposalConfirmForm" value="Confirm" />
+			<p:spacer width="5" />
+			<p:commandButton action="#{AddNewTravelConfirmationActionBean.editTravelProposal()}" disabled="#{AddNewTravelConfirmationActionBean.isShowPrintPreview}" id="editBtn" style="width: 80px;" value="Edit" />
+			<p:spacer width="5" />
+			<p:commandButton action="#{AddNewTravelConfirmationActionBean.denyTravelProposal()}" disabled="#{AddNewTravelConfirmationActionBean.isShowPrintPreview}" id="denyBtn" style="width: 80px;" value="Deny" />
+			<p:spacer width="5" />
+			<p:commandButton action="#{AddNewTravelConfirmationActionBean.generateReport()}" icon="ui-icon-print" disabled="#{!AddNewTravelConfirmationActionBean.isShowPrintPreview}"
+						id="pdfSingleBtn" oncomplete="PF('issuePolicyPDFDialogSingle').show();" update=":pdfPrintForm" value="Invoice Letter" />
+			<p:spacer width="5" />
+			<p:commandButton action="dashboard" id="cancelBtn" immediate="true" style="width: 80px;" value="Cancel" />
+		</h:form>
+<!-- 		<h:form id="travelProposalDetailsForm"> -->
+<!-- 			<p:dialog appendTo="@(body)" header="Travel Proposal Details" height="300" hideEffect="explode" id="travelProposalDetailsDialog" resizable="false" showEffect="explode" -->
+<!-- 				widgetVar="travelProposalDetailsDialog" width="550"> -->
+<!-- 				<ui:include src="/manage/travel/expressDetailInfo.xhtml"> -->
+<!-- 					<ui:param name="travelProposal" value="#{AddNewTravelConfirmationActionBean.travelProposal}" /> -->
+<!-- 				</ui:include> -->
+<!-- 			</p:dialog> -->
+<!-- 		</h:form> -->
+		<h:form enctype="multipart/form-data" id="pdfPrintForm">
+			<p:dialog appendTo="@(body)" dynamic="true" height="505" id="issuePolicyPDFDialogSingle" resizable="false" widgetVar="issuePolicyPDFDialogSingle" width="1070">
+				<p:ajax event="close" listener="#{AddNewTravelConfirmationActionBean.handleClose}" update=":pdfPrintForm" />
+				<p:outputPanel id="printPannel">
+					<p:media height="500" id="pdfPlayer" player="pdf" value="#{AddNewTravelConfirmationActionBean.reportStream}" width="1050" />
+				</p:outputPanel>
+			</p:dialog>
+		</h:form>
+	</ui:define>
+</ui:composition>

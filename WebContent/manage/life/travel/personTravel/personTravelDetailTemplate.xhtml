@@ -1,0 +1,237 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/dialog/dialogTemplate.xhtml">
+	<ui:param name="uploadRootPath" value="/image" />
+	<ui:define name="content">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<h:form id="personTravelProposalTemplateForm">
+			<p:wizard widgetVar="wiz">
+				<p:tab id="proposalInfo" title="Proposal Info">
+					<p:panel header="Proposal Info" style="min-height:410px;">
+						<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+							<p:panelGrid columns="2" columnClasses="ui-grid-col-3,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+								<h:outputText styleClass="input-label" value="#{label['ADDNEWLIFEOPOSAL_PROPOSALNO_LABEL']}" />
+								<p:inputText id="detailsProposalNo" readonly="true" style="width:250px;" value="#{PersonTravelTemplateBean.personTravelProposal.proposalNo}" />
+								<h:outputText styleClass="input-label" value="#{label['ADDNEWLIFEPROPOSAL_CUSTOMER_LABEL']}" />
+								<p:inputText id="customer" readonly="true" required="true" style="width:250px;" value="#{PersonTravelTemplateBean.personTravelProposal.customerName}" />
+								<h:outputText styleClass="input-label" value="Product Type" />
+								<p:inputText id="product" readonly="true" required="true" style="width:250px;" value="#{PersonTravelTemplateBean.personTravelProposal.product.productContent.name}" />
+								<h:outputText styleClass="input-label" value="#{label['ADDNEWLIFEPROPOSAL_PAYMENTTYPE_LABEL']}" />
+								<p:inputText id="paymentType" readonly="true" required="true" style="width:250px;"
+									value="#{PersonTravelTemplateBean.personTravelProposal.paymentType == null ? '' : PersonTravelTemplateBean.personTravelProposal.paymentType.description}" />
+								<h:outputText styleClass="input-label" value="#{label['ADDNEWLIFEPROPOSAL_BRANCH_LABEL']}" />
+								<p:inputText id="branch" readonly="true" required="true" style="width:250px;"
+									value="#{PersonTravelTemplateBean.personTravelProposal.branch == null ? '' : PersonTravelTemplateBean.personTravelProposal.branch.name}" />
+								<h:outputText styleClass="input-label" value="#{label['ADDNEWLIFEPROPOSAL_SUBMITTEDDATE_LABEL']}" />
+								<p:inputText id="submittedDate" readonly="true" showOn="button" style="width:250px;" value="#{PersonTravelTemplateBean.personTravelProposal.submittedDate}">
+									<f:convertDateTime pattern="#{ApplicationSetting.dateFormat}" timeZone="#{ApplicationSetting.timeZone}" />
+								</p:inputText>
+								<h:outputText styleClass="input-label" value="#{label['ADDNEWLIFEPROPOSAL_AGENT_LABEL']}" />
+								<p:inputText id="agent" readonly="true" required="true" style="width:250px;"
+									value="#{PersonTravelTemplateBean.personTravelProposal.agent == null ? '' : PersonTravelTemplateBean.personTravelProposal.agent.fullName}" />
+							</p:panelGrid>
+						</p:panelGrid>
+						<p:separator />
+						<div class="ui-g">
+							<div class="ui-g-12 ui-md-6 ui-lg-6">
+								<p:panelGrid styleClass="ui-fluid">
+									<f:facet name="header">
+										<p:row>
+											<p:column colspan="8">
+												<h:outputText styleClass="input-label" value="Proposal Premium and Unit" />
+											</p:column>
+										</p:row>
+									</f:facet>
+									<p:row>
+										<p:column colspan="2" style="width:250px !important;">
+											<h:outputText style="font-weight: bold;" value="#{PersonTravelTemplateBean.personTravelProposal.proposalNo} " />
+										</p:column>
+										<p:column style="width:90px;">
+											<h:outputText style="float:right; font-weight: bold;" value="No Of Units">
+											</h:outputText>
+										</p:column>
+										<p:column style="width:80px;">
+											<h:outputText style="float:right; font-weight: bold;" value="Premium">
+											</h:outputText>
+										</p:column>
+									</p:row>
+									<p:repeat var="travellerInfo" value="#{PersonTravelTemplateBean.personTravelProposal.personTravelInfo.proposalTravellerList}">
+										<p:row>
+											<p:column colspan="2" style="width:200px !important;">
+												<h:outputText style="font-weight: bold;" value="#{travellerInfo.name}" />
+											</p:column>
+											<p:column>
+												<h:outputText style="float:right; font-weight: bold;" value="#{travellerInfo.unit}">
+													<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+												</h:outputText>
+											</p:column>
+											<p:column>
+												<h:outputText style="float:right; font-weight: bold;" value="#{travellerInfo.premium}">
+													<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+												</h:outputText>
+											</p:column>
+										</p:row>
+									</p:repeat>
+									<f:facet name="footer">
+										<p:row>
+											<p:column colspan="2" style="text-align:right">
+												<h:outputText value="Total Premium" style="font-size:15px;" />
+											</p:column>
+											<p:column style="text-align:right">
+												<h:outputText value="#{PersonTravelTemplateBean.personTravelProposal.personTravelInfo.totalUnit}" style="font-size:15px;" />
+											</p:column>
+											<p:column style="text-align:right">
+												<h:outputText value="#{PersonTravelTemplateBean.personTravelProposal.personTravelInfo.premium}" style="font-weight: bold">
+													<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+												</h:outputText>
+											</p:column>
+										</p:row>
+									</f:facet>
+								</p:panelGrid>
+							</div>
+						</div>
+					</p:panel>
+				</p:tab>
+				<p:tab id="travelInfo" title="Travel Info">
+					<p:panel header="Travel Info" style="min-height:410px;">
+						<p:dataTable id="personTravelInfoTable" paginator="true" paginatorPosition="bottom"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowIndexVar="indexVar"
+							rowKey="index" rows="10" style="width:100%;" value="#{PersonTravelTemplateBean.personTravelProposal.travelInfoList}" var="personTravelInfo">
+							<p:column headerText="No." style="width:3%;">
+								<h:outputText style="float: right;" value="#{indexVar + 1}." />
+							</p:column>
+							<p:column headerText="Departure Date">
+								<h:outputText value="#{personTravelInfo.departureDate}">
+									<f:convertDateTime pattern="#{ApplicationSetting.dateFormat}" timeZone="#{ApplicationSetting.timeZone}" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Arrival Date">
+								<h:outputText value="#{personTravelInfo.arrivalDate}">
+									<f:convertDateTime pattern="#{ApplicationSetting.dateFormat}" timeZone="#{ApplicationSetting.timeZone}" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Travel Path">
+								<h:outputText value="#{personTravelInfo.travelPath}" />
+							</p:column>
+							<p:column headerText="No of Unit">
+								<h:outputText value="#{personTravelInfo.totalUnit}" />
+							</p:column>
+							<p:column headerText="No of Passengers">
+								<h:outputText value="#{personTravelInfo.noOfPassenger}" />
+							</p:column>
+							<p:column headerText="Round Trip">
+								<h:outputText value="#{personTravelInfo.roundTrip?'Yes':'No'}" />
+							</p:column>
+							<p:column headerText="Period of Insurance">
+								<h:outputText value="#{personTravelInfo.periodOfInsurance} (days)" />
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+				</p:tab>
+				<p:tab id="insuredPersonInfo" title="InsuredPerson Info">
+					<p:panel header="InsuredPerson Information" id="insuredPersonInfoWizardPanel" style="min-height:410px;">
+						<p:dataTable id="travellerTable" paginator="true" paginatorPosition="bottom"
+							paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowIndexVar="indexVar"
+							rowKey="index" rows="10" style="width:100%;" value="#{PersonTravelTemplateBean.personTravelProposal.personTravelInfo.proposalTravellerList}" var="traveller">
+							<p:column headerText="No." style="width:3%;">
+								<h:outputText style="float: right;" value="#{indexVar + 1}." />
+							</p:column>
+							<p:column headerText="Name">
+								<h:outputText value="#{traveller.name}" />
+							</p:column>
+							<p:column headerText="Father Name">
+								<h:outputText value="#{traveller.fatherName}" />
+							</p:column>
+							<p:column headerText="IDNO">
+								<h:outputText value="#{traveller.fullIdNo}" />
+							</p:column>-->
+					<p:column headerText="Address">
+								<h:outputText value="#{traveller.address}" />
+							</p:column>
+							<p:column headerText="Phone">
+								<h:outputText value="#{traveller.phone}" />
+							</p:column>
+							<p:column headerText="Email">
+								<h:outputText value="#{traveller.email}" />
+							</p:column>
+							<p:column headerText="No Of Units">
+								<h:outputText value="#{traveller.unit}" />
+							</p:column>
+							<p:column headerText="Premium">
+								<h:outputText value="#{traveller.basicTermPremium}">
+									<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+								</h:outputText>
+							</p:column>
+							<p:column headerText="Beneficiary Details">
+								<p:commandLink immediate="true" oncomplete="PF('beneficiaryDetailsDialog#{traveller.id}').show();">
+									<p:graphicImage styleClass="command-image" value="/images/addOn.png" />
+								</p:commandLink>
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+				</p:tab>
+				<p:tab id="attachmentWizardTab" title="Attachment">
+					<p:dataGrid columns="8" id="travelInfoImageGrid" paginator="true"
+						paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rows="16"
+						value="#{PersonTravelTemplateBean.personTravelProposal.personTravelInfo.attachmentList}" var="image">
+						<h:outputLink onclick="window.open('/fnigp/image/#{image.filePath}');return false;">
+							<h:graphicImage style="width:120px;height:120px;" value="#{uploadRootPath}#{image.filePath}" />
+						</h:outputLink>
+					</p:dataGrid>
+				</p:tab>
+				<p:tab id="workflowHistoryTab" title="Workflow Info">
+					<p:panel header="Remark" id="workflowWizardPanel" style="min-height:410px;">
+						<p:dataTable id="workflow" paginator="true" rows="10" style="width:100%" value="#{PersonTravelTemplateBean.workFlowList}" var="workflow">
+							<p:column headerText="From">
+								<h:outputText value="#{workflow.createdUser.name}" />
+							</p:column>
+							<p:column headerText="To">
+								<h:outputText value="#{workflow.responsiblePerson.name}" />
+							</p:column>
+							<p:column headerText="Task">
+								<h:outputText value="#{workflow.workflowTask.label}" />
+							</p:column>
+							<p:column headerText="Remark">
+								<h:outputText value="#{workflow.remark}" />
+							</p:column>
+							<p:column headerText="Date">
+								<h:outputText value="#{workflow.workflowDate}">
+									<f:convertDateTime pattern="#{ApplicationSetting.dateTimeFormat}" timeZone="#{ApplicationSetting.timeZone}" />
+								</h:outputText>
+							</p:column>
+						</p:dataTable>
+					</p:panel>
+				</p:tab>
+			</p:wizard>
+		</h:form>
+		<ui:repeat value="#{PersonTravelTemplateBean.personTravelProposal.personTravelInfo.proposalTravellerList}" var="var">
+			<p:dialog header="Proposal Traveller Beneficiary Info" height="360" width="900" id="beneficiaryDetailsDialog#{var.id}" resizable="false"
+				widgetVar="beneficiaryDetailsDialog#{var.id}">
+				<p:dataTable id="beneficiaryTable" paginator="true" paginatorPosition="bottom"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowIndexVar="indexVar"
+					rowKey="index" rows="10" style="width:100%;" value="#{var.proposalTravellerBeneficiaryList}" var="beneficiary">
+					<p:column headerText="No." style="width:3%;">
+						<h:outputText style="float: right;" value="#{indexVar + 1}." />
+					</p:column>
+					<p:column headerText="Name">
+						<h:outputText value="#{beneficiary.fullName}" />
+					</p:column>
+					<p:column headerText="Relationship">
+						<h:outputText value="#{beneficiary.relationship.name}" />
+					</p:column>
+					<p:column headerText="Percentage">
+						<h:outputText value="#{beneficiary.percentage}" />
+					</p:column>
+					<!-- <p:column headerText="Address">
+					<h:outputText value="#{beneficiary.address}" />
+				</p:column> -->
+					<p:column headerText="Email">
+						<h:outputText value="#{beneficiary.email}" />
+					</p:column>
+					<p:column headerText="Phone">
+						<h:outputText value="#{beneficiary.phone}" />
+					</p:column>
+				</p:dataTable>
+			</p:dialog>
+		</ui:repeat>
+	</ui:define>
+</ui:composition>

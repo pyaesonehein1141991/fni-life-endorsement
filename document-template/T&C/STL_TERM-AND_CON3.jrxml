@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="STL_TERM-AND_CON3" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="120" bottomMargin="0" resourceBundle="TERM_CONDITION_myn" uuid="100fbbc1-e827-4a2f-a8f9-cec62f13850d">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="199"/>
+	<detail>
+		<band height="722" splitType="Stretch">
+			<image>
+				<reportElement x="-40" y="-120" width="595" height="842" uuid="b5c15c17-f06e-46ec-9a9f-a950ae55b286"/>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream(org.apache.commons.codec.binary.Base64.decodeBase64($R{POLICY4FLY}.getBytes()))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="16" y="201" width="499" height="35" uuid="da83daaf-dbd1-4138-8f23-49b47d5d4ed4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[စစ်ဆေးသည့်ဆရာဝန်၏ ထောက်ခံချက်အရ လက်ခံနိုင်သည့်အနေအထားရှိလျှင် ပေါ်လစီပြန်လည်တည်မြဲခွင့် ပြုမည်ဖြစ်ပြီး လက်ခံနိုင်သည့် အနေအထားမရှိပါက ပေါ်လစီပြန်လည်တည်မြဲခွင့် ရှိမည်မဟုတ်ပါ။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="174" width="499" height="24" uuid="0a430fdf-e02c-4193-8dd9-c03b7d94c575"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ကုမ္ပဏီမှယူဆလျှင် ကျန်းမာရေးစစ်ဆေးပေးရမည်ဖြစ်ပြီး၊ ကုန်ကျစရိတ်ကို အာမခံထားသူမှ ကျခံရမည်ဖြစ်ပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="201" width="17" height="20" uuid="567bd07e-7740-4132-bddb-5c906bf8e4c3"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ -  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="136" width="499" height="38" uuid="8b93e844-0f31-40bf-918b-4ec7ce4333e8"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[အလိုအလျောက် တည်မြဲစေသည့် ပေါ်လစီအတွက် ပေးရန်ကျန်သည့် ပရီမီယံစုစုပေါင်းနှင့် အတိုးကိုတစ်ကြိမ်တည်း ပေးဆပ်ခြင်းဖြင့် ပေါ်လစီကိုပြန်လည် တည်မြဲစေနိုင်သည်။ ဤကဲ့သို့တည်မြဲစေရာတွင် ကျန်းမာရေးစစ်ဆေးရန် လိုအပ်သည်ဟု]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="27" width="499" height="63" uuid="39eaf48b-4ca4-411d-bd06-5967d22994c1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[အမ်းငွေရသင့်သည့်တန်ဖိုးရရှိနိုင်သော ပေါ်လစီတွင် ပရီမီယံပေးသွင်းခြင်း ပျက်ကွက်သော်လည်း ပေါ်လစီမပျက်ပါ။ ပေးသွင်းရန်ကျန်သည့် ပရီမီယံအတိုးနှင့် ရရန်ရှိငွေများကို အမ်းငွေရသင့်တန်ဖိုးမှ အရစ်ကျအတိုင်းနုတ်ယူပြီး ပေါ်လစီကို အလိုအလျောက်တည်မြဲစေနိုင်ပါသည်။ ပေးရန်ကျန် ပရီမီယံပေါ်တွင် တစ်နှစ်လျှင် ၈% အတိုးပါထည့်သွင်းတွက်ချက်ပါမည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="133" width="17" height="20" uuid="72ff85eb-5059-4b97-ba85-f58669c3e260"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ -  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="16" y="243" width="499" height="114" uuid="682770fe-204c-4717-a9f2-aaac45021fc0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ဤကဲ့သို့ အလိုအလျောက် ပေါ်လစီတည်မြဲနေသော ကာလအတွင်း အာမခံထားသူ ကွယ်လွန် / ထာဝစဉ်လုံး၀ မသန်စွမ်းဖြစ်ခဲ့သော် တင်ရှိနေသော ပရီမီယံအကြွေးများ၊ တစ်နှစ်လျှင် ၈%ဖြင့် ကျသင့်အတိုးနှင့် ရရန်ရှိငွေများကို နုတ်ယူပြီးလျှင် ကျန်အာမခံထားငွေကို တစ်လုံးတည်း ထုတ်ပေးမည်ဖြစ်သည်။ သို့ရာတွင် အာမခံထားသူမှပြန်လည် ပေးဆပ်ရမည့်ငွေပမာဏသည် ၎င်းရခွင့်ရှိသော အမ်းငွေတန်ဖိုးထက်ပိုနေလျှင်ပေါ်လစီပျက်ပြယ်သည် ဖြစ်၍ အာမခံထားငွေကို ရနိုင်ခွင့်မရှိပါ။ သို့ရာတွင် အာမခံထားသူ ကွယ်လွန် / ထာဝစဉ်မသန်စွမ်းဖြစ်ချိန်၌ ပေါ်လစီအရ ရရှိနိုင်သော စာရင်း ပိတ်တန်ဖိုးကိုတွက်ချက်ပြီး၊ အာမခံထားသူမှ ပေးရန်ကျန်သည့် စုစုပေါင်းငွေကို နုတ်၍ကျန်ငွေကို အာမခံထားသူ/ အကျိုးခံစားခွင့်ရှိသူသို့ ထုတ်ပေးမည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="356" width="17" height="20" uuid="3b6bec30-5fe5-4b4b-9735-0155b10ce107"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Zawgyi-One" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ -  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="243" width="17" height="20" uuid="d13b25e2-8ccc-49e3-851b-98f362ecdfb0"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ -  ]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="16" y="360" width="499" height="39" uuid="ef54b24a-de15-47ee-8293-0cfec85f0572"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{ST_TEXT_5}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="16" y="91" width="499" height="41" uuid="c95073b5-ea2a-46da-ab51-70905a114a1b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူမှ ပေးသွင်းရန်ကျန်သည့် ပရီမီယံကို အထက်တွင်ဖော်ပြခဲ့သည့်အတိုင်း အမ်းငွေရသင့်တန်ဖိုးမှ နုတ်၍ အလီလီပေးသွင်းခြင်းဖြင့် အမ်းငွေရသင့်တန်ဖိုး ကုန်သွားပါက ပေါ်လစီပျက်သည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="0" width="515" height="20" uuid="168f903d-0a47-4455-8eed-94c09ff456c8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ပေါ်လစီအလိုအလျောက်တည်မြဲခြင်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="89" width="17" height="20" uuid="e4d39c4e-87f3-4ea6-937b-6cdb000b7d57"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ -  ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="26" width="17" height="20" uuid="3ed879cd-4ed4-4a11-85e4-a79fb61c232b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ -  ]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

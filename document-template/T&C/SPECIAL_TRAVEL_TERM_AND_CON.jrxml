@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="TRAVEL_TERM_AND_CON" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="0" bottomMargin="0" uuid="be18b7b4-f653-441b-b709-326fc357a508">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.1269722013523666"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="48"/>
+	<parameter name="invoice4Fly" class="java.lang.String"/>
+	<parameter name="branchAddress" class="java.lang.String"/>
+	<parameter name="branchPhNo" class="java.lang.String"/>
+	<parameter name="branchFax" class="java.lang.String"/>
+	<parameter name="branchEmail" class="java.lang.String"/>
+	<parameter name="branchWebSite" class="java.lang.String"/>
+	<detail>
+		<band height="842" splitType="Stretch">
+			<image>
+				<reportElement x="-40" y="0" width="595" height="842" uuid="f66bc24c-0a05-4938-94f6-4bc48edc4b9e"/>
+				<imageExpression><![CDATA[$P{invoice4Fly}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="151" width="520" height="439" uuid="17bec15c-6b12-4dc3-b51b-7c02ba774f12"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+					<paragraph lineSpacing="1_1_2"/>
+				</textElement>
+				<text><![CDATA[၁။	ခရီးစဉ်အစမှအဆုံးအထိ ခရီးသည်များယာဉ်စီးနင်းလိုက်ပါစဉ် ယာဉ်ကြောင့် တိုက်ရိုက်ဖြစ်စေ၊ သွယ်ဝိုက်၍ ဖြစ်စေ၊ သေဆုံး/ဒဏ်ရာရခြင်းအတွက် လျော်ကြေး အကျုံးဝင်သော်လည်း၊ အောက်ဖော်ပြပါ အချက်များကြောင့် သေဆုံး/ ဒဏ်ရာရခြင်းများ အတွက် လျော်ကြေး အကျုံးမဝင်ပါ-  
+          
+(က) ရှိရင်းစွဲကိုယ်အင်္ဂါချို့တဲ့မှုနှင့် ရှိရင်းစွဲရောဂါဘယများကြောင့် ဖြစ်ပွားခြင်း
+(ခ) ရူးသွပ်ခြင်း
+(ဂ) မိမိကိုယ်မိမိသေကြောင်း ကြံစည်ခြင်း
+(ဃ) တမင်ရည်ရွယ်ချက်ဖြင့် မိမိကိုယ်ကို ထိခိုက်ဒဏ်ရာရရှိစေခြင်း
+(င) မီးဖွားခြင်း၊ ကိုယ်ဝန်ပျက်ကျခြင်း
+(စ) အန္တရာယ်ဖြစ်စေနိုင်သည့် ဆောင်ရွက်မှုများတွင် ပါဝင်ပတ်သက်ခြင်း
+(ဆ) ရာဇဝတ်မှုကျူးလွန်ရန် ရည်ရွယ်ချက်ဖြင့် ဥပဒေချိုးဖောက်ခြင်း
+(ဇ) မူးယစ်ဆေးဝါးသုံးစွဲခြင်း
+(ဈ) စစ်၊ သပိတ်မှောက်ခြင်း၊ အဓိကရုဏ်းဖြစ်ခြင်းနှင့် ပြည်တွင်းမငြိမ်မသက်ဖြစ်ခြင်း တို့ဖြစ်ပါသည်။
+
+၂။	သေဆုံးပါက အကျိုးခံစားခွင့်ငွေကျပ် သိန်း၃၀ အထိခံစားခွင့် ရရှိမည်ဖြစ်သည်။ ထိခိုက်ဒဏ်ရာရရှိပါက အချိုးကျနှုန်းထား များအတိုင်းရရှိမည်ဖြစ်ပြီး အမြင့်ဆုံး ကျပ် ၂၄ သိန်းအထိ ရရှိနိုင်မည် ဖြစ်ပါသည်။
+
+၃။	သေဆုံးမှုဖြစ်ပွားပါက (၁)နှစ်အတွင်း လျော်ကြေးတောင်းခံရမည် ဖြစ်ပြီး၊ ထိခိုက်ဒဏ်ရာ ရရှိပါက(၂)နှစ်တွင်းလျော်ကြေး တောင်းခံရမည်။                                                           ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="80" width="515" height="50" uuid="9e8b5f3d-b701-450e-9216-fd99287ea314"/>
+				<textElement textAlignment="Center" rotation="None">
+					<font fontName="Pyidaungsu" size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["အထူးခရီးသွားအာမခံ"+"\n" +"Special Travel"]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

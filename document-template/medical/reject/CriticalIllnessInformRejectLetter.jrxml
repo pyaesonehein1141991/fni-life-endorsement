@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MedicalInformRejectLetter" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="531" leftMargin="32" rightMargin="32" topMargin="130" bottomMargin="22" resourceBundle="LANGUAGE_en" uuid="8b699523-3e76-4d79-b79b-d9bee73bb9a6">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.2100000000000004"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="10"/>
+	<parameter name="proposalNo" class="java.lang.String"/>
+	<parameter name="customerName" class="java.lang.String"/>
+	<parameter name="nrc" class="java.lang.String"/>
+	<parameter name="todayDate" class="java.util.Date"/>
+	<parameter name="customerAddress" class="java.lang.String"/>
+	<parameter name="agent" class="java.lang.String"/>
+	<title>
+		<band height="541" splitType="Stretch">
+			<staticText>
+				<reportElement x="4" y="6" width="520" height="23" uuid="18251daa-bdbd-4076-bf70-3458eae97d36"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14"/>
+				</textElement>
+				<text><![CDATA[အသက်အာမခံဌာန]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-18" y="29" width="520" height="23" uuid="1b8e8bcd-863b-4553-9a40-e6d8e8b75334"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="12"/>
+				</textElement>
+				<text><![CDATA[ပြင်းထန်သောရောဂါကုသမှုအာမခံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="298" y="102" width="55" height="20" uuid="632c351d-7a05-4097-b836-d6105dccb45c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ရက်စွဲ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="102" width="19" height="20" uuid="19fb5c74-cef0-4f0a-8f27-323b5de8cf2f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="352" y="81" width="19" height="20" uuid="20e6f544-4d42-44be-809f-6d5eaa981b14"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="61" width="55" height="20" uuid="9f87ffaa-7b31-4774-98d2-194c24c0c3b4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[သို့]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="370" y="81" width="150" height="20" uuid="54765523-3e44-451a-96ac-1c45f6323fa0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{proposalNo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="371" y="102" width="149" height="20" uuid="566416f8-a361-448b-abdf-4d0e723a1d7b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{todayDate}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{DATE_FORMAT}]]></patternExpression>
+			</textField>
+			<textField>
+				<reportElement x="26" y="102" width="171" height="35" uuid="75f765e0-7fc4-4042-b143-b20a00295f38"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerAddress}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="298" y="81" width="55" height="20" uuid="8fa6752a-a8cf-4240-a9ca-7fd99df7437d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[စာအမှတ်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="26" y="82" width="171" height="20" uuid="b695bde9-e228-4d83-831e-1600e1359327"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{customerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="26" y="184" width="394" height="19" uuid="10b3e31c-e8c8-4d68-84c4-280a059426d4"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အကြောင်းအရာ။	။ ပြင်းထန်သောရောဂါကုသမှုူအာမခံ  အဆိုပြုလွှာအားငြင်းပယ်ခြင်းကိစ္စ။]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="4" y="216" width="516" height="53" uuid="e2e21071-fce5-47cf-89a9-17289e15fed4"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["\t"+"\t"+"အထက်အကြောင်းအရာပါ ကိစ္စနှင့်ပတ်သက်၍ " + $P{customerName} + " နိုင်ငံသား / အမျိုးသားမှတ်ပုံတင်အမှတ် " + $P{nrc} + " ၏ အဆိုပြုလွှာဆေးစစ်ချက်များကို စိစစ်ရာတွင် အောက်ဖော်ပြပါ အချက်များကြောင့် လက်ခံဆောင်ရွက်ခြင်း မရှိပါကြောင်း ဝမ်းနည်းစွာဖြင့် ပြန်ကြားအပ်ပါသည်။"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="420" y="418" width="100" height="20" uuid="0b0f56a9-d311-4cf9-9601-984c129a7d18"/>
+				<textElement textAlignment="Center">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[မန်နေဂျာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="420" y="438" width="100" height="20" uuid="c5660724-f210-43f5-9f05-d06e15447d24"/>
+				<textElement textAlignment="Center">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အသက်အာမခံဌာန]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="4" y="459" width="100" height="20" uuid="aa4c22c2-dc72-44a8-9548-6164d7d53c50"/>
+				<textElement textAlignment="Justified">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[မိတ္တူကို-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="59" y="479" width="100" height="20" uuid="18458619-8975-40a3-95f7-d4adf97652db"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၁။ အသက်အာမခံဌာန]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="59" y="499" width="361" height="20" uuid="67b2e0e7-9270-4b6e-89ce-9c7c93b47771"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["၂။ အာမခံကိုယ်စားလှယ် "+ $P{agent} +" သို့ သိရှိပါရန်ပေးပို့ပါသည်။"]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+</jasperReport>

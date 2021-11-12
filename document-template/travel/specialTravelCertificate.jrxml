@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="specialTravelCertificate" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="30" rightMargin="30" topMargin="108" bottomMargin="30" resourceBundle="LANGUAGE_en" isIgnorePagination="true" uuid="7a050334-234e-4e25-a668-7fa2e189532e">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.2100000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="83"/>
+	<style name="table">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 1_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 2_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 3_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 4_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 5_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 6_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 7_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 8_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 9_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10">
+		<box>
+			<pen lineWidth="1.0" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TH" mode="Opaque" backcolor="#F0F8FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_CH" mode="Opaque" backcolor="#BFE1FF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<style name="table 10_TD" mode="Opaque" backcolor="#FFFFFF">
+		<box>
+			<pen lineWidth="0.5" lineColor="#000000"/>
+		</box>
+	</style>
+	<parameter name="date" class="java.util.Date"/>
+	<parameter name="policyNo" class="java.lang.String"/>
+	<parameter name="agentName" class="java.lang.String"/>
+	<parameter name="travellerName" class="java.lang.String"/>
+	<parameter name="idNo" class="java.lang.String"/>
+	<parameter name="fatherName" class="java.lang.String"/>
+	<parameter name="address" class="java.lang.String"/>
+	<parameter name="unit" class="java.lang.Integer"/>
+	<parameter name="departureDay" class="java.util.Date"/>
+	<parameter name="premium" class="java.lang.Double"/>
+	<parameter name="travelPlace" class="java.lang.String"/>
+	<parameter name="premiumRate" class="java.lang.Double"/>
+	<parameter name="arrivalDay" class="java.util.Date"/>
+	<parameter name="usageOfVehicle" class="java.lang.String"/>
+	<parameter name="agentCode" class="java.lang.String"/>
+	<parameter name="phoneNo" class="java.lang.String"/>
+	<parameter name="name" class="java.lang.String"/>
+	<parameter name="fullIdNo" class="java.lang.String"/>
+	<parameter name="beneficiarieaddress" class="java.lang.String"/>
+	<parameter name="phone" class="java.lang.String"/>
+	<parameter name="relationship" class="java.lang.String"/>
+	<parameter name="sumInsured" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="692" splitType="Stretch">
+			<staticText>
+				<reportElement x="1" y="71" width="533" height="23" uuid="0a4085cb-8389-4878-9b0f-9ac1e9ad8646"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အထူးခရီးသွားအာမခံလက်မှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="254" y="33" width="98" height="20" uuid="aaf78104-403a-4c6a-b18d-3d7025edf11d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ရက်စွဲ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="11" width="145" height="20" uuid="66fe0a01-0a71-4067-b4d0-34f0e95680d6"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{agentName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="352" y="11" width="183" height="20" uuid="33c16435-8ab5-40b1-a260-6175279e6895"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{policyNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="198" y="109" width="336" height="20" uuid="acc9535c-1072-484f-aa52-17cca89dfa11"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{travellerName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="109" width="187" height="20" uuid="dbd16880-70b4-4271-a898-4a97a865384c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူအမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="132" width="187" height="20" uuid="0c26797a-d493-43fd-9b10-b2afaa96a203"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[နိုင်ငံသားစိစစ်ရေး/နိုင်ငံကူးလက်မှတ်အမှတ်]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="198" y="132" width="336" height="20" uuid="fa53e5d1-b0e4-4c25-8f5b-3eadf58714ca"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{idNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="155" width="187" height="20" uuid="ae871260-b51c-4225-983e-8e23c5cf13a7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အဖအမည်]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="198" y="155" width="337" height="20" uuid="6e88c9ce-6358-4192-b4e8-aa8348ac7d4d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fatherName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="178" width="187" height="20" uuid="e0059827-f5ac-4f0f-a9a4-227945589f9d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[နေရပ်လိပ်စာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="223" width="187" height="20" uuid="e8cf9580-bc2e-41bf-93ce-3324d95a3a6a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံဝယ်ယူသည့်ယူနစ်/တန်ဖိုး]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="198" y="221" width="337" height="20" uuid="8d374d90-9e2d-4881-9964-70abb750c269"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{unit} + " Units" + " ( " + $P{sumInsured} + " MMK )"]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="246" width="187" height="20" uuid="8cd4b463-bcb1-44c7-b4d1-d99171526129"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကျသင့်ပရီမီယံ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="199" y="245" width="335" height="20" uuid="d755b108-892d-4a5a-af8f-f8d97b674f1e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{premium}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{CURRENCY_FORMAT}]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement x="1" y="268" width="187" height="20" uuid="fbaadb1d-975c-4886-9825-9d6a721ff4f9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသည့်ခရီးစဉ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="291" width="187" height="20" uuid="aae05b68-89dc-434a-9a22-12cc02b36d8d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသည့်ကာလ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="314" width="187" height="20" uuid="080e9403-194b-451d-88ec-a47c56e4f763"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အသုံးပြုသည့်ယာဉ်]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="198" y="269" width="336" height="20" isPrintWhenDetailOverflows="true" uuid="5ec6656a-733a-4eb1-83cc-6e0a0c02147d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{travelPlace}]]></textFieldExpression>
+			</textField>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="352" y="33" width="182" height="20" uuid="5de81835-338b-4ffe-87a6-e1591c137a1f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{DATE_FORMAT}]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement x="254" y="11" width="98" height="20" uuid="22c5c8c5-279b-4b30-b33b-0a295b8eae24"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံလက်မှတ်အမှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="11" width="100" height="20" uuid="673b1362-0ed3-4c32-b8ae-ffc826027079"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကိုယ်စားလှယ်အမည်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="277" y="293" width="64" height="20" uuid="d6733e91-1f30-4a70-8b58-06c9635371ca"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{arrivalDay}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{DATE_FORMAT}]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement x="261" y="292" width="16" height="20" uuid="164f7d9f-daa6-4f9a-95b7-051f67b746d2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[to]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="198" y="292" width="64" height="20" uuid="0520780f-8d66-43bf-91d1-19d9d90ea06e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{departureDay}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{DATE_FORMAT}]]></patternExpression>
+			</textField>
+			<textField>
+				<reportElement x="198" y="314" width="336" height="20" isRemoveLineWhenBlank="true" uuid="d62c890c-5097-4742-a453-61000ca67bb7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{usageOfVehicle}]]></textFieldExpression>
+				<patternExpression><![CDATA[$R{DATE_FORMAT}]]></patternExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="FixRelativeToBottom" x="302" y="566" width="192" height="20" uuid="06749d96-2bf8-48dc-b860-592c7c3b36c7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံလက်ခံသူ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="358" width="187" height="20" uuid="ea8aaa25-1a27-486e-b944-2811da99eddd"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[နိုင်ငံသားစိစစ်ရေး/နိုင်ငံကူးလက်မှတ်အမှတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="382" width="187" height="20" uuid="acf7b052-467c-464e-9b9c-d3bcb4d91d4f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အဖအမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="404" width="187" height="20" uuid="994f3de0-1b1a-4e30-97ee-f6ca49f61abf"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[နေရပ်လိပ်စာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="427" width="187" height="20" uuid="2c7fc65b-49db-4461-9892-5d0dc1d5d000"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ဖုန်းနံပါတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="200" width="187" height="20" uuid="a2f08bf4-4e7d-4c3e-b453-1ca6f579e127"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ဖုန်းနံပါတ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="450" width="187" height="20" uuid="ea6c05a6-6843-4d83-9d19-adff6a6e8fc0"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[တော်စပ်ပုံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="2" y="337" width="187" height="20" uuid="2476265c-0346-4053-af29-eb1367488c45"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အကျိုးခံစားခွင့်လွှဲပြောင်းခံရသူအမည်]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="200" width="335" height="20" uuid="20120187-7ccf-43bb-beef-05b1437576da"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{phoneNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="178" width="335" height="20" uuid="3cb4d821-4ad1-4b61-ac3c-1e201ef99d82"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{address}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="2" y="33" width="100" height="20" uuid="54ea91b1-d9e2-48c9-9f41-85212307202b"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကိုယ်စားလှယ်အမှတ်]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="98" y="33" width="145" height="20" uuid="a67d2231-2315-4b4b-9e0b-523caa3e6f5f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{agentCode}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="198" y="337" width="336" height="20" uuid="f49e45f2-105a-42bf-b7ac-4681ee66bfb8"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{name}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="198" y="359" width="336" height="20" uuid="204e4c15-9a92-4177-86a8-049263fb6adb"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fullIdNo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="383" width="335" height="20" uuid="5b14d623-3d67-40fd-a0ec-4edcb5e22362"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{fatherName}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="404" width="335" height="20" uuid="4d40eaf8-60d4-4a61-8c46-01140509e66d"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{beneficiarieaddress}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="427" width="335" height="20" uuid="a6244474-50ac-4ce3-8856-bca941112993"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{phone}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="199" y="448" width="335" height="20" uuid="ac8a83a7-f79a-4d84-92e3-3cfabe44f872"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{relationship}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

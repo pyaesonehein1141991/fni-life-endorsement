@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="LifeClaimInformLetter" pageWidth="595" pageHeight="842" columnWidth="487" leftMargin="54" rightMargin="54" topMargin="27" bottomMargin="20" resourceBundle="LANGUAGE_en" uuid="5b6e50a9-0316-4848-af6b-eede806aa990">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.4641000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="51"/>
+	<parameter name="todayDate" class="java.lang.String"/>
+	<parameter name="SI" class="java.lang.String"/>
+	<parameter name="policyNo" class="java.lang.String"/>
+	<parameter name="product" class="java.lang.String"/>
+	<parameter name="currentDate" class="java.lang.String"/>
+	<parameter name="customerName" class="java.lang.String"/>
+	<parameter name="activepolicystartdate" class="java.lang.String"/>
+	<parameter name="activepolicyenddate" class="java.lang.String"/>
+	<parameter name="period" class="java.lang.Integer"/>
+	<parameter name="paymentType" class="java.lang.String"/>
+	<parameter name="premium" class="java.lang.String"/>
+	<parameter name="lastpaymentDate" class="java.lang.String"/>
+	<parameter name="paymentYear" class="java.lang.Integer"/>
+	<parameter name="dueNo" class="java.lang.Integer"/>
+	<parameter name="receivePremium" class="java.lang.String"/>
+	<parameter name="paidupAmount" class="java.lang.String"/>
+	<parameter name="paymentMonth" class="java.lang.Integer"/>
+	<parameter name="proposalNo" class="java.lang.String"/>
+	<detail>
+		<band height="789" splitType="Stretch">
+			<staticText>
+				<reportElement positionType="Float" x="61" y="608" width="64" height="20" uuid="6326b7d9-c2e9-4dfb-b2f2-340aef81bacb"/>
+				<textElement>
+					<font fontName="Pyidaungsu" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Dy-M(U/W)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="61" y="710" width="64" height="20" uuid="424fcc83-00f5-4e85-85bb-e51b5d50f1d9"/>
+				<textElement>
+					<font fontName="Pyidaungsu" isItalic="false" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[GM(Life)]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="33" width="61" height="20" uuid="83588726-e8e2-491b-9237-b28903ad7f52"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{todayDate}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="161" y="0" width="168" height="20" uuid="cc52f5da-8042-4d4f-b001-c9fa48f5ae47"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ရုံးတွင်းပေးစာ (သို့မဟုတ်) ရုံးတွင်းမှတ်စု]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="432" y="33" width="55" height="753" uuid="01a0d0d9-4ddb-4db6-948d-a9aa2db076f5"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="33" width="61" height="753" uuid="6b6ad711-850f-4143-8951-b81318237352"/>
+			</rectangle>
+			<rectangle>
+				<reportElement mode="Transparent" x="60" y="33" width="371" height="753" uuid="407da827-a82b-49be-95a1-ba886369724b"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="432" y="33" width="55" height="31" uuid="2c15aded-1ff4-4dad-8cac-a51265886cf3"/>
+				<textElement>
+					<font fontName="Pyidaungsu" size="10"/>
+					<paragraph leftIndent="4"/>
+				</textElement>
+				<text><![CDATA[အလံအမှတ်အသား]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="71" y="180" width="160" height="23" uuid="674c9d7e-5aec-415f-b778-92bbc033a247"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[Policy No]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="231" y="182" width="169" height="20" uuid="2aeed9da-2c7d-458f-8048-3254c1f7484e"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{policyNo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="208" y="37" width="100" height="24" uuid="28f8f289-004d-43db-8fec-021427ceaa7e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အသက်အာမခံဌာန]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="176" y="79" width="159" height="20" uuid="194a1c09-faf6-4c11-9c2c-bafbdd37a55b"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[စာရင်းပိတ် ခွင့်ပြုမိန့်တောင်းခံလွှာ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="142" width="160" height="18" uuid="3be89ffc-2a5e-4c24-8603-5d5fc69fd9eb"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[လျှောက်ထားသည့်ရက်စွဲ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="162" width="160" height="18" uuid="6cded303-8ff1-4ae8-b5e1-28bb8eb6685d"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူအမည်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="204" width="160" height="34" uuid="e9d853fe-22f2-4455-b7db-5f2851c8f3b2"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံသက်တမ်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="241" width="160" height="21" uuid="b2b49558-006c-4406-befe-52ef0dee19e8"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ပေးသွင်းပုံစနစ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="288" width="159" height="20" uuid="af1cfbf6-0c5e-4003-a19b-2dbe1d6f07b7"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၁လပရီမီယံ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="72" y="311" width="159" height="20" uuid="4d701b7c-c2a6-4e41-bb43-ceda0a9a0c12"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[Due From Date]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="334" width="158" height="28" uuid="b40915f8-03ce-406d-b008-8ba82a96ad47"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ပေးသွင်းပြီးပရီမီယံစုစုပေါင်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="74" y="362" width="157" height="20" uuid="dcab2d08-a5e6-482d-9229-5c494cfeb976"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[စာရင်းပိတ်တန်ဖိုး]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="67" y="420" width="343" height="140" uuid="7294b4f7-aa75-4fca-aa2b-3e4698cb58a2"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[
+စာရင်းပိတ်ပေါ်လစီအဖြစ် ပြောင်းလဲခွင့်ပြုပါရန် တင်ပြအပ်ပါသည်။
+						Regard
+
+
+
+
+					    Operation Assistant]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="71" y="265" width="160" height="20" uuid="2032a0ca-aeae-4cbe-acb1-8f0a868176af"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[SI]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="231" y="142" width="169" height="18" uuid="f65d373f-48ad-4b80-8950-895de6a166e6"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{currentDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="162" width="169" height="20" uuid="ba1c18ee-a755-4c3e-8502-dd3b83af3653"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{customerName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="241" width="170" height="21" uuid="94a05336-07e0-4946-98dc-b584d6b28486"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{paymentType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="266" width="170" height="19" uuid="ad1a44e3-67b3-429a-b879-63d60d7c8523"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{SI}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="289" width="170" height="19" uuid="68788d74-0aca-4037-bc74-10328dd744c2"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{premium}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="312" width="169" height="19" uuid="c9b166a7-f6b6-4809-9a96-21a4d1764a92"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{lastpaymentDate}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="334" width="169" height="28" uuid="e9c6ecb6-d57f-47d7-bf25-b715adad65c4"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{receivePremium}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="230" y="359" width="170" height="23" uuid="f61c5e67-4c2c-4e94-82b2-84161b0d651e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-"+$P{paidupAmount}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="231" y="203" width="200" height="35" uuid="6a969a2f-73c8-47d7-8e55-0ff18c38e187"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA["-("+$P{activepolicystartdate}+") မှ  ("+$P{activepolicyenddate} +")ထိ ၊ ("+$P{period} +")နှစ် "]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="176" y="59" width="216" height="22" uuid="3b58d534-a7e4-4170-ad53-acadbc0f348f"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{product}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="360" y="10" width="174" height="22" uuid="22d9ac25-ed2e-404c-b50b-b1be06813862"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{proposalNo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

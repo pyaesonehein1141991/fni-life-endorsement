@@ -1,0 +1,214 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fu="http://java.sun.com/jsf/fileUpload" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="#{label['ADDNEWTRAVELPROPOSAL_TITLE']}" />
+	<ui:param name="headerRendered" value="true" />
+	<ui:define name="content">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<link href="#{request.contextPath}/css/inputText.css" rel="stylesheet" type="text/css" />
+		<h:form enctype="multipart/form-data" id="travelProposalEntryForm">
+			<p:growl escape="false" globalOnly="true" life="8000" showDetail="true" />
+			<p:panelGrid style="margin: 10px;" columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-fluid">
+				<p:panelGrid id="travelPanel" style="margin: 10px;" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:outputLabel />
+					<p:message for="productName" display="text" />
+					<h:outputText styleClass="input-label mandatory" value="Product Name" />
+					<p:selectOneMenu converter="omnifaces.SelectItemsIndexConverter" id="productName" value="#{AddNewTravelProposalActionBean.travelExpress.product}">
+						<f:selectItem itemLabel="Select Product" />
+						<f:selectItems itemLabel="#{product.name}" itemValue="#{product}" value="#{AddNewTravelProposalActionBean.productList}" var="product" />
+<!-- 						<p:ajax event="change" listener="#{AddNewTravelProposalActionBean.productChange}" process="@this" />
+ -->					</p:selectOneMenu>
+					<p:outputLabel />
+					<p:message for="express" display="text" />
+					<h:outputText styleClass="input-label mandatory" value="Express Name " />
+					<p:panelGrid styleClass="ui-panelgrid-blank" id="expressPanelGroup">
+						<div style="margin: -6px;" class="ui-g ui-fluid" id="expressPanelGroup">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewTravelProposalActionBean.selectExpress()}" id="selectExpressDialogLink"
+									process="@this">
+									<p:ajax event="dialogReturn" listener="#{AddNewTravelProposalActionBean.returnExpress}" update="express" />
+								</p:commandButton>
+								<p:inputText id="express" readonly="true"
+									value="#{AddNewTravelProposalActionBean.travelExpress.express == null ? '' : AddNewTravelProposalActionBean.travelExpress.express.name}" />
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewTravelProposalActionBean.travelExpress.setExpress(null)}" process="@this" update="express" />
+							</div>
+						</div>
+					</p:panelGrid>
+					<p:outputLabel />
+					<p:message for="noOfPassenger" display="text" />
+					<h:outputText styleClass="input_label mandatory" value="No. Of Passenger " />
+					<p:inputText id="noOfPassenger" require="true" value="#{AddNewTravelProposalActionBean.travelExpress.noOfPassenger}" />
+					<p:outputLabel />
+					<p:message for="noOfUnits" display="text" />
+					<h:outputText styleClass="input_label mandatory" value="No. Of Units" />
+					<p:inputText id="noOfUnits" require="true" value="#{AddNewTravelProposalActionBean.travelExpress.noOfUnit}" />
+					<p:commandButton action="#{AddNewTravelProposalActionBean.addExpress()}" id="addBtn" style="width:80px;" update="travelPanel expressListPanel expressTable"
+						value="#{AddNewTravelProposalActionBean.isCreateNew == true ? 'Add' : 'Update'}" />
+				</p:panelGrid>
+			</p:panelGrid>
+			<p:separator style="height:3px; margin-top:-1px;" />
+			<h:commandLink action="#{AddNewTravelProposalActionBean.createNewExpress}">
+				<f:ajax render="travelPanel" />
+				<h:panelGrid columns="2">
+					<p:graphicImage styleClass="#{ApplicationSetting.addStyleClass}" value="#{ApplicationSetting.addIcon}" />
+					<h:outputText styleClass="command-link" value="#{label['COMMON_ADDNEW_LINK']}" />
+				</h:panelGrid>
+			</h:commandLink>
+			<p:message for="expressListPanel" />
+			<p:outputPanel id="expressListPanel">
+				<p:dataTable id="expressTable" rowIndexVar="index" rowStyleClass="#{(index mod 2) eq 0 ? 'second-row' : 'first-row'}" value="#{AddNewTravelProposalActionBean.expressList}"
+					var="express">
+					<p:column headerText="No." style="width:30px;text-align:center;">
+						<h:outputText value="#{index + 1}" />
+					</p:column>
+					<p:column headerText="Product" style="width:120px;">
+						<h:outputText value="#{express.product.name}" />
+					</p:column>
+					<p:column headerText="Express Name" style="width:160px;">
+						<h:outputText value="#{express.express.name}" />
+					</p:column>
+					<p:column headerText="No. of Passenger" style="width:100px;text-align:center;">
+						<h:outputText value="#{express.noOfPassenger}" />
+					</p:column>
+					<p:column headerText="No. of Unit" style="width:65px;text-align:center;">
+						<h:outputText value="#{express.noOfUnit}" />
+					</p:column>
+					<p:column headerText="NetPremium" style="width:100px;text-align:right;">
+						<h:outputText value="#{express.premium}">
+							<f:convertNumber pattern="#{ApplicationSetting.currencyFormat3}" />
+						</h:outputText>
+					</p:column>
+					<p:column headerText="#{label['EDIT_BTN']}" style="width:20px;">
+						<p:commandButton styleClass="green-button" icon="fa fa-paint-brush" action="#{AddNewTravelProposalActionBean.prepareEditExpressInfo(express)}" id="editExpressInfoLink"
+							update=":travelProposalEntryForm:travelPanel" />
+					</p:column>
+					<p:column headerText="#{label['COMMON_DELETE_LABEL']}" style="width:20px;">
+						<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewTravelProposalActionBean.removeExpress(express)}" id="removeExpressInfoLink"
+							update=":travelProposalEntryForm:expressListPanel">
+							<p:confirm header="Confirmation" message="#{label['COMMON_MSG_DELETE_CONFIRM_LABEL']}" icon="fa fa-exclamation-triangle" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</p:outputPanel>
+		</h:form>
+		<h:form id="travelProposalForm">
+			<p:panelGrid style="margin: 10px;" columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-fluid">
+				<p:panelGrid style="margin: 10px;" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:outputLabel />
+					<p:message for="saleUserType" display="text" />
+					<h:outputText styleClass="input-label mandatory" value="Sale Channel" />
+					<p:selectOneMenu id="saleUserType" required="true" value="#{AddNewTravelProposalActionBean.travelProposal.saleChannelType}">
+						<f:selectItem itemLabel="Select Sale Channel" />
+						<f:selectItems value="#{AddNewTravelProposalActionBean.saleChannel}" var="item" itemLabel="#{item.label}" />
+						<p:ajax event="valueChange" listener="#{AddNewTravelProposalActionBean.changeSaleEvent}" update="@form" />
+					</p:selectOneMenu>
+					<p:outputLabel />
+					<p:message for="agent" display="text" />
+					<h:outputText styleClass="input-label mandatory" value="Agent" rendered="#{AddNewTravelProposalActionBean.travelProposal.saleChannelType eq 'AGENT'}" />
+					<h:outputText styleClass="input-label" value="Agent" rendered="#{AddNewTravelProposalActionBean.travelProposal.saleChannelType eq 'DIRECTMARKETING'}" />
+					<p:panelGrid styleClass="ui-panelgrid-blank"
+						rendered="#{(AddNewTravelProposalActionBean.travelProposal.saleChannelType eq 'AGENT') or (AddNewTravelProposalActionBean.travelProposal.saleChannelType eq 'DIRECTMARKETING')}">
+						<div style="margin: -6px;" class="ui-g ui-fluid" id="agentPanelGroup">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewTravelProposalActionBean.selectAgent()}" id="selectAgentDialogLink" process="@this">
+									<p:ajax event="dialogReturn" listener="#{AddNewTravelProposalActionBean.returnAgent}" update="agent" />
+								</p:commandButton>
+								<p:inputText id="agent"
+									readonly="#{AddNewTravelProposalActionBean.travelProposal.saleChannelType eq 'AGENT' and AddNewTravelProposalActionBean.travelProposal.agent.fullName == null? facesContext.currentPhaseId.ordinal eq 6 : true}"
+									required="#{AddNewTravelProposalActionBean.travelProposal.saleChannelType eq 'AGENT'}"
+									value="#{AddNewTravelProposalActionBean.travelProposal.agent == null ? '' : AddNewTravelProposalActionBean.travelProposal.agent.fullName}" />
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewTravelProposalActionBean.travelProposal.setAgent(null)}" process="@this" update="agent" />
+							</div>
+						</div>
+					</p:panelGrid>
+					<p:outputLabel />
+					<p:message for="fromDate" display="text" />
+					<h:outputText styleClass="input_label mandatory" value=" From Date " />
+					<p:calendar id="fromDate" pattern="#{ApplicationSetting.dateFormat}" required="true" showOn="button" timeZone="#{ApplicationSetting.timeZone}"
+						value="#{AddNewTravelProposalActionBean.travelProposal.fromDate}" />
+					<p:outputLabel />
+					<p:message for="toDate" display="text" />
+					<h:outputText styleClass="input_label mandatory" value="To Date " />
+					<p:calendar id="toDate" pattern="#{ApplicationSetting.dateFormat}" showOn="button" required="true" timeZone="#{ApplicationSetting.timeZone}"
+						value="#{AddNewTravelProposalActionBean.travelProposal.toDate}" />
+					<p:outputLabel />
+					<p:message for="submittedDate" display="text" />
+					<h:outputText styleClass="input_label mandatory" value="Submitted Date " />
+					<p:calendar id="submittedDate" pattern="#{ApplicationSetting.dateFormat}" showOn="button" required="true" timeZone="#{ApplicationSetting.timeZone}"
+						value="#{AddNewTravelProposalActionBean.travelProposal.submittedDate}" />
+					<p:outputLabel />
+					<p:message for="branch" display="text" />
+					<h:outputText styleClass="input_label mandatory" value="Branch " />
+					<p:selectOneMenu id="branch" converter="omnifaces.SelectItemsIndexConverter" required="true" value="#{AddNewTravelProposalActionBean.travelProposal.branch}"
+						filter="true" filterMatchMode="startsWith">
+						<f:selectItems itemLabel="#{branch.name}" itemValue="#{branch}" value="#{sessionScope.LoginUser.accessBranchList}" var="branch" />
+					</p:selectOneMenu>
+					
+					 <p:outputLabel />
+					<p:message for="salesPoints" display="text"/>
+						        <h:outputText styleClass="input-label mandatory" value="Sales Points"  />
+						       
+								<p:panelGrid styleClass="ui-panelgrid-blank" >
+									<div style="margin:-6px -7px;" class="ui-g ui-fluid" id="salesPointsPanelGroup">
+										<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+											<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewTravelProposalActionBean.selectSalesPoints()}" id="selectSalesPointsDialogLink"
+												process="@this">
+												<p:ajax event="dialogReturn" listener="#{AddNewTravelProposalActionBean.returnSalesPoints}" update="salesPoints" />
+											</p:commandButton>
+											<p:inputText id="salesPoints" readonly="#{AddNewTravelProposalActionBean.travelProposal.salesPoints == null? facesContext.currentPhaseId.ordinal eq 6 : true}" required="true"
+												value="#{(AddNewTravelProposalActionBean.travelProposal.salesPoints == null ? '' :AddNewTravelProposalActionBean.travelProposal.salesPoints.name)}" />
+											<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewTravelProposalActionBean.travelProposal.setSalesPoints(null)}" process="@this" update="salesPoints" />
+										</div>
+									</div>
+									</p:panelGrid>
+					
+					<p:outputLabel />
+					<p:message display="text" for="currencyType" />
+					<h:outputText styleClass="input-label mandatory" value="Currency Type" />
+					<p:selectOneMenu id="currencyType" converter="omnifaces.SelectItemsIndexConverter" required="true" 
+						value="#{AddNewTravelProposalActionBean.travelProposal.currency}">
+						<f:selectItem itemLabel="Selected Currency" />
+						<f:selectItems itemLabel="#{currency.description}" itemValue="#{currency}" value="#{AddNewTravelProposalActionBean.currencyList}" var="currency" />
+					</p:selectOneMenu>
+					<p:outputLabel />
+					<p:message for="paymentType" display="text" />
+					<h:outputText styleClass="input_label mandatory" value="Payment Type " />
+					<p:panelGrid styleClass="ui-panelgrid-blank" id="paymentTypePanelGroup">
+						<div style="margin: -6px;" class="ui-g ui-fluid" id="paymentTypePanelGroup">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewTravelProposalActionBean.selectPaymentType()}" id="selectPaymentTypeDialogLink"
+									process="@this">
+									<p:ajax event="dialogReturn" listener="#{AddNewTravelProposalActionBean.returnPaymentType}" update="paymentType" />
+								</p:commandButton>
+								<p:inputText id="paymentType" readonly="#{AddNewTravelProposalActionBean.travelProposal.paymentType == null ? facesContext.currentPhaseId.ordinal eq 6 : true}"
+									required="true" value="#{AddNewTravelProposalActionBean.travelProposal.paymentType == null ? '' : AddNewTravelProposalActionBean.travelProposal.paymentType.name}" />
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewTravelProposalActionBean.travelProposal.setPaymentType(null)}" process="@this"
+									update="paymentType" />
+							</div>
+						</div>
+					</p:panelGrid>
+					<p:outputLabel />
+					<p:message for="responPerson" display="text" />
+					<h:outputText styleClass="input_label mandatory" id="responsiblePerson" value="Responsible Person " />
+					<p:panelGrid styleClass="ui-panelgrid-blank" id="responsiblePersonPanel">
+						<div style="margin: -6px;" class="ui-g ui-fluid" id="responsiblePersonPanel">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewTravelProposalActionBean.selectUser()}" id="selectUserDialogLink" process="@this">
+									<p:ajax event="dialogReturn" listener="#{AddNewTravelProposalActionBean.returnUser}" update="responPerson" />
+								</p:commandButton>
+								<p:inputText id="responPerson" required="true" readonly="#{AddNewTravelProposalActionBean.responsiblePerson  == null ? facesContext.currentPhaseId.ordinal eq 6 : true}"
+									value="#{AddNewTravelProposalActionBean.responsiblePerson == null ? '' : AddNewTravelProposalActionBean.responsiblePerson.name}" />
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewTravelProposalActionBean.setResponsiblePerson(null)}" process="@this" update="responPerson" />
+							</div>
+						</div>
+					</p:panelGrid>
+					<p:commandButton action="#{AddNewTravelProposalActionBean.addNewTravelPropoasl()}" id="submitBtn" update="travelProposalForm" value="Submit" style="width:80px;" />
+				</p:panelGrid>
+			</p:panelGrid>
+		</h:form>
+		<!-- Confirmation Dialog -->
+		<p:confirmDialog global="true" showEffect="fade" hideEffect="fade">
+			<p:commandButton value="Yes" type="button" styleClass="ui-confirmdialog-yes" icon="fa fa-check" />
+			<p:commandButton value="No" type="button" styleClass="ui-confirmdialog-no" icon="fa fa-times" />
+		</p:confirmDialog>
+	</ui:define>
+</ui:composition>

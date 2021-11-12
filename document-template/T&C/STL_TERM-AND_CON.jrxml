@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="STL_TERM-AND_CON" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="120" bottomMargin="0" resourceBundle="TERM_CONDITION_myn" uuid="100fbbc1-e827-4a2f-a8f9-cec62f13850d">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="409"/>
+	<detail>
+		<band height="722" splitType="Stretch">
+			<image>
+				<reportElement x="-40" y="-120" width="595" height="842" uuid="4a697a4a-25f4-45b9-adf7-e578d8395084"/>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream(org.apache.commons.codec.binary.Base64.decodeBase64($R{POLICY4FLY}.getBytes()))]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="0" y="2" width="515" height="36" uuid="a656a420-e220-47ac-9f1b-f07d2660c83e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[နှစ်တို ငွေပင်ငွေရင်း အသက်အာမခံ ပေါ်လစီ အကျိုးခံစားခွင့်များနှင့် စည်းကမ်းချက်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="201" width="515" height="39" uuid="fe9518a1-b8af-47d5-af67-f258e5396079"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[လည်းကောင်း၊ မတော်တဆမှုကြောင့်သော်လည်းကောင်း ထာဝစဉ်လုံးဝမသန်စွမ်း ဖြစ်ပါက ကုမ္ပဏီမှ ရရှိရန်ငွေများကို နှုတ်၍ ကျန်အာမခံထားငွေကို အာမခံထားသူသို့ တစ်လုံးတည်းထုတ်ပေးပါမည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="455" width="515" height="65" uuid="6694547f-bce5-46c7-84f1-c31bdcd35b34"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[မပြုနိုင်တော့သဖြင့် ပေါ်လစီကို စာရင်းပိတ်ပေးရန် အကြောင်းကြားလာပါက ဤကုမ္ပဏီက စာရင်းပိတ်ပေါ်လစီအဖြစ် ပြောင်းလဲ သတ်မှတ်ပေးပါမည်။အာမခံသက်တမ်း စေ့ရောက်သောနေ့မှသာ ပြန်လည်ထုတ်ယူ၍ ရမည်ဖြစ်သည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="1" y="96" width="513" height="20" uuid="96e4e39f-bd29-4614-97a7-750d12d729fe"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[စေ့ရောက်သည့်နေ့တွင် အာမခံထားငွေကို တစ်လုံးတည်းထုတ်ယူနိုင်သည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="38" width="515" height="20" uuid="48164451-e7e7-46e5-9529-2d305be08b89"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="11" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အကျိုးခံစားခွင့်များ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="127" width="399" height="20" uuid="f48a6dc9-dc60-49fb-8ae7-31b68fcfec39"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[အာမခံသက်တမ်းအတွင်း ပေါ်လစီတည်မြဲနေစဉ်(သို့မဟုတ်) အလိုအလျောက် ပေါ်လစီတည်မြဲနေစဉ်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="603" width="399" height="20" uuid="d7c531c2-907b-4fe0-be66-c827d94f178c"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူအနေဖြင့် တစ်နှစ်တစ်ဆက်တည်း ပရီမီယံပေးသွင်းပြီးသည့် ပေါ်လစီတစ်စောင်မှ ချေးငွေ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="539" width="515" height="64" uuid="4339b66f-8c18-4877-80cc-38aa971ab717"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[နိုင်တော့သဖြင့် ပေါ်လစီကို အမ်းငွေရသင့်တန်ဖိုးထုတ်ပေးရန် အကြောင်းကြားလာလျှင် အမ်းငွေရသင့်တန်ဖိုးနှုန်း ဇယားပါအတိုင်း ရခွင့်ရှိသည့်အမ်းငွေရသင့်တန်ဖိုးကို အာမခံထားသူသို့ တစ်လုံးတည်းထုတ်ပေးပါမည်။အမ်းငွေထုတ်ယူရာတွင် မိမိပေးသွင်းထားသော ပရီမီယံမှ အပြည့်အဝရရှိမည် မဟုတ်ပါ။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="-3" y="180" width="184" height="20" uuid="2bf4deba-d553-4cd8-be32-0f680977a766"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ထာဝစဉ်လုံးဝမသန်စွမ်းအကျိုးခံစားခွင့်  -]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="290" width="515" height="20" uuid="352bfbaf-b001-4986-8910-1893c12e67b7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(ခ) လက်ကောက်ဝတ်အထက်ပိုင်းမှ လက်နှစ်ဖက်ပြတ်ခြင်း၊ လုံးဝအသုံးပြု၍မရခြင်း။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="520" width="399" height="19" uuid="394be281-ae37-4774-9754-a955acf648f0"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကျသင့်ပရီမီယံကို တစ်နှစ်တစ်ဆက်တည်း ပေးသွင်းပြီး ပရီမီယံကို ဆက်လက်ပေးသွင်းခြင်း မပြုနိုင်]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="147" width="515" height="20" uuid="4514a145-2645-4472-92d1-a789bcd6cce1"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူသေဆုံးပါက ကုမ္ပဏီမှရရှိရန်ငွေများကိုနှုတ်၍ ကျန် အာမခံထားငွေကို အကျိုးခံစားခွင့်ရှိသူအားထုတ်ပေးပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="603" width="115" height="20" uuid="15276a2a-a1d1-4397-b145-51da839aecf9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ချေးငွေရနိုင်ခြင်း        -]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="180" width="333" height="20" uuid="34e0d9b9-1bf1-4c29-8f7f-4fc91d67b1a6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ပေါ်လစီတည်မြဲနေစဉ် ကာလအတွင်း အာမခံထားသူသည် ရောဂါကြောင့်သော် ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="341" width="515" height="34" uuid="b1f285d4-a816-45b6-a1a9-6afcecf8d562"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(ဃ) မျက်စိတစ်ဖက် လုံးဝကွယ်ခြင်းနှင့် လက်ကောက်ဝတ်အထက်ပိုင်း လက်တစ်ဖက်ပြတ်ခြင်း၊ အသုံးပြု၍ မရခြင်း။ ခြေကျင်းဝတ်အထက်ပိုင်း ခြေထောက်တစ်ဖက်ပြတ်ခြင်း၊ အသုံးပြု၍ မရခြင်း။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="240" width="515" height="20" uuid="364172c0-0c01-4ce1-820d-345fbef72bee"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[ထာဝစဉ်မသန်စွမ်းဖြစ်ခြင်းဆိုသည်မှာ-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="436" width="124" height="20" uuid="a8d12705-3a79-4d13-934a-359876a747a7"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ပေါ်လစီစာရင်းပိတ်ခြင်း   -]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="623" width="515" height="37" uuid="0634df6d-3581-4154-ac27-20e6076b37e7"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ရယူနိုင်ခွင့်ရှိသည်။ ချေးယူနိုင်မည့် ငွေပမာဏမှာ အမ်းငွေရသင့် တန်ဖိုးနှုန်းထား ဇယားပါအတိုင်း ရခွင့်ရှိသည့် စုစုပေါင်း အမ်းငွေ ရသင့်တန်ဖိုး၏ ၉၀% အထိဖြစ်ပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="265" width="515" height="20" uuid="636ab4bd-e57c-4dc8-bff6-fe6b572248bc"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(က) မျက်လုံးနှစ်ဖက်လုံးဝကွယ်ခြင်း၊]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="385" width="515" height="37" uuid="bd10633c-2ea9-43dc-a800-347970ec265c"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(အထက်ပါအကြောင်းအရာများ၌ အကြုံးမဝင်သော်လည်း ကုသသည့်ဆေးရုံမှ အထူးကုဆရာဝန်၏ ထာဝစဉ်လုံးဝမသန်စွမ်း ဖြစ်ကြောင်း ထောက်ခံချက် ရရှိလျှင်ထာဝစဉ်မသန်စွမ်း အကျိုးခံစားခွင့် ရရှိနိုင်ပါသည်။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="315" width="515" height="20" uuid="e737622b-057c-41c4-865c-2dc7af4f2b0d"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="false"/>
+				</textElement>
+				<text><![CDATA[(ဂ) ခြေကျင်းဝတ်အထက်ပိုင်းမှ ခြေထောက်နှစ်ဖက်ပြတ်ခြင်း လုံးဝအသုံးပြု၍ မရခြင်း။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="520" width="115" height="20" uuid="ce15d967-094a-4ea3-a524-8665f9e5dc0f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" isBold="true"/>
+				</textElement>
+				<text><![CDATA[အမ်းငွေထုတ်ယူခြင်း     -]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="124" y="436" width="390" height="19" uuid="33025d16-b84f-476f-8edc-62a4aeebf3a8"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[ကျသင့်ပရီမီယံကို တစ်နှစ်တစ်ဆက်တည်း ပေးသွင်းပြီးပါက ပရီမီယံကို ဆက်လက်ပေးသွင်းခြင်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="97" y="76" width="417" height="18" uuid="731c3214-68be-4d54-9734-f86f77497da8"/>
+				<textElement>
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူသည် ပရီမီယံအပြည့်သွင်းပြီးနောက် ပေါ်လစီတွင်ဖော်ပြထားသည့် အာမခံသက်တမ်း]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="127" width="124" height="20" uuid="e75852fc-a1f0-4f6d-9c6c-45124513d836"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[သေဆုံးမှုအကျိုးခံစားခွင့် -]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="74" width="92" height="20" uuid="f60ef3ed-4200-4a68-8736-97ba672fec15"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[နှစ်စေ့အကျိုးခံစားခွင့်        -]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

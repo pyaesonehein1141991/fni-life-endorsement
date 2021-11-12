@@ -1,0 +1,64 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:fu="http://java.sun.com/jsf/fileUpload" xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="Add Express Detail" />
+	<ui:param name="headerRendered" value="true" />
+	<ui:define name="content">
+		<h:form enctype="multipart/form-data" id="expressListForm">
+			<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<h:outputLabel for="startDate" value="Submitted Date From" />
+					<p:calendar id="startDate" pattern="#{ApplicationSetting.dateFormat}" showOn="button" value="#{EnquiryExpressDetailActionBean.criteria.startDate}" />
+					<h:outputLabel for="endDate" value="Submitted Date To" />
+					<p:calendar id="endDate" pattern="#{ApplicationSetting.dateFormat}" showOn="button" value="#{EnquiryExpressDetailActionBean.criteria.endDate}" />
+				</p:panelGrid>
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<h:outputText styleClass="input-label" value="Branch" />
+					<p:selectOneMenu id="branch" converter="omnifaces.SelectItemsIndexConverter"  value="#{EnquiryExpressDetailActionBean.criteria.branch}"
+						filter="true" filterMatchMode="startsWith">
+						<f:selectItem itemLabel="Select Branch"/>
+						<f:selectItems value="#{EnquiryExpressDetailActionBean.user.accessBranchList}" var="item" itemLabel="#{item.name}" />
+						<p:ajax event="valueChange" update="@form" />
+					</p:selectOneMenu>
+					<h:outputText for="proposalNo" value="Proposal No." />
+					<p:inputText id="proposalNo" value="#{EnquiryExpressDetailActionBean.criteria.proposalNo}" />
+				</p:panelGrid>
+			</p:panelGrid>
+			<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+				<p:commandButton action="#{EnquiryExpressDetailActionBean.findTravelProposalListByEnquiryCriteria()}"
+					update="expressListForm expressListTable:proposalTable" value="Search" />
+				<p:commandButton action="#{EnquiryExpressDetailActionBean.resetCriteria}" update="expressListForm expressListTable:proposalTable" value="Reset" />
+			</p:panelGrid>
+		</h:form>	
+		<h:form id="expressListTable">
+			<p:dataTable id="proposalTable" rowIndexVar="index" style="width:100%;" styleClass="borderless" value="#{EnquiryExpressDetailActionBean.travelProposalList}" var="proposal">
+				<p:column>
+				<p:panel collapsed="true" header="Proposal No. : #{proposal.proposalNo}" id="dataTablePanel" style="border: none;" toggleable="true">
+					<p:dataTable id="expressTable" rowIndexVar="index" rowStyleClass="#{(index mod 2) eq 0 ? 'second-row' : 'first-row'}" style="width:100%;" value="#{proposal.expressList}"
+						var="express">
+						<p:column width="20%">
+							<p:commandLink action="#{EnquiryExpressDetailActionBean.prepareAddTour(express)}" id="travelExpressLink" style="color:#045F98;" update=":expressListForm">
+								<h:outputText value="#{express.express.name}" />
+							</p:commandLink>
+						</p:column>
+						<p:column width="20%">
+							<h:outputText value="#{express.noOfPassenger} Passengers" />
+						</p:column>
+						<p:column width="20%">
+							<h:outputText value="#{express.noOfUnit} Units" />
+						</p:column>
+						<p:column width="20%">
+							<h:outputText value="#{express.premium}" />
+						</p:column> 
+						<p:column width="20%">
+							<h:outputText rendered="#{EnquiryExpressDetailActionBean.requireUnit(express) eq 0 ? false : true}" style="color:red"
+								value="#{EnquiryExpressDetailActionBean.requireUnit(express) eq 0 ? '': EnquiryExpressDetailActionBean.requireUnit(express)} Units Required " />
+							<h:outputText rendered="#{EnquiryExpressDetailActionBean.requireUnit(express) eq 0 ? true : false}"
+								value="#{EnquiryExpressDetailActionBean.requireUnit(express) eq 0 ? 'Fixed': EnquiryExpressDetailActionBean.requireUnit(express)} " />
+						</p:column>
+					</p:dataTable>
+				</p:panel>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

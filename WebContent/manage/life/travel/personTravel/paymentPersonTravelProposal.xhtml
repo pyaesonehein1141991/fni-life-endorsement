@@ -1,0 +1,151 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:cyc="http://www.cycdemo.com/java" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="Travel Proposal Payment" />
+	<ui:param name="headerRendered" value="true" />
+	<ui:define name="content">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<h:form id="lifePaymentForm">
+			<f:event listener="#{DashBoard.checkMessage}" type="preRenderView" />
+			<p:growl escape="false" globalOnly="true" id="messages" life="8000" showDetail="true" />
+			<p:panelGrid style="margin: 10px;" columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-fluid">
+				<p:panelGrid style="margin: 10px;" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<h:outputText styleClass="input-label" value="Proposal No" />
+					<p:panelGrid styleClass="ui-panelgrid-blank">
+						<div style="margin-top: -5px; margin-left: -5px;" class="ui-g ui-fluid" id="detailProposal">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:inputText id="proposalNo" readonly="true" style="margin-left:-2px;" value="#{AddNewPersonTravelPaymentActionBean.travelProposal.proposalNo}" />
+								<p:commandButton actionListener="#{AddNewPersonTravelPaymentActionBean.openTemplate()}" immediate="true" styleClass="green-button" icon="fa fa-laptop" />
+							</div>
+						</div>
+					</p:panelGrid>
+					<h:outputText styleClass="input-label" value="Premium" />
+					<p:inputText id="premium" readonly="true" style="text-align: right;" value="#{AddNewPersonTravelPaymentActionBean.payment.basicPremium}">
+						<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</p:inputText>
+					<h:outputText styleClass="input-label" value="Additional Charges" rendered="#{AddNewPersonTravelPaymentActionBean.payment.servicesCharges gt 0}" />
+					<p:inputText id="svicCharges" readonly="true" style="text-align: right;" rendered="#{AddNewPersonTravelPaymentActionBean.payment.servicesCharges gt 0}"
+						value="#{AddNewPersonTravelPaymentActionBean.payment.servicesCharges}">
+						<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</p:inputText>
+					<h:outputText styleClass="input-label" value="Stamp Fees" rendered="#{AddNewPersonTravelPaymentActionBean.payment.stampFees gt 0}" />
+					<p:inputText id="stampFees" readonly="true" style="text-align: right;" rendered="#{AddNewPersonTravelPaymentActionBean.payment.stampFees gt 0}"
+						value="#{AddNewPersonTravelPaymentActionBean.payment.stampFees}">
+						<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</p:inputText>
+					<h:outputText styleClass="input-label" value="Special Discount" rendered="#{AddNewPersonTravelPaymentActionBean.payment.discountAmount ne 0}" />
+					<p:inputText id="discount" readonly="true" style="text-align: right;" rendered="#{AddNewPersonTravelPaymentActionBean.payment.discountAmount ne 0}"
+						value="#{AddNewPersonTravelPaymentActionBean.payment.discountAmount}">
+						<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</p:inputText>
+					<h:outputText styleClass="input-label" value="Net Amount" />
+					<p:inputText id="netAmount" readonly="true" style="text-align: right;" value="#{AddNewPersonTravelPaymentActionBean.payment.totalAmount}">
+						<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</p:inputText>
+					<h:outputText styleClass="input-label" value="Remark" />
+					<p:inputTextarea autoResize="true" id="remark" rows="4" value="#{AddNewPersonTravelPaymentActionBean.remark}">
+						<f:validateLength maximum="8000" />
+					</p:inputTextarea>
+					<p:outputLabel />
+					<p:message for="responsiblePerson" display="text" />
+					<h:outputText styleClass="input-label mandatory" value="Responsible Person" />
+					<p:panelGrid styleClass="ui-panelgrid-blank" id="responsiblePersonPanelGroup">
+						<div style="margin-top: -5px; margin-left: -5px;" class="ui-g ui-fluid" id="responsiblePersonPanelGroup">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewPersonTravelPaymentActionBean.selectUser()}" id="selectUserDialogLink"
+									process="@this">
+									<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelPaymentActionBean.returnUser}" update="responsiblePerson" />
+								</p:commandButton>
+								<p:inputText id="responsiblePerson" style="margin-left:-4px;" required="true"
+									readonly="#{AddNewPersonTravelPaymentActionBean.responsiblePerson == null ? facesContext.currentPhaseId.ordinal eq 6 : true}"
+									value="#{AddNewPersonTravelPaymentActionBean.responsiblePerson == null ? '' : AddNewPersonTravelPaymentActionBean.responsiblePerson.name}" />
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelPaymentActionBean.setResponsiblePerson(null)}" process="@this"
+									update="responsiblePerson" />
+							</div>
+						</div>
+					</p:panelGrid>
+				</p:panelGrid>
+				<p:panelGrid style="margin: 10px;" columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+						<p:outputLabel />
+						<p:message for="salesPoints" display="text" />
+						<h:outputText styleClass="input-label mandatory" value="Sales Points" />
+						<p:panelGrid styleClass="ui-panelgrid-blank">
+							<div style="margin: -6px -7px;" class="ui-g ui-fluid" id="salesPointsPanelGroup">
+								<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+									<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewPersonTravelPaymentActionBean.selectSalesPoints()}" id="selectSalesPointsDialogLink"
+										process="@this">
+										<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelPaymentActionBean.returnSalesPoints}" update="salesPoints" />
+									</p:commandButton>
+									<p:inputText id="salesPoints" readonly="#{AddNewPersonTravelPaymentActionBean.payment.salesPoints == null? facesContext.currentPhaseId.ordinal eq 6 : true}" required="true"
+										value="#{(AddNewPersonTravelPaymentActionBean.payment.salesPoints == null ? '' : AddNewPersonTravelPaymentActionBean.payment.salesPoints.name)}" />
+									<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelPaymentActionBean.payment.setSalesPoints(null)}" process="@this" update="salesPoints" />
+								</div>
+							</div>
+						</p:panelGrid>
+					
+					<p:outputLabel />
+					<p:message for="paymentChannel" display="text" />
+					<h:outputText styleClass="input-label mandatory" value="Payment Channel" />
+					<p:selectOneRadio converter="omnifaces.SelectItemsIndexConverter" id="paymentChannel" required="true" value="#{AddNewPersonTravelPaymentActionBean.payment.paymentChannel}">
+						<f:selectItems itemLabel="#{c.label}" itemValue="#{c}" value="#{AddNewPersonTravelPaymentActionBean.channelValues}" var="c" />
+						<p:ajax event="valueChange" listener="#{AddNewPersonTravelPaymentActionBean.changePaymentChannel}" update="@form" />
+					</p:selectOneRadio>
+					<p:outputLabel />
+					<p:message for="accountBankName" display="text" id="accountBankMessage" rendered="#{AddNewPersonTravelPaymentActionBean.accountBank}" />
+					<h:outputText rendered="#{AddNewPersonTravelPaymentActionBean.cheque}" styleClass="input-label mandatory" value="Account Clearing Bank" />
+					<h:outputText rendered="#{AddNewPersonTravelPaymentActionBean.transfer}" styleClass="input-label mandatory" value="Account Bank" />
+					<p:panelGrid styleClass="ui-panelgrid-blank" id="accountBankPanelGroup" rendered="#{AddNewPersonTravelPaymentActionBean.accountBank}">
+						<div style="margin-top: -5px; margin-left: -5px;" class="ui-g ui-fluid" id="accountBankPanelGroup">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewPersonTravelPaymentActionBean.selectAccountBank()}" id="accountBankLink"
+									process="@this">
+									<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelPaymentActionBean.returnAccountBank}" update="accountBankName" />
+								</p:commandButton>
+								<p:inputText id="accountBankName" required="true"
+									readonly="#{AddNewPersonTravelPaymentActionBean.payment.accountBank == null ? facesContext.currentPhaseId.ordinal eq 6 : true}"
+									value="#{AddNewPersonTravelPaymentActionBean.payment.accountBank == null ? '' : AddNewPersonTravelPaymentActionBean.payment.accountBank.name}" />
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelPaymentActionBean.payment.setAccountBank(null)}" process="@this"
+									update="accountBankName" />
+							</div>
+						</div>
+					</p:panelGrid>
+					<p:outputLabel />
+					<p:message for="bank" display="text" id="bankMessage" rendered="#{AddNewPersonTravelPaymentActionBean.bank}" />
+					<h:outputText rendered="#{AddNewPersonTravelPaymentActionBean.cheque}" styleClass="input-label" value="Cheque Received Bank" />
+					<h:outputText rendered="#{AddNewPersonTravelPaymentActionBean.transfer}" styleClass="input-label" value="Bank" />
+					<p:panelGrid styleClass="ui-panelgrid-blank" id="bankPanelGroup" rendered="#{AddNewPersonTravelPaymentActionBean.bank}">
+						<div style="margin-top: -5px; margin-left: -5px;" class="ui-g ui-fluid" id="bankPanelGroup">
+							<div class="ui-inputgroup ui-g-12 ui-lg-12 ui-lg-12">
+								<p:commandButton styleClass="green-button" icon="fa fa-search" actionListener="#{AddNewPersonTravelPaymentActionBean.selectBank()}" id="bankLink" process="@this">
+									<p:ajax event="dialogReturn" listener="#{AddNewPersonTravelPaymentActionBean.returnBank}" update="bank" />
+								</p:commandButton>
+								<p:inputText id="bank" readonly="true" value="#{AddNewPersonTravelPaymentActionBean.payment.bank == null ? '' : AddNewPersonTravelPaymentActionBean.payment.bank.name}" />
+								<p:commandButton styleClass="red-button" icon="fa fa-times" action="#{AddNewPersonTravelPaymentActionBean.payment.setBank(null)}" process="@this" update="bank" />
+							</div>
+						</div>
+					</p:panelGrid>
+					<p:outputLabel rendered="#{AddNewPersonTravelPaymentActionBean.transfer}" />
+					<p:message for="poNo" display="text" id="chequeNoMessage" rendered="#{AddNewPersonTravelPaymentActionBean.transfer}" />
+					<h:outputText rendered="#{AddNewPersonTravelPaymentActionBean.transfer}" styleClass="input-label" value="Transfer No." />
+					<p:inputText id="poNo" rendered="#{AddNewPersonTravelPaymentActionBean.transfer}" value="#{AddNewPersonTravelPaymentActionBean.payment.poNo}" />
+					<p:outputLabel rendered="#{AddNewPersonTravelPaymentActionBean.cheque}" />
+					<p:message for="chequeNo" display="text" id="poNoMessage" rendered="#{AddNewPersonTravelPaymentActionBean.cheque}" />
+					<h:outputText rendered="#{AddNewPersonTravelPaymentActionBean.cheque}" styleClass="input-label" value="PO / Cheque No." />
+					<p:inputText id="chequeNo" rendered="#{AddNewPersonTravelPaymentActionBean.cheque}" value="#{AddNewPersonTravelPaymentActionBean.payment.chequeNo}" />
+				</p:panelGrid>
+			</p:panelGrid>
+			<p:commandButton action="#{AddNewPersonTravelPaymentActionBean.paymentTravelProposal()}" disabled="#{AddNewPersonTravelPaymentActionBean.receiptPrint}" id="addBtn"
+				style="width: 80px;" value="Confirm" update=":lifePaymentForm" />
+			<p:spacer width="5" />
+			<p:commandButton action="#{AddNewPersonTravelPaymentActionBean.generateCashReceipt}" disabled="#{!AddNewPersonTravelPaymentActionBean.receiptPrint}" immediate="true"
+				id="cashReciptBtn" style="width: 150px;" oncomplete="PF('pdfDialog').show();" update=":pdfPrintForm" value="Cash Receipt" />
+			<p:spacer width="5" />
+			<p:commandButton action="dashboard" id="cancelBtn" immediate="true" style="width: 80px;" value="Cancel" />
+		</h:form>
+		<p:dialog appendTo="@(body)" dynamic="true" height="505" id="pdfDialog" resizable="false" widgetVar="pdfDialog" width="1070">
+			<p:ajax event="close" listener="#{AddNewPersonTravelPaymentActionBean.handleClose}" update=":pdfPrintForm" />
+			<h:form enctype="multipart/form-data" id="pdfPrintForm">
+				<p:media height="500" id="pdfPlayer" player="pdf" value="#{AddNewPersonTravelPaymentActionBean.reportStream}" width="1050" />
+			</h:form>
+		</p:dialog>
+	</ui:define>
+</ui:composition>

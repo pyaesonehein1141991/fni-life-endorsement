@@ -1,0 +1,99 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:cyc="http://www.cycdemo.com/java" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="Special Travel Daily Receipt Report - REPG023" />
+	<ui:param name="headerRendered" value="true" />
+	<ui:define name="content">
+		<meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+		<h:form id="dailyIncomeList">
+			<p:growl globalOnly="true" id="messages" showDetail="true" />
+			<p:panelGrid columns="3" columnClasses="ui-grid-col-4,ui-grid-col-4,ui-grid-col-4" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:outputLabel />
+					<p:message for="receiptDateFrom" />
+					<p:outputLabel styleClass="input-label mandatory" value="Payment Date From" />
+					<p:calendar id="receiptDateFrom" required="true" pattern="dd-MM-yyyy" showOn="button" value="#{SpecialTravelDailyReceiptActionBean.criteria.fromDate}" />
+					<p:outputLabel />
+					<p:message for="receiptDateTo" />
+					<p:outputLabel styleClass="input-label mandatory" value="Payment Date To" />
+					<p:calendar id="receiptDateTo" required="true" pattern="dd-MM-yyyy" showOn="button" value="#{SpecialTravelDailyReceiptActionBean.criteria.toDate}" />
+				</p:panelGrid>
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-8" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:outputLabel />
+					<p:outputLabel />
+					<h:outputText value="Policy Branch" />
+					<p:selectOneMenu id="branch" converter="omnifaces.SelectItemsConverter" value="#{SpecialTravelDailyReceiptActionBean.criteria.branch}">
+						<f:selectItem itemLabel="Select Branch" />
+						<f:selectItems itemLabel="#{branch.name}" itemValue="#{branch}" value="#{SpecialTravelDailyReceiptActionBean.branchList}" var="branch" />
+					</p:selectOneMenu>
+					<h:outputText value="Payment Branch" />
+					<p:selectOneMenu id="pbranch" converter="omnifaces.SelectItemsConverter" value="#{SpecialTravelDailyReceiptActionBean.criteria.paymentBranch}">
+						<f:selectItem itemLabel="Select Branch" />
+						<f:selectItems itemLabel="#{pbranch.name}" itemValue="#{pbranch}" value="#{SpecialTravelDailyReceiptActionBean.branchList}" var="pbranch" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+			</p:panelGrid>
+			<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+				<p:commandButton value="Search" action="#{SpecialTravelDailyReceiptActionBean.filter}" update="@form" />
+				<p:commandButton value="Reset" action="#{SpecialTravelDailyReceiptActionBean.resetCriteria}" update="@form" process="@this" />
+			</p:panelGrid>
+			<p:separator style="height:1px" />
+			<p:dataTable id="criteriaTable" lazy="true" paginator="true" paginatorPosition="bottom"
+						paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" rowIndexVar="rowIndex" rows="10"
+						rowsPerPageTemplate="10,20,30" value="#{SpecialTravelDailyReceiptActionBean.specialTravelDailyReceiptReportList}" var="fireReport">
+				<f:facet name="header">
+					<h:commandLink action="#{SpecialTravelDailyReceiptActionBean.exportExcel}" immediate="true">
+						<p:graphicImage styleClass="#{ApplicationSetting.printStyleClass}" value="/images/excel.png" />
+					</h:commandLink>
+				</f:facet>
+				<p:column headerText="No." style="width:20px">
+					<h:outputText value="#{rowIndex + 1}" />
+				</p:column>
+				<p:column headerText="Receipt Date" style="width:90px">
+					<h:outputText value="#{fireReport.receiptDate}">
+						<f:convertDateTime pattern="#{ApplicationSetting.dateFormat}" timeZone="#{ApplicationSetting.timeZone}" />
+					</h:outputText>
+				</p:column>
+				<p:column style="width:150px">
+					<f:facet name="header">
+						<h:outputText value="Customer Name" />
+					</f:facet>
+					<h:outputText value="#{fireReport.customerName}" />
+				</p:column>
+				<p:column style="width:150px">
+					<f:facet name="header">
+						<h:outputText value="Agent" />
+					</f:facet>
+					<h:outputText value="#{fireReport.agent}" />
+				</p:column>
+				<p:column style="width:220px">
+					<f:facet name="header">
+						<h:outputText value="ProposalNo" />
+					</f:facet>
+					<h:outputText value="#{fireReport.proposalNo}" />
+				</p:column>
+				<p:column style="width:200px">
+					<f:facet name="header">
+						<h:outputText value="ReceiptNo" />
+					</f:facet>
+					<h:outputText value="#{fireReport.receiptNo}" />
+				</p:column>
+				<p:column style="width:150px">
+					<f:facet name="header">
+						<h:outputText value="Sum Insured" />
+					</f:facet>
+					<h:outputText value="#{fireReport.suminsured}" style="float:right;">
+						<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</h:outputText>
+				</p:column>
+				<p:column style="width:100px">
+					<f:facet name="header">
+						<h:outputText value="Premium" />
+					</f:facet>
+					<h:outputText value="#{fireReport.premium}" style="float:right;">
+						<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>

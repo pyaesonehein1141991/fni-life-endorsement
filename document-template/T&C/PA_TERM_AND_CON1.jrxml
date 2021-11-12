@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.11.0.final using JasperReports Library version 6.11.0-0c4056ccaa4d25a5a8c45672d2f764ea3498bebb  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PA_TERM_AND_CON1" pageWidth="595" pageHeight="842" columnWidth="515" leftMargin="40" rightMargin="40" topMargin="120" bottomMargin="0" resourceBundle="TERM_CONDITION_myn" uuid="918bb8cd-d870-4451-9a75-050e338eaf99">
+	<property name="net.sf.jasperreports.export.pdf.glyph.renderer.blocks.x" value="myanmar"/>
+	<property name="ireport.zoom" value="1.3310000000000008"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="policyBG" class="java.lang.String"/>
+	<detail>
+		<band height="722" splitType="Stretch">
+			<image>
+				<reportElement x="-40" y="-119" width="595" height="841" uuid="4192fb0a-b1d2-4b1f-8a99-e71eb6b2f1a8"/>
+				<imageExpression><![CDATA[new java.io.ByteArrayInputStream(org.apache.commons.codec.binary.Base64.decodeBase64($R{POLICY4FLY}.getBytes()))]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement positionType="Float" x="43" y="392" width="471" height="45" uuid="98d38c92-338f-477b-baa8-d6c15f5bbf30"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PA_TEXT_15}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="392" width="44" height="20" uuid="5f833040-b227-46c2-b612-a610220651c2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၉။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="437" width="75" height="20" uuid="a24dd71b-0af4-4d1d-9f6c-1d536ba3139e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[မှတ်ချက် ။     ။]]></text>
+			</staticText>
+			<textField>
+				<reportElement positionType="Float" x="74" y="437" width="440" height="104" uuid="70294079-2a5a-49ee-9269-35276d08c469"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$R{PA_TEXT_16}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement positionType="Float" x="85" y="545" width="138" height="20" uuid="95a9ff83-5e53-4390-b5f5-ba4cc283be82"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံထားသူ၏ ]]></text>
+			</staticText>
+			<line>
+				<reportElement positionType="Float" x="227" y="562" width="20" height="1" uuid="c5273f0a-1815-4beb-8ace-09238ae8bd53"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="246" y="562" width="1" height="120" uuid="1dfa356c-644a-4b53-a4b3-21ea13f86f57"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="247" y="622" width="20" height="1" uuid="a52d508e-ccff-41f9-92e8-d84934e2a0ba"/>
+			</line>
+			<line>
+				<reportElement positionType="Float" x="227" y="681" width="20" height="1" uuid="ae64ecc3-4a03-44a4-8ede-e50d791255a0"/>
+			</line>
+			<staticText>
+				<reportElement positionType="Float" x="280" y="613" width="182" height="20" uuid="27af0932-eba8-4023-8858-b3370cd64c4f"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အာမခံလုပ်ငန်းလုပ်ကိုင်ကိုင်ခွင့်ဥပဒေပုဒ်မ ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="85" y="568" width="138" height="20" uuid="aa9b98e7-61d1-4afe-8179-66f30cb90bc2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၁။ ခင်ပွန်း (သို့မဟုတ်) ဇနီး]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="85" y="591" width="138" height="20" uuid="758566f6-f40c-4e3d-8b1b-c2b34d34dc3a"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၂။ သား/သမီး]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="85" y="614" width="138" height="20" uuid="5036b174-4df1-4ff1-a242-84fc4e1f6d35"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၃။ မြေး]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="85" y="637" width="138" height="20" uuid="966d3b41-b1d5-4530-9e7b-b271777009ac"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၄။ ညီအစ်ကိုမောင်နှမ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="85" y="660" width="138" height="20" uuid="32f526d5-c576-4be1-84e3-9d4e49248741"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၅။ မိဘ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="0" y="33" width="514" height="359" uuid="3a42e833-b22b-4a2a-8f9f-d7bc9ea7eca6"/>
+				<textElement textAlignment="Justified" verticalAlignment="Top">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[အကျိုးခံစားခွင့်ပေးလျော်ခြင်းနှင့်စပ်လျဉ်း၍ အာမခံထားသူ/အကျိုးခံစားခွင့်ရှိသူနှင့် အာမခံလက်ခံသူတို့ သဘောထားကွဲ ပြားခြားနားမှု ပေါ်ပေါက်ခဲ့လျှင် တစ်ခြားကိစ္စများမပါဝင်ဘဲ ယင်းခြားနားမှု တစ်ခုတည်းအတွက်သာ သဘောထား မတိုက် ဆိုင်သူ (၂)ဦးက စာဖြင့် ရေးသားခန့်အပ်သော အနုညာတခုံလူကြီး၏ ဆုံးဖြစ်ချက်ကိုနာခံရမည်။ (သို့မဟုတ်) ၎င်းတို့ (၂)ဦးက ခုံလူကြီးတစ်ဦးတည်း ခန့်အပ်ခြင်းကို သဘောမတူလျှင် ဆုံးဖြတ်ရမည့်ကိစ္စ နှင့် လုံးဝမသက်ဆိုင်သည့် ခုံလူကြီး (၂)ဦး၏ ဆုံးဖြတ်ချက်ကို နာခံရမည်။ အခြားတစ်ဦးက ခုံလူကြီးခန့်ထားရန် စာရေးအကြောင်းကြားလာလျှင် ကျန်တစ်ဦး က မိမိ၏ခုံလူကြီးအား ပြက္ခဒိန် (၂)လ အတွင်း ခန့်ထားရမည်။ သဘောထားမတိုက်ဆိုင်သူ တစ်ဦးဦးသည် မိမိ၏ခုံလူကြီး အား ခန့်ထားရန် နို့တစ်စာကို လက်ခံရရှိပြီးနောက် ပြက္ခဒိန် (၂)လအတွင်း မိမိ၏ခုံလူကြီးအားခန့်ထားရန် ငြင်းဆန်လျှင် သော်လည်းကောင်း၊ ပျက်ကွက်လျှင်သော်လည်းကောင်း၊ ကျန်သဘောထားမတိုက်ဆိုင်သူက တစ်ဦးတည်းသော ခုံလူကြီးကို ခန့်ထားပိုင်ခွင့်ရှိသည်။ ခုံလူကြီး (၂)ဦးအတွင်း သဘောထားကွဲလွဲလျှင် ဆုံးဖြတ်ရန်ကိစ္စကိုမဆောင်ရွက်မီကပင် ၎င်းတို့ (၂) ဦးစလုံးက ကြိုတင်စာရေးခန့်ထားသော ဒိုင်လူကြီး၏ ဆုံးဖြတ်ချက်ကို နာခံရမည်။ ဒိုင်လူကြီးသည် ခုံလူကြီးများနှင့် အတူ တကွ ရုံးထိုင်ကာ ၎င်းတို့ဆွေးနွေးညှိနှိုင်းခြင်းအပေါ်တွင် သဘာပတိမူရမည်။ သဘောထားမတိုက်ဆိုင်သူ တစ်ဦးဦးသေဆုံး ခြင်းကြောင့် ခုံလူကြီး၊ ခုံလူကြီးများ(သို့မဟုတ်) ဒိုင်လူကြီး၏ အာဏာနှင့်လုပ်ပိုင်ခွင့် အသီးသီးကို မထိခိုက်၊ မပျက်ပြယ်စေ ရ။ ခုံလူကြီးတစ်ဦး(သို့) ဒိုင်လူကြီးသေဆုံးလျှင် ၎င်းအား ခန့်အပ်ခဲ့သော သဘောထားမတိုက်ဆိုင်သူကလည်းကောင်း၊ ခုံလူကြီးများကလည်းကောင်း၊ (ဖြစ်ပေါ်သည်အတိုင်း) သေဆုံးသူအစား အခြားတစ်ဦးဦးအား အစားထိုးခန့်ထားရမည်။ ဆုံးဖြတ်ရန် ဆောင်ရွက်ခြင်းနှင့် ဆုံးဖြတ်ချက်ချမှတ်ခြင်းတို့အတွက် ကျသင့်စရိတ်စကမှာ ယင်း ဆုံးဖြတ်ချက်ကို ချမှတ်သည့် ခုံလူကြီး၊ ခုံလူကြီးများ၊ (သို့မဟုတ်) ဒိုင်လူကြီးက သတ်မှတ်သည့်အတိုင်း ဖြစ်သည်။ အကျိုးခံ စားခွင့်ပေးလျော်ခြင်းနှင့် စပ်လျဉ်း၍ အငြင်းပွားပါက ခုံလူကြီး၊ ခုံလူကြီးများ၊ (သို့မဟုတ်) ဒိုင်လူကြီး၏ ဆုံးဖြတ်ချက်ကို ဦးစွာရရှိပြီးမှသာ ဤပေါ်လစီနှင့်အညီ မည်သည့်ဥပဒေ ကြောင်းအရ ဆောင်ရွက်ခြင်း သို့မဟုတ် တရားစွဲဆိုခြင်းကိုမဆို ပြုလုပ်နိုင်ခွင့်ရှိသည်။ ထိုကဲ့သို့ တရားဥပဒေစွဲဆိုခြင်းကို ဆုံးဖြတ်ချက်ရရှိပြီးနောက် (၁၂) လအတွင်း မဆောင်ရွက်လျှင် အကျိုးခံစားခွင့် တောင်းခံခြင်းကို လုံးဝစွန့်လွှတ်လိုက်ပြီဟု ယူဆရမည်ဖြစ်ကာ မည်သည့်အကျိုးခံစားခွင့်ကိုမှ မရရှိနိုင်တော့ပါ။]]></text>
+			</staticText>
+			<staticText>
+				<reportElement positionType="Float" x="-30" y="33" width="73" height="20" uuid="aa33d005-00f4-4864-8b46-f604d1bfbf9b"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font fontName="Pyidaungsu"/>
+				</textElement>
+				<text><![CDATA[၈။]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

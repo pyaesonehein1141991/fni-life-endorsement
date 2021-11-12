@@ -1,0 +1,114 @@
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns="http://www.w3.org/1999/xhtml" xmlns:cyc="http://www.cycdemo.com/java" xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html" xmlns:p="http://primefaces.org/ui" template="/common/commonLayout.xhtml">
+	<ui:param name="header" value="Special Travel Claim Report (CLREP010)" />
+	<ui:param name="headerRendered" value="true" />
+	<ui:define name="content">
+		<h:form id="travelClaimReportForm">
+			<p:panelGrid columns="2" columnClasses="ui-grid-col-6,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<p:outputLabel styleClass="input-label " value="From Date (From) " />
+					<p:calendar id="startDate" pattern="dd-MM-yyyy" showOn="button" value="#{SpecialTravelClaimReportActionBean.criteria.fromDate}" />
+					<p:outputLabel styleClass="input-label " value="To Date (To)" />
+					<p:calendar id="endDate" pattern="dd-MM-yyyy" showOn="button" value="#{SpecialTravelClaimReportActionBean.criteria.toDate}" />
+				</p:panelGrid>
+				<p:panelGrid columns="2" columnClasses="ui-grid-col-4,ui-grid-col-6" layout="grid" styleClass="ui-panelgrid-blank ui-fluid">
+					<h:outputText value="Policy Branch" />
+					<p:selectOneMenu id="selectBranch" converter="omnifaces.SelectItemsConverter" value="#{SpecialTravelClaimReportActionBean.criteria.policyBranch}">
+						<f:selectItem itemLabel="Select Branch" />
+						<f:selectItems itemLabel="#{branch.name}" itemValue="#{branch}" value="#{SpecialTravelClaimReportActionBean.branchList}" var="branch" />
+					</p:selectOneMenu>
+					<h:outputText value="Claim Branch" />
+					<p:selectOneMenu id="selectclaimBranch" converter="omnifaces.SelectItemsConverter" value="#{SpecialTravelClaimReportActionBean.criteria.claimBranch}">
+						<f:selectItem itemLabel="Select Branch" />
+						<f:selectItems itemLabel="#{branch.name}" itemValue="#{branch}" value="#{SpecialTravelClaimReportActionBean.branchList}" var="branch" />
+					</p:selectOneMenu>
+				</p:panelGrid>
+			</p:panelGrid>
+			<p:panelGrid columns="2" styleClass="ui-panelgrid-blank">
+				<p:commandButton action="#{SpecialTravelClaimReportActionBean.filter}" id="search" update="@form" value="Search" />
+				<p:commandButton action="#{SpecialTravelClaimReportActionBean.resetCriteria}" id="reset" update="@form" value="Reset" />
+			</p:panelGrid>
+			<p:separator />
+			<p:dataTable id="criteriaTable" var="criteria" rowIndexVar="rowIndex" value="#{SpecialTravelClaimReportActionBean.criteriaList}" scrollable="true" scrollWidth="99%"
+				scrollHeight="300">
+				<f:facet name="header">
+					<h:commandLink action="#{SpecialTravelClaimReportActionBean.exportExcel}" immediate="true">
+						<p:graphicImage styleClass="#{ApplicationSetting.printStyleClass}" value="/images/excel.png" />
+					</h:commandLink>
+				</f:facet>
+				<p:column headerText="No." style="width:20px">
+					<h:outputText value="#{rowIndex + 1}" />
+				</p:column>
+				<p:column headerText="Authorise Date" style="width:100px">
+					<h:outputText value="#{criteria.informedDate}">
+						<f:convertDateTime pattern="#{ApplicationSetting.dateFormat}" timeZone="#{ApplicationSetting.timeZone}" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Claim No" style="width:200px">
+					<h:outputText value="#{criteria.claimNo}" />
+				</p:column>
+				<p:column headerText="Claim Date" style="width:100px">
+					<h:outputText value="#{criteria.claimDate}">
+						<f:convertDateTime pattern="#{ApplicationSetting.dateFormat}" timeZone="#{ApplicationSetting.timeZone}" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Claim Branch" style="width:100px">
+					<h:outputText value="#{criteria.claimBranch}" />
+				</p:column>
+				<p:column headerText="Policy Branch" style="width:100px">
+					<h:outputText value="#{criteria.policyBranch}" />
+				</p:column>
+				<p:column headerText="Insurance Name" style="width:100px">
+					<h:outputText value="#{criteria.insuredPersonName}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Destination" style="width:100px">
+					<h:outputText value="#{criteria.route}">
+					</h:outputText>
+				</p:column>
+				<p:column headerText="SI" style="width:100px">
+					<h:outputText value="#{criteria.sI}" >
+					<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Number Of Units" style="width:100px">
+					<h:outputText value="#{criteria.unit}" >
+					<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Premium" style="width:100px">
+					<h:outputText value="#{criteria.premium}" >
+					<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Name" style="width:100px">
+					<h:outputText value="#{criteria.name}" />
+				</p:column>
+				<p:column headerText="NRC" style="width:120px">
+					<h:outputText value="#{criteria.nrcNo}" />
+				</p:column>
+				<p:column headerText="Claim Type" style="width:100px">
+					<h:outputText value="#{criteria.claimCoverType}" />
+				</p:column>
+				<p:column headerText="Claim Amount" style="width:100px">
+					<h:outputText value="#{criteria.claimAmount}" >
+					<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Paid Amount" style="width:100px">
+					<h:outputText value="#{criteria.paidAmount}" >
+					<f:convertNumber pattern="#{ApplicationSetting.currencyFormat}" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Payment Date" style="width:100px">
+					<h:outputText value="#{criteria.paymentDate}" >
+					<f:convertDateTime pattern="#{ApplicationSetting.dateFormat}" timeZone="#{ApplicationSetting.timeZone}" />
+					</h:outputText>
+				</p:column>
+				<p:column headerText="Agent Name" style="width:100px">
+					<h:outputText value="#{criteria.agentName}" />
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
